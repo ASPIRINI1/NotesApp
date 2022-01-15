@@ -10,11 +10,14 @@
 		CB1676B0C1C67D306D35730B /* Pods_NotesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85BCDF812468C7C029B2F02F /* Pods_NotesApp.framework */; };
 		DEDD854E279317400075D525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD854D279317400075D525 /* AppDelegate.swift */; };
 		DEDD8550279317400075D525 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD854F279317400075D525 /* SceneDelegate.swift */; };
-		DEDD8552279317400075D525 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8551279317400075D525 /* ViewController.swift */; };
+		DEDD8552279317400075D525 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8551279317400075D525 /* NoteViewController.swift */; };
 		DEDD8555279317400075D525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8553279317400075D525 /* Main.storyboard */; };
 		DEDD8557279317420075D525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8556279317420075D525 /* Assets.xcassets */; };
 		DEDD855A279317420075D525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8558279317420075D525 /* LaunchScreen.storyboard */; };
 		DEDD8562279319120075D525 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8561279319120075D525 /* GoogleService-Info.plist */; };
+		DEDD856527931C510075D525 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD856427931C510075D525 /* Document.swift */; };
+		DEDD856727931C830075D525 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD856627931C830075D525 /* APIManager.swift */; };
+		DEDD856A27931F1C0075D525 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD856927931F1C0075D525 /* NoteTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,12 +27,15 @@
 		DEDD854A279317400075D525 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEDD854D279317400075D525 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEDD854F279317400075D525 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DEDD8551279317400075D525 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DEDD8551279317400075D525 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		DEDD8554279317400075D525 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEDD8556279317420075D525 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEDD8559279317420075D525 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEDD855B279317420075D525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEDD8561279319120075D525 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DEDD856427931C510075D525 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		DEDD856627931C830075D525 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		DEDD856927931F1C0075D525 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +82,8 @@
 			children = (
 				DEDD854D279317400075D525 /* AppDelegate.swift */,
 				DEDD854F279317400075D525 /* SceneDelegate.swift */,
-				DEDD8551279317400075D525 /* ViewController.swift */,
+				DEDD856327931C410075D525 /* Firebase */,
+				DEDD856827931D730075D525 /* ViewControllers */,
 				DEDD8553279317400075D525 /* Main.storyboard */,
 				DEDD8556279317420075D525 /* Assets.xcassets */,
 				DEDD8558279317420075D525 /* LaunchScreen.storyboard */,
@@ -84,6 +91,24 @@
 				DEDD8561279319120075D525 /* GoogleService-Info.plist */,
 			);
 			path = NotesApp;
+			sourceTree = "<group>";
+		};
+		DEDD856327931C410075D525 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				DEDD856427931C510075D525 /* Document.swift */,
+				DEDD856627931C830075D525 /* APIManager.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		DEDD856827931D730075D525 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DEDD8551279317400075D525 /* NoteViewController.swift */,
+				DEDD856927931F1C0075D525 /* NoteTableViewCell.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		E7918E2F91A67B14DE776260 /* Frameworks */ = {
@@ -210,9 +235,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEDD8552279317400075D525 /* ViewController.swift in Sources */,
+				DEDD856527931C510075D525 /* Document.swift in Sources */,
+				DEDD8552279317400075D525 /* NoteViewController.swift in Sources */,
+				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
 				DEDD854E279317400075D525 /* AppDelegate.swift in Sources */,
 				DEDD8550279317400075D525 /* SceneDelegate.swift in Sources */,
+				DEDD856A27931F1C0075D525 /* NoteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
