@@ -56,6 +56,7 @@
                                         <connections>
                                             <outlet property="bodyLabel" destination="U9L-6b-XbF" id="ts5-PM-PvZ"/>
                                             <outlet property="headLabel" destination="jeC-4E-4iV" id="Jg3-e3-uCD"/>
+                                            <segue destination="pv3-YI-2ss" kind="show" id="6PT-Dd-hJb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -86,6 +87,41 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="97.767857142857139"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="44b-g2-Ad5">
+            <objects>
+                <viewController id="pv3-YI-2ss" customClass="DetailViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gZr-WH-fLI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ajb-8w-BvX">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hHx-Xy-0g6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ajb-8w-BvX" firstAttribute="top" secondItem="hHx-Xy-0g6" secondAttribute="top" id="D8i-0b-lEj"/>
+                            <constraint firstItem="Ajb-8w-BvX" firstAttribute="leading" secondItem="hHx-Xy-0g6" secondAttribute="leading" id="YV5-Fa-b2V"/>
+                            <constraint firstItem="hHx-Xy-0g6" firstAttribute="trailing" secondItem="Ajb-8w-BvX" secondAttribute="trailing" id="bTQ-Hl-nsf"/>
+                            <constraint firstItem="hHx-Xy-0g6" firstAttribute="bottom" secondItem="Ajb-8w-BvX" secondAttribute="bottom" id="wTg-aK-eNw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wE0-59-0ST"/>
+                    <connections>
+                        <outlet property="textView" destination="Ajb-8w-BvX" id="PeJ-zU-UXx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kNQ-T5-b9S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1936" y="91"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="dYS-5i-Hcz">
             <objects>
@@ -106,6 +142,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
