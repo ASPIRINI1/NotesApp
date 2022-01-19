@@ -14,12 +14,15 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIManager.shared.psot(collection: "Notes", docName: "TestNote") { doc in
+        APIManager.shared.getData(collection: "Notes", docName: "TestNote") { doc in
             guard doc != nil else {return}
             self.createTextView(head: doc!.noteHead, body: doc!.noteBody)
+            
         }
+
+        
     }
-    
+
     func createTextView(head: String, body: String){
         textView.text = head
         textView.text.append(body)

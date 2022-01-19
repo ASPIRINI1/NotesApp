@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import GoogleSignIn
 
 struct APIManager{
    static let shared = APIManager()
@@ -19,14 +20,71 @@ struct APIManager{
         return db
     }
     
-    func psot(collection: String, docName: String, completion: @escaping(Document?) -> Void){
+    func getData(collection: String, docName: String, completion: @escaping(Document?) -> Void){
         let db = configureFB()
         db.collection(collection).document(docName).getDocument(completion:{ (document, error) in
-            
             guard error == nil else {completion(nil);return}
             let doc = Document(noteHead: document?.get("NoteHead") as! String, noteBody: document?.get("NoteBody") as! String)
             completion(doc)
         })
     }
     
+    func GetDocumentsCount() -> Int{
+        var docCount = 0
+            let db = configureFB()
+                db.collection("Notes").getDocuments { (querySnapshot, err) in
+                    if let err = err {
+                            print("Error getting documents: \(err)")
+                    } else { docCount = (querySnapshot?.documents.count)!}
+            }
+        return 0
+    }
+    
+   private func requestCount()-> Firestore!{
+       let db = configureFB()
+           db.collection("Notes").getDocuments { (querySnapshot, err) in
+               if let err = err {
+                       print("Error getting documents: \(err)")
+               } else { }
+       }
+       return db
+    }
+    
+    func createNewDocument(document: [String : String], completion: @escaping(Document?) -> Void){
+        let db = configureFB()
+        var dc = Document(noteHead: "head", noteBody: "Body")
+        db.collection("Notes").addDocument(data: ["New document" : ""])
+    }
+    /*
+    func signInWithEmail(email: String, username: String, password: String){
+        
+    }
+    
+    func signInWithGoogle(viewController: UIViewController){
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: viewController) { [unowned viewController] user, error in
+
+          if let error = error {
+            // ...
+            return
+          }
+
+          guard
+            let authentication = user?.authentication,
+            let idToken = authentication.idToken
+          else {
+            return
+          }
+
+          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                         accessToken: authentication.accessToken)
+
+          // ...
+        }
+    }*/
 }
