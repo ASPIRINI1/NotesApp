@@ -29,32 +29,40 @@ struct APIManager{
         })
     }
     
-    func GetDocumentsCount() -> Int{
-        var docCount = 0
-            let db = configureFB()
-                db.collection("Notes").getDocuments { (querySnapshot, err) in
-                    if let err = err {
-                            print("Error getting documents: \(err)")
-                    } else { docCount = (querySnapshot?.documents.count)!}
+    func getDocuments(completion: @escaping([Document]?) -> Void) -> [Document]{
+        let db = configureFB()
+        
+        var docs = [Document]()
+        db.collection("Notes").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+//                    print("\(document.documentID) => \(document.data())")
+                    docs.append(Document(noteHead: document.get("NoteHead") as! String, noteBody: document.get("NoteBody") as! String))
+                    completion(docs)
+//                    print(docs,"DOCS",docs.count)
+                }
             }
-        return 0
+            
+        }
+        return docs
     }
     
-   private func requestCount()-> Firestore!{
-       let db = configureFB()
-           db.collection("Notes").getDocuments { (querySnapshot, err) in
-               if let err = err {
-                       print("Error getting documents: \(err)")
-               } else { }
-       }
-       return db
-    }
     
     func createNewDocument(document: [String : String], completion: @escaping(Document?) -> Void){
         let db = configureFB()
-        var dc = Document(noteHead: "head", noteBody: "Body")
-        db.collection("Notes").addDocument(data: ["New document" : ""])
+        
+        
+        //var dc = Document(noteHead: "head", noteBody: "Body")
+//        db.collection("Notes").addDocument(data: document)
+        
+        db.collection("Notes").addDocument(data: [
+            "NoteHead": "1",
+            "NoteBody": "2"])
+
     }
+    
     /*
     func signInWithEmail(email: String, username: String, password: String){
         
