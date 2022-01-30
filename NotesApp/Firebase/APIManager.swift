@@ -9,10 +9,15 @@ import Foundation
 import Firebase
 import GoogleSignIn
 
-struct APIManager{
-   static let shared = APIManager()
+class APIManager{
     
-    private func configureFB() -> Firestore{
+    
+    static let shared = APIManager()
+    private var docs = [Document]()
+    
+//    MARK: - Methods
+    
+     private func configureFB() -> Firestore{
         var db: Firestore!
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
@@ -20,7 +25,7 @@ struct APIManager{
         return db
     }
     
-    func getData(collection: String, docName: String, completion: @escaping(Document?) -> Void){
+     func getData(collection: String, docName: String, completion: @escaping(Document?) -> Void){
         let db = configureFB()
         db.collection(collection).document(docName).getDocument(completion:{ (document, error) in
             guard error == nil else {completion(nil);return}
@@ -29,70 +34,51 @@ struct APIManager{
         })
     }
     
-    func getDocuments(completion: @escaping([Document]?) -> Void) -> [Document]{
+    func getDocuments(completion: @escaping([Document]?) -> Void){
         let db = configureFB()
-        
-        var docs = [Document]()
-        db.collection("Notes").getDocuments() { (querySnapshot, err) in
+        db.collection("Notes").getDocuments()  { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
-                    docs.append(Document(noteHead: document.get("NoteHead") as! String, noteBody: document.get("NoteBody") as! String))
-                    completion(docs)
-//                    print(docs,"DOCS",docs.count)
+                    self.docs.append(Document(noteHead: document.get("NoteHead") as! String, noteBody: document.get("NoteBody") as! String))
+                    completion(self.docs)
                 }
             }
+        }
+    }
+    
+//     func createNewDocument(head:String, body:String, completion: () -> Void){
+//        let db = configureFB()
+//        if head != ""{
+//            db.collection("Notes").addDocument(data: [
+//                "NoteHead": head,
+//                "NoteBody": body])
+//        } else {print("head = empty")}
+//    }
+    
+    func createNewDocument(){
+       let db = configureFB()
+           db.collection("Notes").addDocument(data: [
+               "NoteHead": "New document",
+               "NoteBody": ""])
+        getDocuments { doc in
             
         }
-        return docs
-    }
+   }
     
-    
-    func createNewDocument(document: [String : String], completion: @escaping(Document?) -> Void){
-        let db = configureFB()
-        
-        
-        //var dc = Document(noteHead: "head", noteBody: "Body")
-//        db.collection("Notes").addDocument(data: document)
-        
-        db.collection("Notes").addDocument(data: [
-            "NoteHead": "1",
-            "NoteBody": "2"])
-
-    }
-    
-    /*
-    func signInWithEmail(email: String, username: String, password: String){
-        
-    }
-    
-    func signInWithGoogle(viewController: UIViewController){
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-
-        // Create Google Sign In configuration object.
-        let config = GIDConfiguration(clientID: clientID)
-
-        // Start the sign in flow!
-        GIDSignIn.sharedInstance.signIn(with: config, presenting: viewController) { [unowned viewController] user, error in
-
-          if let error = error {
-            // ...
-            return
-          }
-
-          guard
-            let authentication = user?.authentication,
-            let idToken = authentication.idToken
-          else {
-            return
-          }
-
-          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                         accessToken: authentication.accessToken)
-
-          // ...
-        }
-    }*/
-}
+    func updateDocument(documentInd: Int, head:String, body:String){
+       let db = configureFB()
+       if head != ""{
+           db.collection("Notes").document("TestNote").updateData([
+            "NoteHead": head,
+            "NoteBody": body
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+//       } else {print("head = empty")}
+   }
+       }}}

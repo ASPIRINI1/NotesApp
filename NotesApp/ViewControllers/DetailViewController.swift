@@ -9,23 +9,47 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    let fireAPI = APIManager.shared
+    var docIndex = 0
     @IBOutlet weak var textView: UITextView!
+     var text = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        APIManager.shared.getData(collection: "Notes", docName: "TestNote") { doc in
-            guard doc != nil else {return}
-            self.createTextView(head: doc!.noteHead, body: doc!.noteBody)
-            
+        textView.text = self.text
+        print(text)
+        for txt in text{
+            if txt.isNewline{
+                print("oloha")
+            }
         }
-
         
     }
 
-    func createTextView(head: String, body: String){
-        textView.text = head
-        textView.text.append(body)
+    override func viewWillDisappear(_ animated: Bool) {
+        var headString:String = ""
+        var bodyString:String = ""
+        for newLines in textView.text{
+            if newLines.isNewline{
+                bodyString.append(newLines)
+                break
+            }
+            headString.append(newLines)
+        }
+        
+        fireAPI.updateDocument(documentInd: docIndex, head: headString, body: bodyString)
+        
     }
+    
+}
 
+
+//MARK: - TextView Delegate
+extension DetailViewController: UITextViewDelegate{
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        resignFirstResponder()
+        
+    }
+    
+    
 }
