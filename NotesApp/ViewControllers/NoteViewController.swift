@@ -19,14 +19,19 @@ class NoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         notesTableView.delegate = self
         notesTableView.dataSource = self
         
-        FireAPI.getDocuments { docs in
-            guard docs != nil else {return}
-            self.documents = docs!
+        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: view.center.x, y: view.center.y, width: 10.0, height: 10.0))
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("LoadingNotes"), object: nil, queue: nil) { notif in
+            self.view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("NotesLoaded"), object: nil, queue: nil) { notif in
+            self.documents = self.FireAPI.getAllDocs()
             self.notesTableView.reloadData()
+            activityIndicator.stopAnimating()
         }
     }
     
@@ -38,8 +43,9 @@ class NoteViewController: UIViewController {
     
     @IBAction func addNoteButtonAction(_ sender: Any) {
         FireAPI.createNewDocument()
-            
-        navigationController?.pushViewController(detailVC, animated: true)    }
+        navigationController?.pushViewController(detailVC, animated: true)
+        
+    }
 }
 
 

@@ -11,9 +11,13 @@ import GoogleSignIn
 
 class APIManager{
     
-    
     static let shared = APIManager()
     private var docs = [Document]()
+    
+    init() {
+        getDocuments()
+    }
+    
     
 //    MARK: - Methods
     
@@ -25,60 +29,58 @@ class APIManager{
         return db
     }
     
-     func getData(collection: String, docName: String, completion: @escaping(Document?) -> Void){
-        let db = configureFB()
-        db.collection(collection).document(docName).getDocument(completion:{ (document, error) in
-            guard error == nil else {completion(nil);return}
-            let doc = Document(noteHead: document?.get("NoteHead") as! String, noteBody: document?.get("NoteBody") as! String)
-            completion(doc)
-        })
-    }
-    
-    func getDocuments(completion: @escaping([Document]?) -> Void){
-        let db = configureFB()
-        db.collection("Notes").getDocuments()  { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    self.docs.append(Document(noteHead: document.get("NoteHead") as! String, noteBody: document.get("NoteBody") as! String))
-                    completion(self.docs)
-                }
-            }
-        }
-    }
-    
-//     func createNewDocument(head:String, body:String, completion: () -> Void){
-//        let db = configureFB()
-//        if head != ""{
-//            db.collection("Notes").addDocument(data: [
-//                "NoteHead": head,
-//                "NoteBody": body])
-//        } else {print("head = empty")}
-//    }
+    private func getDocuments(){
+         let db = configureFB()
+         db.collection("Notes").getDocuments()  { (querySnapshot, err) in
+             if let err = err {
+                 print("Error getting documents: \(err)")
+             } else {
+                 for document in querySnapshot!.documents {
+                     NotificationCenter.default.post(name: NSNotification.Name("LoadingNotes"), object: nil)
+                     self.docs.append(Document(id: document.documentID, noteHead: document.get("NoteHead") as! String, noteBody: document.get("NoteBody") as! String))
+                 }
+                 NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
+             }
+             print("docs ",self.docs)
+         }
+     }
+
     
     func createNewDocument(){
        let db = configureFB()
            db.collection("Notes").addDocument(data: [
                "NoteHead": "New document",
                "NoteBody": ""])
-        getDocuments { doc in
-            
-        }
+        getDocuments()
    }
     
-    func updateDocument(documentInd: Int, head:String, body:String){
+    func updateDocument(id: String, head:String, body:String){
        let db = configureFB()
        if head != ""{
-           db.collection("Notes").document("TestNote").updateData([
+           db.collection("Notes").document(id).updateData([
             "NoteHead": head,
-            "NoteBody": body
-        ]) { err in
+            "NoteBody": body ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
                 print("Document successfully updated")
             }
-//       } else {print("head = empty")}
-   }
-       }}}
+        }
+       }
+    }
+    
+    func deleteDocument(id: String){
+        let db = configureFB()
+        db.collection("Notes").document(id).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+    }
+
+    func getAllDocs() -> [Document]{
+        return docs
+    }
+}
