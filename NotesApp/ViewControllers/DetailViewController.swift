@@ -10,22 +10,21 @@ import UIKit
 class DetailViewController: UIViewController {
 
     let fireAPI = APIManager.shared
-    var docIndex = 0
+    var document: Document? = Document(id: "", noteHead: "", noteBody: "")
+    var text = ""
     @IBOutlet weak var textView: UITextView!
-     var text = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView.text = self.text
-        print(text)
-        for txt in text{
-            if txt.isNewline{
-                print("oloha")
-            }
-        }
-        
+     
+//        for txt in text{
+//            if txt.isNewline{
+//                print("new line found")
+//            }
+//        }
+        textView.text = document!.noteHead + "\n" + document!.noteBody
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         var headString:String = ""
         var bodyString:String = ""
@@ -36,19 +35,16 @@ class DetailViewController: UIViewController {
             }
             headString.append(newLines)
         }
-        
-        fireAPI.updateDocument(documentInd: docIndex, head: headString, body: bodyString)
-        
     }
     
 }
 
 
 //MARK: - TextView Delegate
+
 extension DetailViewController: UITextViewDelegate{
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         resignFirstResponder()
-        
     }
     
     

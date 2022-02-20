@@ -14,8 +14,9 @@ class NoteViewController: UIViewController {
     var FireAPI = APIManager.shared
     var documents: [Document] = []
     let detailVC = DetailViewController()
+
     
-    var tableRowIndex = 0
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,18 +34,17 @@ class NoteViewController: UIViewController {
             self.notesTableView.reloadData()
             activityIndicator.stopAnimating()
         }
+        
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dictVC = segue.destination as! DetailViewController
-        dictVC.text = documents[tableRowIndex].noteHead + "\n" + documents[tableRowIndex].noteBody
-        detailVC.docIndex = tableRowIndex
+        dictVC.document = documents[selectedIndex]
     }
     
     @IBAction func addNoteButtonAction(_ sender: Any) {
         FireAPI.createNewDocument()
         navigationController?.pushViewController(detailVC, animated: true)
-        
     }
 }
 
@@ -66,8 +66,9 @@ extension NoteViewController: UITableViewDelegate, UITableViewDataSource{
     
     //MARK: - UITableView Delegate
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableRowIndex = indexPath.row
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        selectedIndex = indexPath.row
+        return indexPath
     }
     
  
