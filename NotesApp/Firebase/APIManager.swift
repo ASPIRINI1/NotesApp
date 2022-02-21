@@ -51,6 +51,7 @@ class APIManager{
            db.collection("Notes").addDocument(data: [
                "NoteHead": "New document",
                "NoteBody": ""])
+        docs.removeAll()
         getDocuments()
    }
     
@@ -76,6 +77,12 @@ class APIManager{
                 print("Error removing document: \(err)")
             } else {
                 print("Document successfully removed!")
+            }
+        }
+        for doc in 0...self.docs.count-1 {
+            if docs[doc].id == id{
+                self.docs.remove(at: doc)
+                break
             }
         }
     }

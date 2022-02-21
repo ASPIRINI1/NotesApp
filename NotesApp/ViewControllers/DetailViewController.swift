@@ -11,7 +11,7 @@ class DetailViewController: UIViewController {
 
     let fireAPI = APIManager.shared
     var document: Document? = Document(id: "", noteHead: "", noteBody: "")
-    var text = ""
+
     @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
@@ -26,15 +26,7 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        var headString:String = ""
-        var bodyString:String = ""
-        for newLines in textView.text{
-            if newLines.isNewline{
-                bodyString.append(newLines)
-                break
-            }
-            headString.append(newLines)
-        }
+ 
     }
     
 }

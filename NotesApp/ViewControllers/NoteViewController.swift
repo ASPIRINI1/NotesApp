@@ -44,7 +44,7 @@ class NoteViewController: UIViewController {
     
     @IBAction func addNoteButtonAction(_ sender: Any) {
         FireAPI.createNewDocument()
-        navigationController?.pushViewController(detailVC, animated: true)
+        performSegue(withIdentifier: "detailVCSegue", sender: nil)
     }
 }
 
@@ -71,5 +71,16 @@ extension NoteViewController: UITableViewDelegate, UITableViewDataSource{
         return indexPath
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            FireAPI.deleteDocument(id: documents[indexPath.row].id)
+            documents = FireAPI.getAllDocs()
+            notesTableView.reloadData()
+        }
+    }
  
 }

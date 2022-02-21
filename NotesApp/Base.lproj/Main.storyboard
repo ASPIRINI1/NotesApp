@@ -56,7 +56,7 @@
                                         <connections>
                                             <outlet property="bodyLabel" destination="U9L-6b-XbF" id="ts5-PM-PvZ"/>
                                             <outlet property="headLabel" destination="jeC-4E-4iV" id="Jg3-e3-uCD"/>
-                                            <segue destination="pv3-YI-2ss" kind="show" id="6PT-Dd-hJb"/>
+                                            <segue destination="pv3-YI-2ss" kind="show" identifier="detailVCSegue" id="6PT-Dd-hJb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
