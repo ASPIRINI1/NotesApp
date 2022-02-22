@@ -13,7 +13,7 @@ class NoteViewController: UIViewController {
     
     var FireAPI = APIManager.shared
     var documents: [Document] = [] 
-    var selectedIndex = 0
+    var selectedIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,18 +36,13 @@ class NoteViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! DetailViewController
-        if selectedIndex < documents.count-1{
+        if selectedIndex != -1{
             detailVC.document = documents[selectedIndex]
-        }
-        if selectedIndex == 0{
-            NotificationCenter.default.addObserver(forName: NSNotification.Name("NotesLoaded"), object: nil, queue: nil) { notif in
-                detailVC.document = self.documents[0]
-            }
         }
     }
     
     @IBAction func addNoteButtonAction(_ sender: Any) {
-        FireAPI.createNewDocument()
+        selectedIndex = -1
         performSegue(withIdentifier: "detailVCSegue", sender: nil)
     }
 }
