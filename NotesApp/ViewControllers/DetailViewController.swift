@@ -10,7 +10,7 @@ import UIKit
 class DetailViewController: UIViewController {
 
     let fireAPI = APIManager.shared
-    var document: Document? = Document(id: "", noteHead: "", noteBody: "")
+    var document: Document? = Document(id: "", text: "")
 
     @IBOutlet weak var textView: UITextView!
     
@@ -22,11 +22,13 @@ class DetailViewController: UIViewController {
 //                print("new line found")
 //            }
 //        }
-        textView.text = document!.noteHead + "\n" + document!.noteBody
+        textView.text = document!.text
     }
     
     override func viewWillDisappear(_ animated: Bool) {
- 
+        if textView.text != document?.text{
+            fireAPI.updateDocument(id: document!.id, text: textView.text)
+        }
     }
     
 }

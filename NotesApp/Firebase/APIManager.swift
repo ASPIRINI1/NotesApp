@@ -37,7 +37,7 @@ class APIManager{
              } else {
                  for document in querySnapshot!.documents {
                      NotificationCenter.default.post(name: NSNotification.Name("LoadingNotes"), object: nil)
-                     self.docs.append(Document(id: document.documentID, noteHead: document.get("NoteHead") as! String, noteBody: document.get("NoteBody") as! String))
+                     self.docs.append(Document(id: document.documentID, text: document.get("text") as! String))
                  }
                  NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
              }
@@ -49,22 +49,22 @@ class APIManager{
     func createNewDocument(){
        let db = configureFB()
            db.collection("Notes").addDocument(data: [
-               "NoteHead": "New document",
-               "NoteBody": ""])
+               "text": ""])
         docs.removeAll()
         getDocuments()
    }
     
-    func updateDocument(id: String, head:String, body:String){
+    func updateDocument(id: String, text:String){
        let db = configureFB()
-       if head != ""{
+       if text != ""{
            db.collection("Notes").document(id).updateData([
-            "NoteHead": head,
-            "NoteBody": body ]) { err in
+            "text": text]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
                 print("Document successfully updated")
+                self.docs.removeAll()
+                self.getDocuments()
             }
         }
        }

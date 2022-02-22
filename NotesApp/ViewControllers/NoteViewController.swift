@@ -12,10 +12,7 @@ class NoteViewController: UIViewController {
     @IBOutlet weak var notesTableView: UITableView!
     
     var FireAPI = APIManager.shared
-    var documents: [Document] = []
-    let detailVC = DetailViewController()
-
-    
+    var documents: [Document] = [] 
     var selectedIndex = 0
     
     override func viewDidLoad() {
@@ -38,8 +35,15 @@ class NoteViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dictVC = segue.destination as! DetailViewController
-        dictVC.document = documents[selectedIndex]
+        let detailVC = segue.destination as! DetailViewController
+        if selectedIndex < documents.count-1{
+            detailVC.document = documents[selectedIndex]
+        }
+        if selectedIndex == 0{
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("NotesLoaded"), object: nil, queue: nil) { notif in
+                detailVC.document = self.documents[0]
+            }
+        }
     }
     
     @IBAction func addNoteButtonAction(_ sender: Any) {
@@ -59,8 +63,7 @@ extension NoteViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableViewCell
-        cell.headLabel.text = documents[indexPath.row].noteHead
-        cell.bodyLabel.text = documents[indexPath.row].noteBody
+        cell.headLabel.text = documents[indexPath.row].text
         return cell
     }
     

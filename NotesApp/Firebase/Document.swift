@@ -9,6 +9,5 @@ import Foundation
 
 struct Document{
     let id: String
-    let noteHead: String
-    let noteBody: String
+    let text: String
 }
