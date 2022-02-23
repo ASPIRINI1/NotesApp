@@ -58,7 +58,28 @@ extension NoteViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableViewCell
+        
         cell.headLabel.text = documents[indexPath.row].text
+        
+        var bodyText = ""
+        var newline = false
+        var ind = 0
+        
+        for text in documents[indexPath.row].text{
+            if newline == true{
+                bodyText.append(text)
+                print("body text ", bodyText)
+            }
+            if text.isNewline{
+                print("new line found")
+                newline = true
+                ind += 1
+            }
+            if ind == 15{
+                break
+            }
+        }
+        cell.bodyLabel.text = bodyText
         return cell
     }
     

@@ -26,13 +26,15 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-//        if document?.id != ""{
+        if document?.id != ""{
             if textView.text != document?.text{
                 fireAPI.updateDocument(id: document!.id, text: textView.text)
             }
-//        } else {
-//            fireAPI.createNewDocument()
-//        }
+        } else {
+            if textView.text != ""{
+                fireAPI.createNewDocument(text: textView.text)
+            }
+        }
     }
     
 }

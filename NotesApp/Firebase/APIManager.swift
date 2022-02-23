@@ -46,10 +46,10 @@ class APIManager{
      }
 
     
-    func createNewDocument(){
+    func createNewDocument(text: String){
        let db = configureFB()
            db.collection("Notes").addDocument(data: [
-               "text": ""])
+               "text": text])
         docs.removeAll()
         getDocuments()
    }
