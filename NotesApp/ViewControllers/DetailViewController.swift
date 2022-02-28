@@ -16,12 +16,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-//        for txt in text{
-//            if txt.isNewline{
-//                print("new line found")
-//            }
-//        }
         textView.text = document!.text
     }
     

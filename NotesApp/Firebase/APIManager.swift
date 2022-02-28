@@ -11,15 +11,18 @@ import GoogleSignIn
 
 class APIManager{
     
+    //    MARK: - Property
+    
     static let shared = APIManager()
     private var docs = [Document]()
+    private var signedIn = false
     
     init() {
         getDocuments()
     }
     
     
-//    MARK: - Methods
+//    MARK: - Configure DB & get from DB
     
      private func configureFB() -> Firestore{
         var db: Firestore!
@@ -45,6 +48,7 @@ class APIManager{
          }
      }
 
+    //    MARK: - Create,Update,Delete documents
     
     func createNewDocument(text: String){
        let db = configureFB()
@@ -87,7 +91,53 @@ class APIManager{
         }
     }
 
-    func getAllDocs() -> [Document]{
+    func getAllNotes() -> [Document]{
         return docs
+    }
+    
+//    MARK: - Registration $ Authorization
+    
+    func signIn(email: String, password: String){
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            if error != nil {
+
+                print("SignIn error")
+            } else {
+                self!.signedIn = true
+                NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
+                self?.getDocuments()
+            }
+          guard let strongSelf = self else { return }
+        }
+    }
+    
+    func signOut(){
+        let firebaseAuth = Auth.auth()
+       do {
+         try firebaseAuth.signOut()
+       } catch let signOutError as NSError {
+         print("Error signing out: %@", signOutError)
+           return
+       }
+        docs.removeAll()
+        signedIn = false
+        NotificationCenter.default.post(name: NSNotification.Name("SignedOut"), object: nil)
+    }
+    
+    func registration(email: String, password: String){
+        let firebaseAuth = Auth.auth()
+        firebaseAuth.createUser(withEmail: email, password: password) { authResult, error in
+            if  (error != nil){
+                print("Registration error")
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
+                self.docs.removeAll()
+            }
+            
+        }
+    }
+    
+    func isSignedIn() -> Bool{
+        return signedIn
     }
 }

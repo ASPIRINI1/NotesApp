@@ -11,6 +11,8 @@ class NoteViewController: UIViewController {
     
     @IBOutlet weak var notesTableView: UITableView!
     
+    //    MARK: - Property
+    
     var FireAPI = APIManager.shared
     var documents: [Document] = [] 
     var selectedIndex = -1
@@ -22,12 +24,14 @@ class NoteViewController: UIViewController {
         
         let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: view.center.x, y: view.center.y, width: 10.0, height: 10.0))
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("LoadingNotes"), object: nil, queue: nil) { notif in
+//        MARK: Creating notes
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("LoadingNotes"), object: nil, queue: nil) { _ in
             self.view.addSubview(activityIndicator)
             activityIndicator.startAnimating()
         }
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("NotesLoaded"), object: nil, queue: nil) { notif in
-            self.documents = self.FireAPI.getAllDocs()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("NotesLoaded"), object: nil, queue: nil) { _ in
+            self.documents = self.FireAPI.getAllNotes()
             self.notesTableView.reloadData()
             activityIndicator.stopAnimating()
         }
@@ -68,10 +72,10 @@ extension NoteViewController: UITableViewDelegate, UITableViewDataSource{
         for text in documents[indexPath.row].text{
             if newline == true{
                 bodyText.append(text)
-                print("body text ", bodyText)
+//                print("body text ", bodyText)
             }
             if text.isNewline{
-                print("new line found")
+//                print("new line found")
                 newline = true
                 ind += 1
             }
@@ -97,7 +101,7 @@ extension NoteViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             FireAPI.deleteDocument(id: documents[indexPath.row].id)
-            documents = FireAPI.getAllDocs()
+            documents = FireAPI.getAllNotes()
             notesTableView.reloadData()
         }
     }
