@@ -36,20 +36,6 @@ class NoteViewController: UIViewController {
             activityIndicator.stopAnimating()
         }
         
-//        MARK: Changing appLanguage
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("LanguageEnglish"), object: nil, queue: nil) { _ in
-            
-        }
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("LanguageРусский"), object: nil, queue: nil) { _ in
-            
-        }
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("SignedIn"), object: nil, queue: nil) { _ in
-            print("SignedIn")
-        }
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -1,0 +1,84 @@
+
+/* Class = "UILabel"; text = "Product web"; ObjectID = "0sr-t7-Hbh"; */
+"0sr-t7-Hbh.text" = "Сайт";
+
+/* Class = "UIButton"; configuration.title = "Registration"; ObjectID = "2w6-Fz-NWS"; */
+"2w6-Fz-NWS.configuration.title" = "Регистрация";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "2w6-Fz-NWS"; */
+"2w6-Fz-NWS.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Developer info"; ObjectID = "8kg-Bn-I2j"; */
+"8kg-Bn-I2j.text" = "Информация о разработчике";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "Ajb-8w-BvX"; */
+"Ajb-8w-BvX.text" = "Пример текста на русском языке.";
+
+/* Class = "UITabBarItem"; title = "Notes"; ObjectID = "Iyo-Hv-LUQ"; */
+"Iyo-Hv-LUQ.title" = "Заметки";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "LRW-nR-Pwb"; */
+"LRW-nR-Pwb.title" = "Настройки";
+
+/* Class = "UIButton"; configuration.title = "Sign in"; ObjectID = "Ldz-Fw-S5X"; */
+"Ldz-Fw-S5X.configuration.title" = "Вход";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ldz-Fw-S5X"; */
+"Ldz-Fw-S5X.normalTitle" = "Button";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "MeT-eU-3S6"; */
+"MeT-eU-3S6.title" = "Настройки";
+
+/* Class = "UILabel"; text = "Language"; ObjectID = "O2r-rZ-ssv"; */
+"O2r-rZ-ssv.text" = "Язык";
+
+/* Class = "UILabel"; text = "App theme"; ObjectID = "SMW-qH-7zw"; */
+"SMW-qH-7zw.text" = "Тема оформления";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "TMd-hx-hlX"; */
+"TMd-hx-hlX.text" = "Пароль";
+
+/* Class = "UIButton"; configuration.title = "Sign in"; ObjectID = "TWw-IQ-pU9"; */
+"TWw-IQ-pU9.configuration.title" = "Вход";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "TWw-IQ-pU9"; */
+"TWw-IQ-pU9.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "BodyLabel"; ObjectID = "U9L-6b-XbF"; */
+"U9L-6b-XbF.text" = "BodyLabel";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "Ww6-Sj-JcO"; */
+"Ww6-Sj-JcO.text" = "Аккаунт";
+
+/* Class = "UISegmentedControl"; Xuz-Hj-oUS.segmentTitles[0] = "System"; ObjectID = "Xuz-Hj-oUS"; */
+"Xuz-Hj-oUS.segmentTitles[0]" = "Системная";
+
+/* Class = "UISegmentedControl"; Xuz-Hj-oUS.segmentTitles[1] = "Black"; ObjectID = "Xuz-Hj-oUS"; */
+"Xuz-Hj-oUS.segmentTitles[1]" = "Тёмная";
+
+/* Class = "UISegmentedControl"; Xuz-Hj-oUS.segmentTitles[2] = "White"; ObjectID = "Xuz-Hj-oUS"; */
+"Xuz-Hj-oUS.segmentTitles[2]" = "Светлая";
+
+/* Class = "UITableViewSection"; headerTitle = "App"; ObjectID = "g9C-ZS-cNW"; */
+"g9C-ZS-cNW.headerTitle" = "App";
+
+/* Class = "UINavigationItem"; title = "Notes"; ObjectID = "it2-dn-aOE"; */
+"it2-dn-aOE.title" = "Заметки";
+
+/* Class = "UILabel"; text = "HeadLabel"; ObjectID = "jeC-4E-4iV"; */
+"jeC-4E-4iV.text" = "HeadLabel";
+
+/* Class = "UITableViewSection"; headerTitle = "About"; ObjectID = "m8r-e5-QcJ"; */
+"m8r-e5-QcJ.headerTitle" = "About";
+
+/* Class = "UILabel"; text = "Authorisation"; ObjectID = "s8Y-9q-47T"; */
+"s8Y-9q-47T.text" = "Авторизация";
+
+/* Class = "UILabel"; text = "E-mail"; ObjectID = "wYZ-RC-v5D"; */
+"wYZ-RC-v5D.text" = "E-mail";
+
+/* Class = "UIButton"; configuration.title = "Button"; ObjectID = "xbU-qV-a4d"; */
+"xbU-qV-a4d.configuration.title" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "xbU-qV-a4d"; */
+"xbU-qV-a4d.normalTitle" = "Button";
