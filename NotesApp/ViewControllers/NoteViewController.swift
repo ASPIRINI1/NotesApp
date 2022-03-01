@@ -72,10 +72,8 @@ extension NoteViewController: UITableViewDelegate, UITableViewDataSource{
         for text in documents[indexPath.row].text{
             if newline == true{
                 bodyText.append(text)
-//                print("body text ", bodyText)
             }
             if text.isNewline{
-//                print("new line found")
                 newline = true
                 ind += 1
             }

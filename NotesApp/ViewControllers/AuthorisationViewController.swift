@@ -20,6 +20,11 @@ class AuthorisationViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("SignedIn"), object: nil, queue: nil) { _ in
             self.navigationController?.popViewController(animated: true)
         }
+        
+        if traitCollection.userInterfaceStyle == .dark {
+            EmailTextField.backgroundColor = .darkGray
+            passwordTextField.backgroundColor = .darkGray
+        }
     }
     
     @IBAction func registrationButtAction(_ sender: Any) {
