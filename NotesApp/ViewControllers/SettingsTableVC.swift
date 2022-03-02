@@ -25,10 +25,11 @@ class SettingsTableVC: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        
         NotificationCenter.default.addObserver(forName: NSNotification.Name("SignedIn"), object: nil, queue: nil) { _ in
-//            self.tableView.insertSections(IndexSet(integer: 3), with: UITableView.RowAnimation.automatic)
+            self.signInButton.setTitle("Sign Out", for: .normal)
+            //make Account label display user Email
         }
+        
 
     }
     
@@ -51,8 +52,12 @@ class SettingsTableVC: UITableViewController {
     }
     
     @IBAction func signInButtonAction(_ sender: Any) {
-        if signInButton.titleLabel?.text == "Sign Out"{
+        if fireAPI.isSignedIn() == true{
             fireAPI.signOut()
+            signInButton.setTitle("Sign In", for: .normal)
+        } else {
+            let AuthorisationVС = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AuthorisationViewController") as? AuthorisationViewController
+            self.navigationController?.pushViewController(AuthorisationVС!, animated: true)
         }
     }
     
@@ -78,3 +83,4 @@ extension SettingsTableVC:UIPickerViewDelegate, UIPickerViewDataSource{
         NotificationCenter.default.post(name: NSNotification.Name("Language" + languages[row]), object: nil)
     }
 }
+

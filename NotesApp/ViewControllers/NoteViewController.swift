@@ -36,6 +36,11 @@ class NoteViewController: UIViewController {
             activityIndicator.stopAnimating()
         }
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("SignOut"), object: nil, queue: nil) { _ in
+            self.documents.removeAll()
+            self.notesTableView.reloadData()
+        }
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

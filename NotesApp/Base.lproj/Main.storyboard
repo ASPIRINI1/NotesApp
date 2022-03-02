@@ -143,7 +143,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ww6-Sj-JcO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not sign in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ww6-Sj-JcO">
                                                     <rect key="frame" x="20" y="11" width="185" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Ww6-Sj-JcO" secondAttribute="height" multiplier="185:21" id="L4L-6u-yUf"/>
@@ -159,7 +159,6 @@
                                                     <buttonConfiguration key="configuration" style="plain" title="Sign in"/>
                                                     <connections>
                                                         <action selector="signInButtonAction:" destination="gg1-tk-Ldd" eventType="touchUpInside" id="3gU-WU-Tc0"/>
-                                                        <segue destination="Y2v-AW-oro" kind="show" id="iym-EN-b1O"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -387,13 +386,13 @@
         <!--Authorisation View Controller-->
         <scene sceneID="Vkr-wB-rl6">
             <objects>
-                <viewController id="Y2v-AW-oro" customClass="AuthorisationViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthorisationViewController" id="Y2v-AW-oro" customClass="AuthorisationViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oQ9-8h-6f0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authorisation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8Y-9q-47T">
-                                <rect key="frame" x="8" y="109" width="398" height="36"/>
+                                <rect key="frame" x="8" y="65" width="398" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="vOv-im-M1b"/>
                                 </constraints>

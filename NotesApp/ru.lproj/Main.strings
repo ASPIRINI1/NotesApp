@@ -48,7 +48,7 @@
 "U9L-6b-XbF.text" = "BodyLabel";
 
 /* Class = "UILabel"; text = "Account"; ObjectID = "Ww6-Sj-JcO"; */
-"Ww6-Sj-JcO.text" = "Аккаунт";
+"Ww6-Sj-JcO.text" = "Не авторизованно";
 
 /* Class = "UISegmentedControl"; Xuz-Hj-oUS.segmentTitles[0] = "System"; ObjectID = "Xuz-Hj-oUS"; */
 "Xuz-Hj-oUS.segmentTitles[0]" = "Системная";

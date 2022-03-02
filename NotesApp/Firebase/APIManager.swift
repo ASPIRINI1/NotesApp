@@ -33,19 +33,21 @@ class APIManager{
     }
     
     private func getDocuments(){
-         let db = configureFB()
-         db.collection("Notes").getDocuments()  { (querySnapshot, err) in
-             if let err = err {
-                 print("Error getting documents: \(err)")
-             } else {
-                 for document in querySnapshot!.documents {
-                     NotificationCenter.default.post(name: NSNotification.Name("LoadingNotes"), object: nil)
-                     self.docs.append(Document(id: document.documentID, text: document.get("text") as! String))
+        if signedIn == true{
+             let db = configureFB()
+             db.collection("Notes").getDocuments()  { (querySnapshot, err) in
+                 if let err = err {
+                     print("Error getting documents: \(err)")
+                 } else {
+                     for document in querySnapshot!.documents {
+                         NotificationCenter.default.post(name: NSNotification.Name("LoadingNotes"), object: nil)
+                         self.docs.append(Document(id: document.documentID, text: document.get("text") as! String))
+                     }
+                     NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
                  }
-                 NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
+                 print("docs ",self.docs)
              }
-             print("docs ",self.docs)
-         }
+        }
      }
 
     //    MARK: - Create,Update,Delete documents
@@ -122,6 +124,7 @@ class APIManager{
         docs.removeAll()
         signedIn = false
         NotificationCenter.default.post(name: NSNotification.Name("SignedOut"), object: nil)
+        print("signOut")
     }
     
     func registration(email: String, password: String){
