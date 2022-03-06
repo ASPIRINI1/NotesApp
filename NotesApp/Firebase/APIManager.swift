@@ -36,11 +36,11 @@ class APIManager{
         if signedIn == true{
              let db = configureFB()
              db.collection("Notes").getDocuments()  { (querySnapshot, err) in
+                 NotificationCenter.default.post(name: NSNotification.Name("LoadingNotes"), object: nil)
                  if let err = err {
                      print("Error getting documents: \(err)")
                  } else {
                      for document in querySnapshot!.documents {
-                         NotificationCenter.default.post(name: NSNotification.Name("LoadingNotes"), object: nil)
                          self.docs.append(Document(id: document.documentID, text: document.get("text") as! String))
                      }
                      NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
@@ -67,9 +67,13 @@ class APIManager{
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
+                for docIndex in 0...self.docs.count-1{
+                    if self.docs[docIndex].id == id{
+                        self.docs[docIndex].text = text
+                    }
+                }
+                NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
                 print("Document successfully updated")
-                self.docs.removeAll()
-                self.getDocuments()
             }
         }
        }
