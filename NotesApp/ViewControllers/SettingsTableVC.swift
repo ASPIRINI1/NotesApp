@@ -17,6 +17,7 @@ class SettingsTableVC: UITableViewController {
     @IBOutlet weak var languagePickerView: UIPickerView!
     @IBOutlet weak var appThemeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var accountLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class SettingsTableVC: UITableViewController {
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("SignedIn"), object: nil, queue: nil) { _ in
             self.signInButton.setTitle("Sign Out", for: .normal)
-            //make Account label display user Email
+            self.accountLabel.text = self.fireAPI.getEmail()
         }
         
 

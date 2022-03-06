@@ -16,6 +16,7 @@ class APIManager{
     static let shared = APIManager()
     private var docs = [Document]()
     private var signedIn = false
+    private var userEmail = ""
     
     init() {
         getDocuments()
@@ -109,8 +110,10 @@ class APIManager{
                 print("SignIn error")
             } else {
                 self!.signedIn = true
-                NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
+                self?.userEmail = email
                 self?.getDocuments()
+                NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
+
             }
           guard let strongSelf = self else { return }
         }
@@ -136,8 +139,9 @@ class APIManager{
             if  (error != nil){
                 print("Registration error")
             } else {
-                NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
+                self.userEmail = email
                 self.docs.removeAll()
+                NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
             }
         }
     }
