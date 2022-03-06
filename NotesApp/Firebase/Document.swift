@@ -8,6 +8,6 @@
 import Foundation
 
 struct Document{
-    let id: String
-    let text: String
+    var id: String
+    var text: String
 }

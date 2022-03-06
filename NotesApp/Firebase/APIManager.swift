@@ -45,7 +45,6 @@ class APIManager{
                      }
                      NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
                  }
-                 print("docs ",self.docs)
              }
         }
      }
@@ -54,10 +53,10 @@ class APIManager{
     
     func createNewDocument(text: String){
        let db = configureFB()
-           db.collection("Notes").addDocument(data: [
-               "text": text])
-        docs.removeAll()
-        getDocuments()
+        let doc = db.collection("Notes").addDocument(data: [
+            "text": text])
+        docs.append(Document(id:doc.documentID , text: text))
+        NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
    }
     
     func updateDocument(id: String, text:String){
@@ -136,7 +135,6 @@ class APIManager{
                 NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
                 self.docs.removeAll()
             }
-            
         }
     }
     
