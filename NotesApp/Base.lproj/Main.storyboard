@@ -290,17 +290,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbU-qV-a4d">
-                                                    <rect key="frame" x="300" y="11" width="67" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" title="Button">
-                                                        <backgroundConfiguration key="background" cornerRadius="14"/>
-                                                    </buttonConfiguration>
-                                                    <connections>
-                                                        <action selector="singOutAction:" destination="gg1-tk-Ldd" eventType="touchUpInside" id="Z2d-pm-RWZ"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8kg-Bn-I2j" firstAttribute="top" secondItem="5XH-Sw-vC4" secondAttribute="topMargin" id="mqD-gK-Y4B"/>
@@ -350,7 +339,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="5cM-c7-eWe">
             <objects>
-                <tabBarController id="isi-Ir-Ba7" sceneMemberID="viewController">
+                <tabBarController id="isi-Ir-Ba7" customClass="TabBarController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mts-M0-iIe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

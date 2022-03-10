@@ -13,6 +13,7 @@ class SettingsTableVC: UITableViewController {
     
     let languages = ["English","Русский"]
     let fireAPI = APIManager.shared
+    var appSettings = AppSettings()
 
     @IBOutlet weak var languagePickerView: UIPickerView!
     @IBOutlet weak var appThemeSegmentedControl: UISegmentedControl!
@@ -26,12 +27,19 @@ class SettingsTableVC: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("SignedIn"), object: nil, queue: nil) { _ in
-            self.signInButton.setTitle("Sign Out", for: .normal)
-            self.accountLabel.text = self.fireAPI.getEmail()
+        for ind in 0...languages.count-1 {
+            if appSettings.language == languages[ind]{
+                languagePickerView.selectRow(ind, inComponent: 0, animated: true)
+            }
         }
-        
-
+        appThemeSegmentedControl.selectedSegmentIndex = appSettings.appTheme
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if appSettings.signedIn{
+            self.signInButton.setTitle("Sign Out", for: .normal)
+            self.accountLabel.text = self.appSettings.userEmail
+        }
     }
     
     //    MARK:  App theme
@@ -39,8 +47,11 @@ class SettingsTableVC: UITableViewController {
     @IBAction func segmentedControlAction(_ sender: Any) {
         switch appThemeSegmentedControl.selectedSegmentIndex{
         case 0: tabBarController?.overrideUserInterfaceStyle = .unspecified
+            appSettings.appTheme = 0
         case 1: tabBarController?.overrideUserInterfaceStyle = .dark
+            appSettings.appTheme = 1
         case 2: tabBarController?.overrideUserInterfaceStyle = .light
+            appSettings.appTheme = 2
         default:
             tabBarController?.overrideUserInterfaceStyle = .unspecified
         }
@@ -48,12 +59,9 @@ class SettingsTableVC: UITableViewController {
     
     //    MARK:  SingIn & SignOut
     
-    @IBAction func singOutAction(_ sender: Any) {
-        fireAPI.signOut()
-    }
     
     @IBAction func signInButtonAction(_ sender: Any) {
-        if fireAPI.isSignedIn() == true{
+        if appSettings.signedIn{
             fireAPI.signOut()
             signInButton.setTitle("Sign In", for: .normal)
         } else {
@@ -61,7 +69,6 @@ class SettingsTableVC: UITableViewController {
             self.navigationController?.pushViewController(AuthorisationVС!, animated: true)
         }
     }
-    
 }
 
 //    MARK: - PickerView Delegate & DataSource
@@ -82,6 +89,7 @@ extension SettingsTableVC:UIPickerViewDelegate, UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         NotificationCenter.default.post(name: NSNotification.Name("Language" + languages[row]), object: nil)
+        appSettings.language = languages[row]
     }
 }
 

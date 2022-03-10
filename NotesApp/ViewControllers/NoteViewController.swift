@@ -14,7 +14,6 @@ class NoteViewController: UIViewController {
     //    MARK: - Property
     
     var FireAPI = APIManager.shared
-//    var documents: [Document] = []
     var selectedIndex = -1
     
     override func viewDidLoad() {
@@ -31,23 +30,11 @@ class NoteViewController: UIViewController {
             activityIndicator.startAnimating()
         }
         NotificationCenter.default.addObserver(forName: NSNotification.Name("NotesLoaded"), object: nil, queue: nil) { _ in
-//            self.documents = self.FireAPI.getAllNotes()
             self.notesTableView.reloadData()
             activityIndicator.stopAnimating()
-            
-//            print("fireDocs ", self.FireAPI.getAllNotes())
-//            print("main docs ", self.documents)
-//
-//            print("change ")
-//
-//            self.documents.append(Document(id: "new", text: "new"))
-//
-//            print("fireDocs ", self.FireAPI.getAllNotes())
-//            print("main docs ", self.documents)
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("SignOut"), object: nil, queue: nil) { _ in
-//            self.documents.removeAll()
             self.notesTableView.reloadData()
         }
         
@@ -56,7 +43,6 @@ class NoteViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! DetailViewController
         if selectedIndex != -1{
-//            detailVC.document = documents[selectedIndex]
             detailVC.document = FireAPI.getAllNotes()[selectedIndex]
         }
     }
@@ -73,21 +59,18 @@ class NoteViewController: UIViewController {
 extension NoteViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return documents.count
         return FireAPI.getAllNotes().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableViewCell
         
-//        cell.headLabel.text = documents[indexPath.row].text
         cell.headLabel.text = FireAPI.getAllNotes()[indexPath.row].text
         
         var bodyText = ""
         var newline = false
         var ind = 0
         
-//        for text in documents[indexPath.row].text{
         for text in FireAPI.getAllNotes()[indexPath.row].text{
             if newline == true{
                 bodyText.append(text)
@@ -117,9 +100,7 @@ extension NoteViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-//            FireAPI.deleteDocument(id: documents[indexPath.row].id)
             FireAPI.deleteDocument(id: FireAPI.getAllNotes()[indexPath.row].id)
-//            documents = FireAPI.getAllNotes()
             notesTableView.reloadData()
         }
     }

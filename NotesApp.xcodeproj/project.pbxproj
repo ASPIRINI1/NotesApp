@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CB1676B0C1C67D306D35730B /* Pods_NotesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85BCDF812468C7C029B2F02F /* Pods_NotesApp.framework */; };
 		DE156CB02795865D00356E1A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE156CAF2795865D00356E1A /* DetailViewController.swift */; };
+		DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA627DA428C001852C3 /* TabBarController.swift */; };
+		DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA927DA43A3001852C3 /* AppSettings.swift */; };
 		DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAF9AFA2797442F00831B85 /* SettingsTableVC.swift */; };
 		DECF042927C944E90069FF0A /* AuthorisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF042827C944E90069FF0A /* AuthorisationViewController.swift */; };
 		DEDD854E279317400075D525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD854D279317400075D525 /* AppDelegate.swift */; };
@@ -28,6 +30,8 @@
 		AFEE54E9182AFD183FF8F65E /* Pods-NotesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesApp.release.xcconfig"; path = "Target Support Files/Pods-NotesApp/Pods-NotesApp.release.xcconfig"; sourceTree = "<group>"; };
 		CC4F1A8F2DA7DF4762F4F701 /* Pods-NotesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesApp.debug.xcconfig"; path = "Target Support Files/Pods-NotesApp/Pods-NotesApp.debug.xcconfig"; sourceTree = "<group>"; };
 		DE156CAF2795865D00356E1A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DE9F8DA627DA428C001852C3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		DE9F8DA927DA43A3001852C3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		DEAF9AFA2797442F00831B85 /* SettingsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableVC.swift; sourceTree = "<group>"; };
 		DEBDAF5827CE6748000D3E5E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		DECF042827C944E90069FF0A /* AuthorisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisationViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DE9F8DA827DA438A001852C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEDD856327931C410075D525 /* Firebase */,
+				DE9F8DA927DA43A3001852C3 /* AppSettings.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DEDD8541279317400075D525 = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +102,8 @@
 			children = (
 				DEDD854D279317400075D525 /* AppDelegate.swift */,
 				DEDD854F279317400075D525 /* SceneDelegate.swift */,
-				DEDD856327931C410075D525 /* Firebase */,
+				DE9F8DA627DA428C001852C3 /* TabBarController.swift */,
+				DE9F8DA827DA438A001852C3 /* Model */,
 				DEDD856827931D730075D525 /* ViewControllers */,
 				DEDD8553279317400075D525 /* Main.storyboard */,
 				DEDD8556279317420075D525 /* Assets.xcassets */,
@@ -249,6 +263,8 @@
 				DEDD856527931C510075D525 /* Document.swift in Sources */,
 				DEDD8552279317400075D525 /* NoteViewController.swift in Sources */,
 				DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */,
+				DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */,
+				DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */,
 				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
 				DEDD854E279317400075D525 /* AppDelegate.swift in Sources */,
 				DECF042927C944E90069FF0A /* AuthorisationViewController.swift in Sources */,
