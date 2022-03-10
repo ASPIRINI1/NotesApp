@@ -16,6 +16,7 @@ struct AppSettings{
         case appTheme = "AppTheme"
         case isSignIn = "signedIn"
         case language = "Language"
+        case userID = "userID"
     }
     
     var userEmail: String{
@@ -60,6 +61,15 @@ struct AppSettings{
             if newValue != ""{
                 userDefaults.set(newValue, forKey: SettingsKeys.language.rawValue)
             }
+        }
+    }
+    
+    var userID: String{
+        get{
+            return userDefaults.string(forKey: SettingsKeys.userID.rawValue) ?? ""
+        }
+        set{
+            userDefaults.set(newValue, forKey: SettingsKeys.userID.rawValue)
         }
     }
 }

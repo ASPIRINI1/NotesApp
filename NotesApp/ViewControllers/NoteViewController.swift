@@ -34,8 +34,9 @@ class NoteViewController: UIViewController {
             activityIndicator.stopAnimating()
         }
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("SignOut"), object: nil, queue: nil) { _ in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("SignedOut"), object: nil, queue: nil) { _ in
             self.notesTableView.reloadData()
+            print("outttt")
         }
         
     }
