@@ -266,18 +266,32 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Og8-mR-CIl">
+                                                    <rect key="frame" x="306" y="6.5" width="100" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Og8-mR-CIl" secondAttribute="height" multiplier="100:31" id="h44-qT-MXU"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Open WEB"/>
+                                                    <connections>
+                                                        <action selector="productWEBButtonAction:" destination="gg1-tk-Ldd" eventType="touchUpInside" id="EqN-Sz-lRq"/>
+                                                        <segue destination="bGU-NI-Cpk" kind="show" identifier="" id="G5f-ng-YMx"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="0sr-t7-Hbh" firstAttribute="top" secondItem="tWa-5F-v1P" secondAttribute="topMargin" id="5l1-uY-WNH"/>
                                                 <constraint firstItem="0sr-t7-Hbh" firstAttribute="leading" secondItem="tWa-5F-v1P" secondAttribute="leadingMargin" id="Izb-ar-M7W"/>
+                                                <constraint firstAttribute="trailing" secondItem="Og8-mR-CIl" secondAttribute="trailing" constant="8" id="m6c-kQ-4sn"/>
+                                                <constraint firstAttribute="bottom" secondItem="Og8-mR-CIl" secondAttribute="bottom" constant="6" id="n9J-6c-9Oi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tp9-XB-xPt">
-                                        <rect key="frame" x="0.0" y="302.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="302.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tp9-XB-xPt" id="5XH-Sw-vC4">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kg-Bn-I2j">
@@ -290,8 +304,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fi0-S1-Snb">
+                                                    <rect key="frame" x="299.5" y="6" width="106.5" height="31.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="fi0-S1-Snb" secondAttribute="height" multiplier="105:31" id="cGr-bW-TbV"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="GitHub"/>
+                                                    <connections>
+                                                        <action selector="devInfoButtonAction:" destination="gg1-tk-Ldd" eventType="touchUpInside" id="UFW-2z-Mtj"/>
+                                                        <segue destination="bGU-NI-Cpk" kind="show" id="CRQ-xO-wxC"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="fi0-S1-Snb" firstAttribute="top" secondItem="5XH-Sw-vC4" secondAttribute="top" constant="6" id="UUk-Mt-Zpr"/>
+                                                <constraint firstAttribute="trailing" secondItem="fi0-S1-Snb" secondAttribute="trailing" constant="8" id="aGL-hv-yas"/>
+                                                <constraint firstAttribute="bottom" secondItem="fi0-S1-Snb" secondAttribute="bottom" constant="6.5" id="d5E-og-eS9"/>
                                                 <constraint firstItem="8kg-Bn-I2j" firstAttribute="top" secondItem="5XH-Sw-vC4" secondAttribute="topMargin" id="mqD-gK-Y4B"/>
                                                 <constraint firstItem="8kg-Bn-I2j" firstAttribute="leading" secondItem="5XH-Sw-vC4" secondAttribute="leadingMargin" id="zza-Tj-QZw"/>
                                             </constraints>
@@ -316,6 +345,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGJ-Nc-Ame" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="796.875"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Cac-YR-1RN">
+            <objects>
+                <viewController id="bGU-NI-Cpk" customClass="WEBViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WJE-8l-AUK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsD-QH-SBI">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5o-Nx-zdA">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Back" image="chevron.left" catalog="system" id="6k8-sg-dAa">
+                                        <connections>
+                                            <action selector="backButton:" destination="bGU-NI-Cpk" id="zOT-ZN-xBJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="DeE-6Y-RTu"/>
+                                    <barButtonItem title="Forward" image="chevron.right" catalog="system" id="z5J-KJ-7jR">
+                                        <connections>
+                                            <action selector="forward:" destination="bGU-NI-Cpk" id="5NY-Rn-Mgl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="QNx-Pc-Urh"/>
+                                    <barButtonItem title="Open in browser" id="dWB-Qc-Cuu">
+                                        <connections>
+                                            <action selector="openInbrowserButton:" destination="bGU-NI-Cpk" id="ffE-Vx-FTR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="0AQ-Zh-L2B"/>
+                                    <barButtonItem title="Refresh" image="arrow.clockwise" catalog="system" id="78Z-pF-Xi8">
+                                        <connections>
+                                            <action selector="refreshButton:" destination="bGU-NI-Cpk" id="521-CV-E8P"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U0d-hO-MDT">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="WEB" id="l1v-Yq-o3q"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uwL-no-Q2F"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uwL-no-Q2F" firstAttribute="bottom" secondItem="tsD-QH-SBI" secondAttribute="bottom" id="DpF-j4-av1"/>
+                            <constraint firstItem="tsD-QH-SBI" firstAttribute="top" secondItem="uwL-no-Q2F" secondAttribute="top" id="fKR-vz-wfM"/>
+                            <constraint firstItem="tsD-QH-SBI" firstAttribute="leading" secondItem="uwL-no-Q2F" secondAttribute="leading" id="iDf-e0-qTr"/>
+                            <constraint firstItem="uwL-no-Q2F" firstAttribute="trailing" secondItem="tsD-QH-SBI" secondAttribute="trailing" id="v5T-Tx-z20"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="s7m-SS-KNA"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="WEBView" destination="tsD-QH-SBI" id="gNW-So-FKQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GA2-q2-tjh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="929" y="1542"/>
         </scene>
         <!--Notes-->
         <scene sceneID="dYS-5i-Hcz">
@@ -492,7 +593,13 @@
             <point key="canvasLocation" x="1821.7391304347827" y="796.875"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="G5f-ng-YMx"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

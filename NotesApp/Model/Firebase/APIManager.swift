@@ -37,8 +37,7 @@ class APIManager{
         
         if appSettings.signedIn{
             
-             let db = configureFB()
-            
+            let db = configureFB()
             db.collection(appSettings.userID).getDocuments()  { (querySnapshot, err) in
                  
                  if let err = err {
@@ -57,14 +56,10 @@ class APIManager{
     //    MARK: - Create,Update,Delete documents
     
     func createNewDocument(text: String){
-        
+        let db = configureFB()
         if appSettings.userID != ""{
-            
-           let db = configureFB()
-            
             let doc = db.collection(appSettings.userID).addDocument(data: ["text": text])
             docs.append(Document(id:doc.documentID , text: text))
-            
         } else {
             docs.append(Document(id: "\(docs.count)" , text: text))
         }
@@ -81,7 +76,6 @@ class APIManager{
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
-                
                 for docIndex in 0...self.docs.count-1{
                     if self.docs[docIndex].id == id{
                         self.docs[docIndex].text = text
@@ -126,7 +120,6 @@ class APIManager{
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             if error != nil {
                 print("SignIn error")
-                
             } else {
                 self?.appSettings.userID = authResult?.user.uid ?? ""
                 self!.appSettings.signedIn = true
@@ -134,7 +127,6 @@ class APIManager{
                 
                 NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
             }
-            
           guard let strongSelf = self else { return }
         }
     }
@@ -142,7 +134,6 @@ class APIManager{
     func signOut(){
         
         let firebaseAuth = Auth.auth()
-        
        do {
          try firebaseAuth.signOut()
        } catch let signOutError as NSError {
@@ -173,8 +164,7 @@ class APIManager{
                 
                 //uploading local docs to Firebase
                 for doc in self.docs {
-                    db.collection(self.appSettings.userID).addDocument(data: [
-                        "text": doc.text])
+                    db.collection(self.appSettings.userID).addDocument(data: ["text": doc.text])
                 }
                 
                 NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)

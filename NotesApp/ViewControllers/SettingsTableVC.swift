@@ -14,6 +14,7 @@ class SettingsTableVC: UITableViewController {
     let languages = ["English","Русский"]
     let fireAPI = APIManager.shared
     var appSettings = AppSettings()
+    var url = ""
 
     @IBOutlet weak var languagePickerView: UIPickerView!
     @IBOutlet weak var appThemeSegmentedControl: UISegmentedControl!
@@ -41,6 +42,20 @@ class SettingsTableVC: UITableViewController {
             self.accountLabel.text = self.appSettings.userEmail
         }
     }
+    
+    @IBAction func productWEBButtonAction(_ sender: Any) {
+        url = "https://www.google.com"
+    }
+    
+    @IBAction func devInfoButtonAction(_ sender: Any) {
+         url = "https://github.com/ASPIRINI1"
+    }
+//    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let webView = segue.destination as! WEBViewController
+        webView.urlString = url
+    }
+    
     
     //    MARK:  App theme
     
