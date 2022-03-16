@@ -422,7 +422,7 @@
         <scene sceneID="dYS-5i-Hcz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ce7-bY-qbD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notes" id="Iyo-Hv-LUQ"/>
+                    <tabBarItem key="tabBarItem" title="Notes" image="note.text" catalog="system" id="Iyo-Hv-LUQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J1t-Sb-XsM">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -459,7 +459,7 @@
         <scene sceneID="xwB-Xw-IlV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oYi-bI-PBX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="MeT-eU-3S6"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="MeT-eU-3S6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mql-iH-nCe">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -547,6 +547,12 @@
                                             <action selector="registrationButtAction:" destination="Y2v-AW-oro" eventType="touchUpInside" id="DTW-qD-X63"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUA-Mt-6pX">
+                                        <rect key="frame" x="8" y="15" width="358" height="50"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
@@ -555,18 +561,22 @@
                                     <constraint firstAttribute="trailing" secondItem="QpT-BF-C2V" secondAttribute="trailing" constant="30" id="4ua-N1-JaU"/>
                                     <constraint firstItem="Ldz-Fw-S5X" firstAttribute="leading" secondItem="2w6-Fz-NWS" secondAttribute="trailing" constant="8" symbolic="YES" id="5Nw-8b-jsb"/>
                                     <constraint firstAttribute="width" secondItem="405-6X-M9o" secondAttribute="height" multiplier="187:193" id="5ol-4d-XJs"/>
+                                    <constraint firstItem="jUA-Mt-6pX" firstAttribute="leading" secondItem="405-6X-M9o" secondAttribute="leading" constant="8" id="GdC-FR-2Oz"/>
                                     <constraint firstItem="r1f-ho-fGd" firstAttribute="top" secondItem="wYZ-RC-v5D" secondAttribute="bottom" constant="8" symbolic="YES" id="IIh-t5-tdt"/>
                                     <constraint firstItem="Ldz-Fw-S5X" firstAttribute="top" secondItem="QpT-BF-C2V" secondAttribute="bottom" constant="50" id="KRx-WS-WQk"/>
                                     <constraint firstAttribute="trailing" secondItem="r1f-ho-fGd" secondAttribute="trailing" constant="30" id="QcR-ye-F4i"/>
                                     <constraint firstItem="QpT-BF-C2V" firstAttribute="top" secondItem="TMd-hx-hlX" secondAttribute="bottom" constant="8" symbolic="YES" id="Xyg-Fa-1mw"/>
                                     <constraint firstItem="wYZ-RC-v5D" firstAttribute="centerX" secondItem="r1f-ho-fGd" secondAttribute="centerX" id="Xyi-6P-Xnk"/>
                                     <constraint firstAttribute="trailing" secondItem="Ldz-Fw-S5X" secondAttribute="trailing" constant="30" id="avW-8r-dHd"/>
+                                    <constraint firstItem="wYZ-RC-v5D" firstAttribute="top" secondItem="jUA-Mt-6pX" secondAttribute="bottom" constant="15" id="bZV-4U-5rZ"/>
                                     <constraint firstItem="QpT-BF-C2V" firstAttribute="leading" secondItem="405-6X-M9o" secondAttribute="leading" constant="30" id="cPC-IP-nNx"/>
+                                    <constraint firstItem="jUA-Mt-6pX" firstAttribute="top" secondItem="405-6X-M9o" secondAttribute="top" constant="15" id="fxG-jJ-hpI"/>
                                     <constraint firstItem="TMd-hx-hlX" firstAttribute="centerX" secondItem="r1f-ho-fGd" secondAttribute="centerX" id="j5k-Hs-vrW"/>
                                     <constraint firstItem="QpT-BF-C2V" firstAttribute="centerX" secondItem="r1f-ho-fGd" secondAttribute="centerX" id="qNd-3X-Ba2"/>
                                     <constraint firstItem="r1f-ho-fGd" firstAttribute="leading" secondItem="405-6X-M9o" secondAttribute="leading" constant="30" id="uSy-sI-44P"/>
                                     <constraint firstItem="2w6-Fz-NWS" firstAttribute="leading" secondItem="405-6X-M9o" secondAttribute="leading" constant="30" id="w2w-xa-HHW"/>
                                     <constraint firstItem="2w6-Fz-NWS" firstAttribute="top" secondItem="QpT-BF-C2V" secondAttribute="bottom" constant="50" id="x5u-Mu-byW"/>
+                                    <constraint firstAttribute="trailing" secondItem="jUA-Mt-6pX" secondAttribute="trailing" constant="8" id="xmw-qJ-5MB"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -586,6 +596,7 @@
                         <outlet property="emailTextField" destination="r1f-ho-fGd" id="PGW-uO-N1z"/>
                         <outlet property="passwordTextField" destination="QpT-BF-C2V" id="iuC-6P-47Y"/>
                         <outlet property="substrateView" destination="405-6X-M9o" id="D5v-Sy-Hoo"/>
+                        <outlet property="validationLabel" destination="jUA-Mt-6pX" id="BE2-OI-Qtq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gd9-Kg-IZD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -600,6 +611,8 @@
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="note.text" catalog="system" width="128" height="106"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -608,6 +621,9 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

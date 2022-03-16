@@ -36,7 +36,6 @@ class NoteViewController: UIViewController {
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("SignedOut"), object: nil, queue: nil) { _ in
             self.notesTableView.reloadData()
-            print("outttt")
         }
         
     }

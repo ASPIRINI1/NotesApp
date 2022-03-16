@@ -76,11 +76,25 @@ class SettingsTableVC: UITableViewController {
     
     
     @IBAction func signInButtonAction(_ sender: Any) {
+        
         if appSettings.signedIn{
-            fireAPI.signOut()
-            signInButton.setTitle("Sign In", for: .normal)
+            let alert = UIAlertController(title: "Are You shure?", message: "Do You want to logOut?", preferredStyle: .alert)
+            
+            let alertYesAction = UIAlertAction(title: "Yes", style: .destructive) { UIAlertAction in
+                self.fireAPI.signOut()
+                self.signInButton.setTitle("Sign In", for: .normal)
+            }
+            
+            let alertCancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            
+            alert.addAction(alertCancelAction)
+            alert.addAction(alertYesAction)
+            
+            present(alert, animated: true, completion: nil)
+
         } else {
             let AuthorisationVС = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AuthorisationViewController") as? AuthorisationViewController
+            
             self.navigationController?.pushViewController(AuthorisationVС!, animated: true)
         }
     }
