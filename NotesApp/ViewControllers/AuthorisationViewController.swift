@@ -11,6 +11,7 @@ class AuthorisationViewController: UIViewController {
     
     let fireAPI = APIManager.shared
 
+    @IBOutlet weak var validationLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var substrateView: UIView!
@@ -31,32 +32,62 @@ class AuthorisationViewController: UIViewController {
     }
     
     @IBAction func registrationButtAction(_ sender: Any) {
-        if textBoxIsCurrect() == true{
-            fireAPI.registration(email: emailTextField.text!, password: passwordTextField.text!)
-        }
         
-    }
-    
-    @IBAction func signInButtAction(_ sender: Any) {
-        if textBoxIsCurrect() == true{
-            fireAPI.signIn(email: emailTextField.text!, password: passwordTextField.text!)
+        if userDataIsCurrect() {
+            
+            fireAPI.registration(email: emailTextField.text!, password: passwordTextField.text!) { regSuccess in
+                
+                if !regSuccess {
+                    let alert = UIAlertController(title: "Registration Error", message: "Network unable or email already exist.", preferredStyle: .alert)
+                    
+                    let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    
+                    alert.addAction(alertAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
         }
     }
     
-    func textBoxIsCurrect() -> Bool{
-        if ((emailTextField.text?.isValidEmail()) != nil) && emailTextField.text?.isValidEmail() == true{
-            return true
+    
+    func userDataIsCurrect() -> Bool{
+        if emailTextField.text!.isValidEmail(){
+            
+            if passwordTextField.text!.isValidPass(){
+                return true
+                
+            } else {
+                validationLabel.isHidden = false
+                validationLabel.text = "Uncorrect password"
+                return false
+            }
+            
         } else {
+            validationLabel.isHidden = false
+            validationLabel.text = "Uncorrect Email. You may not use #$%^&*()/ in your Email."
             return false
         }
     }
+
+    
+    @IBAction func signInButtAction(_ sender: Any) {
+        if userDataIsCurrect(){
+            fireAPI.signIn(email: emailTextField.text!, password: passwordTextField.text!)
+        }
+    }
+
     
 }
 
 // Email checking
 extension String {
     func isValidEmail() -> Bool {
-        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+        let regex = try! NSRegularExpression(pattern: "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\\.[a-zA-Z.]{2,64}", options: .caseInsensitive)
+        return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+    }
+    
+    func isValidPass() -> Bool {
+        let regex = try! NSRegularExpression(pattern: "[a-zA-Z0-9._-]{8,20}", options: .caseInsensitive)
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
     }
 }

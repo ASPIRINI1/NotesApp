@@ -16,7 +16,7 @@ class APIManager{
     static let shared = APIManager()
     private var docs = [Document]()
     var appSettings = AppSettings()
-  
+    
     
     init() {
         getDocuments()
@@ -35,7 +35,7 @@ class APIManager{
     
     private func getDocuments(){
         
-        if appSettings.signedIn{
+        if appSettings.userID != ""{
             
             let db = configureFB()
             db.collection(appSettings.userID).getDocuments()  { (querySnapshot, err) in
@@ -60,8 +60,6 @@ class APIManager{
         if appSettings.userID != ""{
             let doc = db.collection(appSettings.userID).addDocument(data: ["text": text])
             docs.append(Document(id:doc.documentID , text: text))
-        } else {
-            docs.append(Document(id: "\(docs.count)" , text: text))
         }
         NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
    }
@@ -149,7 +147,7 @@ class APIManager{
         NotificationCenter.default.post(name: NSNotification.Name("SignedOut"), object: nil)
     }
     
-    func registration(email: String, password: String){
+    func registration(email: String, password: String, completion: (Bool) -> ()...){
         
         let firebaseAuth = Auth.auth()
         let db = configureFB()
@@ -157,16 +155,19 @@ class APIManager{
         firebaseAuth.createUser(withEmail: email, password: password) { authResult, error in
             if  (error != nil){
                 print("Registration error")
+                completion[0](false)
+                
             } else {
                 self.appSettings.userID = authResult?.user.uid ?? ""
                 self.appSettings.userEmail = email
                 self.appSettings.signedIn = true
                 
+                completion[0](true)
+                
                 //uploading local docs to Firebase
                 for doc in self.docs {
                     db.collection(self.appSettings.userID).addDocument(data: ["text": doc.text])
                 }
-                
                 NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
             }
         }
