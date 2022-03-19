@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct Document{
-    var id: String
-    var text: String
+class Document{
+    var id: String = ""
+    var text: String = ""
+    
+    init(id:String, text: String) {
+        self.id = id
+        self.text = text
+    }
 }
