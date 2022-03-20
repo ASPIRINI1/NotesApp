@@ -38,7 +38,7 @@ class SettingsTableVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if appSettings.signedIn{
-            self.signInButton.setTitle("Sign Out", for: .normal)
+            self.signInButton.setTitle(NSLocalizedString("Sign out", comment: ""), for: .normal)
             self.accountLabel.text = self.appSettings.userEmail
         }
     }
@@ -78,14 +78,15 @@ class SettingsTableVC: UITableViewController {
     @IBAction func signInButtonAction(_ sender: Any) {
         
         if appSettings.signedIn{
-            let alert = UIAlertController(title: "Are You shure?", message: "Do You want to logOut?", preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("Are You shure?", comment: ""), message: NSLocalizedString("Do You want to logOut?", comment: ""), preferredStyle: .alert)
             
-            let alertYesAction = UIAlertAction(title: "Yes", style: .destructive) { UIAlertAction in
+            let alertYesAction = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive) { UIAlertAction in
                 self.fireAPI.signOut()
-                self.signInButton.setTitle("Sign In", for: .normal)
+                self.signInButton.setTitle(NSLocalizedString("Sign in", comment: ""), for: .normal)
+                self.accountLabel.text = NSLocalizedString("authorization", comment: "")
             }
             
-            let alertCancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            let alertCancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: nil)
             
             alert.addAction(alertCancelAction)
             alert.addAction(alertYesAction)

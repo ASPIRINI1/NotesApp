@@ -21,7 +21,7 @@ class WEBViewController: UIViewController
             let request = URLRequest(url: url)
             WEBView.load(request)
         } else {
-            let alert = UIAlertController(title: "Error", message: "Error loading WEB page.", preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Error loading WEB page.", comment: ""), preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
@@ -49,7 +49,7 @@ class WEBViewController: UIViewController
         if urlString != ""{
             UIApplication.shared.open(URL(string: urlString)!, options: [:], completionHandler: nil)
         } else {
-            let alert = UIAlertController(title: "Error", message: "Error opening browser.", preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Error opening browser.", comment: ""), preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)

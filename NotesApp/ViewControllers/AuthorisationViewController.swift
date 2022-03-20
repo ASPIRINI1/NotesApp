@@ -17,7 +17,10 @@ class AuthorisationViewController: UIViewController {
     @IBOutlet weak var substrateView: UIView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        emailTextField.delegate = self
+        
         substrateView.layer.cornerRadius = 20
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("SignedIn"), object: nil, queue: nil) { _ in
@@ -31,6 +34,9 @@ class AuthorisationViewController: UIViewController {
         }
     }
     
+    
+    //MARK: Actions
+    
     @IBAction func registrationButtAction(_ sender: Any) {
         
         if userDataIsCurrect() {
@@ -38,7 +44,7 @@ class AuthorisationViewController: UIViewController {
             fireAPI.registration(email: emailTextField.text!, password: passwordTextField.text!) { regSuccess in
                 
                 if !regSuccess {
-                    let alert = UIAlertController(title: "Registration Error", message: "Network unable or email already exist.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: NSLocalizedString("Registration Error", comment: ""), message: NSLocalizedString("Network unable or email already exist.", comment: ""), preferredStyle: .alert)
                     
                     let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                     
@@ -50,6 +56,14 @@ class AuthorisationViewController: UIViewController {
     }
     
     
+    @IBAction func signInButtAction(_ sender: Any) {
+        if userDataIsCurrect(){
+            fireAPI.signIn(email: emailTextField.text!, password: passwordTextField.text!)
+        }
+    }
+    
+    //MARK: Additional funcs
+
     func userDataIsCurrect() -> Bool{
         if emailTextField.text!.isValidEmail(){
             
@@ -58,24 +72,22 @@ class AuthorisationViewController: UIViewController {
                 
             } else {
                 validationLabel.isHidden = false
-                validationLabel.text = "Uncorrect password"
+                validationLabel.text = NSLocalizedString("Uncorrect password", comment: "")
                 return false
             }
             
         } else {
             validationLabel.isHidden = false
-            validationLabel.text = "Uncorrect Email. You may not use #$%^&*()/ in your Email."
+            validationLabel.text = NSLocalizedString("Uncorrect Email. You may not use #$%^&*()/ in your Email.", comment: "nil")
             return false
         }
     }
-
     
     @IBAction func signInButtAction(_ sender: Any) {
         if userDataIsCurrect(){
             fireAPI.signIn(email: emailTextField.text!, password: passwordTextField.text!)
         }
     }
-
     
 }
 

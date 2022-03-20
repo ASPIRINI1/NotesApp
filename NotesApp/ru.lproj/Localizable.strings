@@ -1,0 +1,35 @@
+/* 
+  Localizable.strings
+  NotesApp
+
+  Created by Станислав Зверьков on 20.03.2022.
+  
+*/
+
+"Sign out" = "Выйти";
+
+"Sign in" = "Войти";
+
+"Are You shure?" = "Вы уверены?";
+
+"Do You want to logOut?" = "Хотите выйти?";
+
+"Yes"  = "Да";
+
+"Registration Error"  = "Ошибка регистрации";
+
+"Network unable or email already exist."  = "Email уже существует или сеть не доступна";
+
+"Uncorrect password" = "Не верный пароль";
+
+"Uncorrect Email. You may not use #$%^&*()/ in your Email." = "Не верно введён email. Вы не должны использовать символы #$%^&*()/ в вашей почте.";
+
+"Error" = "Ошибка";
+
+"Error opening browser." = "Ошибка открытия браузера.";
+
+"Error loading WEB page." = "Ошибка загрузки страницы.";
+
+"Cancel" = "Отмена";
+
+"authorization" = "Авторизируйтесь";

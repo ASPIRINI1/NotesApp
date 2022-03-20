@@ -64,6 +64,8 @@ class NoteViewController: UIViewController {
             self.notesTableView.reloadData()
         }
         
+        
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

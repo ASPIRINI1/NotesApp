@@ -121,6 +121,7 @@ class APIManager{
             } else {
                 self?.appSettings.userID = authResult?.user.uid ?? ""
                 self!.appSettings.signedIn = true
+                self?.appSettings.userEmail = email
                 self?.getDocuments()
                 
                 NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
