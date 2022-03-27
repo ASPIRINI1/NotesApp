@@ -33,3 +33,7 @@
 "Cancel" = "Отмена";
 
 "authorization" = "Авторизируйтесь";
+
+"SignIn Error" = "Ошибка входа";
+
+"Network unable or email do not exist." = "Сеть не доступна или email не существует.";

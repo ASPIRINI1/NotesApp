@@ -113,20 +113,20 @@ class APIManager{
     
 //    MARK: - Registration $ Authorization
     
-    func signIn(email: String, password: String){
+    func signIn(email: String, password: String, completion: (Bool) -> ()...){
         
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             if error != nil {
                 print("SignIn error")
+                completion[0](false)
             } else {
                 self?.appSettings.userID = authResult?.user.uid ?? ""
                 self!.appSettings.signedIn = true
                 self?.appSettings.userEmail = email
                 self?.getDocuments()
-                
+                completion[0](true)
                 NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
             }
-          guard let strongSelf = self else { return }
         }
     }
     

@@ -88,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.98550724637687" y="97.767857142857139"/>
+            <point key="canvasLocation" x="929" y="102"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="44b-g2-Ad5">
@@ -123,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNQ-T5-b9S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="98"/>
+            <point key="canvasLocation" x="1822" y="102"/>
         </scene>
         <!--Settings-->
         <scene sceneID="guP-33-2r2">
@@ -450,7 +450,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GWk-vd-xXa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1113" y="280"/>
+            <point key="canvasLocation" x="-1146" y="413"/>
         </scene>
         <!--Settings-->
         <scene sceneID="xwB-Xw-IlV">
@@ -517,7 +517,7 @@
                                             <constraint firstAttribute="width" secondItem="r1f-ho-fGd" secondAttribute="height" multiplier="157:17" id="YQ4-l0-Mbc"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="continue" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="continue" textContentType="email"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMd-hx-hlX">
                                         <rect key="frame" x="150" y="173" width="74" height="21"/>

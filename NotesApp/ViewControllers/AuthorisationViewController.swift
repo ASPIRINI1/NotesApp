@@ -32,6 +32,11 @@ class AuthorisationViewController: UIViewController {
             emailTextField.backgroundColor =  .darkGray
             passwordTextField.backgroundColor = .darkGray
         }
+        
+        let tapScreen = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapScreen.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapScreen)
+        
     }
     
     
@@ -58,7 +63,16 @@ class AuthorisationViewController: UIViewController {
     
     @IBAction func signInButtAction(_ sender: Any) {
         if userDataIsCurrect(){
-            fireAPI.signIn(email: emailTextField.text!, password: passwordTextField.text!)
+            fireAPI.signIn(email: emailTextField.text!, password: passwordTextField.text!) { isSignInSuccess in
+                if !isSignInSuccess {
+                    let alert = UIAlertController(title: NSLocalizedString("SignIn Error", comment: ""), message: NSLocalizedString("Network unable or email do not exist.", comment: ""), preferredStyle: .alert)
+                    
+                    let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    
+                    alert.addAction(alertAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
         }
     }
     
@@ -83,10 +97,8 @@ class AuthorisationViewController: UIViewController {
         }
     }
     
-    @IBAction func signInButtAction(_ sender: Any) {
-        if userDataIsCurrect(){
-            fireAPI.signIn(email: emailTextField.text!, password: passwordTextField.text!)
-        }
+    @objc func dismissKeyboard(Sender: UITapGestureRecognizer){
+       view.endEditing(true)
     }
     
 }
@@ -101,5 +113,17 @@ extension String {
     func isValidPass() -> Bool {
         let regex = try! NSRegularExpression(pattern: "[a-zA-Z0-9._-]{8,20}", options: .caseInsensitive)
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+    }
+}
+
+//MARK: - UITextFieldDelegate
+
+extension AuthorisationViewController: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if emailTextField.isFirstResponder{
+            passwordTextField.becomeFirstResponder()
+        }
+        return true
     }
 }
