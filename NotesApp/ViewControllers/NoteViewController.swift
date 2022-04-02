@@ -71,11 +71,11 @@ class NoteViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! DetailViewController
         
-        var note: Document
+        var note: Document = Document(id: "", text: "")
         
         if isFiltering{
             note = filtredNotes[selectedIndex]
-        } else {
+        } else if selectedIndex != -1 {
             note = notes[selectedIndex]
         }
         
