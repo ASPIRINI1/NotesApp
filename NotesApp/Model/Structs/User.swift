@@ -10,12 +10,12 @@ import Foundation
 class User {
     
     var uid = String()
-    var name = String()
+    var email = String()
     var password = String()
     
-    init(uid: String, name: String, password: String) {
+    init(uid: String, email: String, password: String) {
         self.uid = uid
-        self.name = name
+        self.email = email
         self.password = password
         
         AppSettings.shared.user = self

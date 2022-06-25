@@ -39,7 +39,7 @@ class SettingsTableVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         if appSettings.signedIn{
             self.signInButton.setTitle(NSLocalizedString("Sign out", comment: ""), for: .normal)
-            self.accountLabel.text = self.appSettings.userEmail
+            self.accountLabel.text = AppSettings.shared.user?.email
         }
     }
     

@@ -10,63 +10,43 @@ import FirebaseAuth
 
 extension APIManager {
     
-    func signIn(email: String, password: String, completion: (Bool) -> ()...){
+    func signIn(email: String, password: String, completion: @escaping (Bool) -> ()) {
         
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            if error != nil {
-                print("SignIn error")
-                completion[0](false)
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error { print("SignIn error: ", error); completion(false); return }
+  
+            if let user = authResult?.user {
+                AppSettings.shared.user = User(uid: user.uid,
+                                        email: email,
+                                        password: password)
+                completion(true)
+                
             } else {
-                self?.appSettings.userID = authResult?.user.uid ?? ""
-                self!.appSettings.signedIn = true
-                self?.appSettings.userEmail = email
-                self?.getDocuments()
-                completion[0](true)
-                NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
+                print("User data getting error.")
+                completion(false)
             }
         }
     }
     
-    func signOut(){
-        
-        let firebaseAuth = Auth.auth()
-       do {
-         try firebaseAuth.signOut()
-       } catch let signOutError as NSError {
-         print("Error signing out: %@", signOutError)
-           return
-       }
-        
-        self.docs.removeAll()
-        self.appSettings.signedIn = false
-        self.appSettings.userEmail = ""
-        self.appSettings.userID = ""
-        
-        NotificationCenter.default.post(name: NSNotification.Name("SignedOut"), object: nil)
+    func signOut() {
+        try? Auth.auth().signOut()
+        AppSettings.shared.user = nil
     }
     
-    func registration(email: String, password: String, completion: (Bool) -> ()...){
+    func registration(email: String, password: String, completion: @escaping (Bool) -> ()) {
         
-        let firebaseAuth = Auth.auth()
-        let db = configureFB()
-        
-        firebaseAuth.createUser(withEmail: email, password: password) { authResult, error in
-            if  (error != nil){
-                print("Registration error")
-                completion[0](false)
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error { print("Registration error: ", error); completion(false); return }
+            
+            if let user = authResult?.user {
+                AppSettings.shared.user = User(uid: user.uid,
+                                               email: email,
+                                               password: password)
+                completion(true)
                 
             } else {
-                self.appSettings.userID = authResult?.user.uid ?? ""
-                self.appSettings.userEmail = email
-                self.appSettings.signedIn = true
-                
-                completion[0](true)
-                
-                //uploading local docs to Firebase
-                for doc in self.docs {
-                    db.collection(self.appSettings.userID).addDocument(data: ["text": doc.text])
-                }
-                NotificationCenter.default.post(name: NSNotification.Name("SignedIn"), object: nil)
+                print("Error getting user data.")
+                completion(false)
             }
         }
     }

@@ -14,6 +14,17 @@ class APIManager{
     
     var docs = [Document]()
     var appSettings = AppSettings()
+    lazy var db = configureFB()
+    
+    var user: User? {
+        get {
+            guard let user = AppSettings.shared.user else {
+                print("Error user is not signIn.")
+                return nil
+            }
+            return user
+        }
+    }
     
     
 //    MARK: - Configure DB & get from DB

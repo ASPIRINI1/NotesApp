@@ -21,18 +21,18 @@ class AppSettings {
         case user = "User"
     }
     
-    var userEmail: String{
-        get{
-            if let data = userDefaults.string(forKey: SettingsKeys.userEmail.rawValue){
-                return data
-            }else{
-                return ""
-            }
-        }
-        set{
-            userDefaults.set(newValue, forKey: SettingsKeys.userEmail.rawValue)
-        }
-    }
+//    var userEmail: String{
+//        get{
+//            if let data = userDefaults.string(forKey: SettingsKeys.userEmail.rawValue){
+//                return data
+//            }else{
+//                return ""
+//            }
+//        }
+//        set{
+//            userDefaults.set(newValue, forKey: SettingsKeys.userEmail.rawValue)
+//        }
+//    }
     
     var signedIn: Bool{
         get{
@@ -66,14 +66,14 @@ class AppSettings {
         }
     }
     
-    var userID: String{
-        get{
-            return userDefaults.string(forKey: SettingsKeys.userID.rawValue) ?? ""
-        }
-        set{
-            userDefaults.set(newValue, forKey: SettingsKeys.userID.rawValue)
-        }
-    }
+//    var userID: String{
+//        get{
+//            return userDefaults.string(forKey: SettingsKeys.userID.rawValue) ?? ""
+//        }
+//        set{
+//            userDefaults.set(newValue, forKey: SettingsKeys.userID.rawValue)
+//        }
+//    }
     
     var user: User? {
         get {

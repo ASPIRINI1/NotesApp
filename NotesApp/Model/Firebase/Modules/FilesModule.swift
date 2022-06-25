@@ -9,80 +9,60 @@ import Foundation
 
 extension APIManager {
     
-    func getDocuments(){
+    func getDocuments(completion: @escaping ([Document]) -> ()) {
         
-        if appSettings.userID != ""{
+        guard let user = user else { return }
+        
+        NotificationCenter.default.post(name: NSNotification.Name("LoadingNotes"), object: nil)
+        
+        db.collection(user.uid).getDocuments { querySnapshot, error in
             
-            let db = configureFB()
-            db.collection(appSettings.userID).getDocuments()  { (querySnapshot, err) in
-                 
-                 if let err = err {
-                     print("Error getting documents: \(err)")
-                 } else {
-                     for document in querySnapshot!.documents {
-                         NotificationCenter.default.post(name: NSNotification.Name("LoadingNotes"), object: nil)
-                         self.docs.append(Document(id: document.documentID, text: document.get("text") as! String))
-                     }
-                     NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
-                 }
-             }
+            if let error = error { print("Error getting documents: ", error); return }
+            
+            if let documents = querySnapshot?.documents {
+                var notes = [Document]()
+                for doc in documents {
+                    notes.append(Document(id: doc.documentID,
+                                          text: doc.get("text") as? String ?? ""))
+                }
+                
+                if notes.count == documents.count {
+                    completion(notes)
+                    NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
+                }
+            }
         }
      }
     
     func createNewDocument(text: String) {
         
-        let db = configureFB()
-        if appSettings.userID != ""{
-            let doc = db.collection(appSettings.userID).addDocument(data: ["text": text])
-            docs.append(Document(id:doc.documentID , text: text))
-        }
-        NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
+        guard let user = user else { return }
+        db.collection(user.uid).addDocument(data: ["text" : text])
    }
     
-    func updateDocument(id: String, text:String){
+    func updateDocument(id: String, text:String) {
         
-       let db = configureFB()
+        guard let user = user else { return }
         
-       if text != ""{
-           db.collection(appSettings.userID).document(id).updateData(["text": text]) { err in
-                
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                for docIndex in 0...self.docs.count-1{
-                    if self.docs[docIndex].id == id{
-                        self.docs[docIndex].text = text
-                    }
-                }
-                NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
-                print("Document successfully updated")
-            }
-           }
-       }
-    }
-    
-    func deleteDocument(id: String){
-        
-        let db = configureFB()
-        
-        db.collection(appSettings.userID).document(id).delete() { err in
-            if let err = err {
-                print("Error removing document: \(err)")
-            } else {
-                print("Document successfully removed!")
-            }
+        guard !text.isEmpty else {
+            deleteDocument(id: id)
+            return
         }
         
-        //removing document from local docs
-        for doc in 0...self.docs.count-1 {
-            if docs[doc].id == id{
-                self.docs.remove(at: doc)
-                break
-            }
+        db.collection(user.uid).document(id).updateData(["text" : text])
+    }
+    
+    func deleteDocument(id: String) {
+        
+        guard let user = user else { return }
+        
+        db.collection(user.uid).document(id).delete() { error in
+            if let error = error { print("Error removing document: ", error) }
         }
     }
 
-    func getAllNotes() -> [Document]{
+    func getAllNotes() -> [Document] {
         return docs
     }
+    
 }
