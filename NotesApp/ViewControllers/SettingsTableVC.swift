@@ -13,7 +13,6 @@ class SettingsTableVC: UITableViewController {
     
     let languages = ["English","Русский"]
     let fireAPI = APIManager()
-    var appSettings = AppSettings()
     var url = ""
 
     @IBOutlet weak var languagePickerView: UIPickerView!
@@ -29,15 +28,15 @@ class SettingsTableVC: UITableViewController {
         tableView.dataSource = self
         
         for ind in 0...languages.count-1 {
-            if appSettings.language == languages[ind]{
+            if AppSettings.shared.language == languages[ind]{
                 languagePickerView.selectRow(ind, inComponent: 0, animated: true)
             }
         }
-        appThemeSegmentedControl.selectedSegmentIndex = appSettings.appTheme
+        appThemeSegmentedControl.selectedSegmentIndex = AppSettings.shared.appTheme
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if appSettings.signedIn{
+        if AppSettings.shared.signedIn{
             self.signInButton.setTitle(NSLocalizedString("Sign out", comment: ""), for: .normal)
             self.accountLabel.text = AppSettings.shared.user?.email
         }
@@ -62,11 +61,11 @@ class SettingsTableVC: UITableViewController {
     @IBAction func segmentedControlAction(_ sender: Any) {
         switch appThemeSegmentedControl.selectedSegmentIndex{
         case 0: tabBarController?.overrideUserInterfaceStyle = .unspecified
-            appSettings.appTheme = 0
+            AppSettings.shared.appTheme = 0
         case 1: tabBarController?.overrideUserInterfaceStyle = .dark
-            appSettings.appTheme = 1
+            AppSettings.shared.appTheme = 1
         case 2: tabBarController?.overrideUserInterfaceStyle = .light
-            appSettings.appTheme = 2
+            AppSettings.shared.appTheme = 2
         default:
             tabBarController?.overrideUserInterfaceStyle = .unspecified
         }
@@ -77,7 +76,7 @@ class SettingsTableVC: UITableViewController {
     
     @IBAction func signInButtonAction(_ sender: Any) {
         
-        if appSettings.signedIn{
+        if AppSettings.shared.signedIn{
             let alert = UIAlertController(title: NSLocalizedString("Are You shure?", comment: ""), message: NSLocalizedString("Do You want to logOut?", comment: ""), preferredStyle: .alert)
             
             let alertYesAction = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive) { UIAlertAction in
@@ -119,7 +118,7 @@ extension SettingsTableVC:UIPickerViewDelegate, UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         NotificationCenter.default.post(name: NSNotification.Name("Language" + languages[row]), object: nil)
-        appSettings.language = languages[row]
+        AppSettings.shared.language = languages[row]
     }
 }
 

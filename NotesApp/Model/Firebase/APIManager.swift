@@ -13,7 +13,6 @@ class APIManager{
     //    MARK: - Property
     
     var docs = [Document]()
-    var appSettings = AppSettings()
     lazy var db = configureFB()
     
     var user: User? {
