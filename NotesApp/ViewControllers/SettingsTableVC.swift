@@ -12,7 +12,6 @@ class SettingsTableVC: UITableViewController {
     //    MARK: - Property
     
     let languages = ["English","Русский"]
-    let fireAPI = APIManager()
     var url = ""
 
     @IBOutlet weak var languagePickerView: UIPickerView!
@@ -80,7 +79,7 @@ class SettingsTableVC: UITableViewController {
             let alert = UIAlertController(title: NSLocalizedString("Are You shure?", comment: ""), message: NSLocalizedString("Do You want to logOut?", comment: ""), preferredStyle: .alert)
             
             let alertYesAction = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive) { UIAlertAction in
-                self.fireAPI.signOut()
+                FireAPI.shared.signOut()
                 self.signInButton.setTitle(NSLocalizedString("Sign in", comment: ""), for: .normal)
                 self.accountLabel.text = NSLocalizedString("authorization", comment: "")
             }

@@ -13,7 +13,6 @@ class NoteViewController: UIViewController {
     
     //    MARK: - Variables
     
-    private var FireAPI = APIManager()
     private var notes: [Document] = []
     private var selectedIndex = -1
     
@@ -55,7 +54,7 @@ class NoteViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("NotesLoaded"), object: nil, queue: nil) { _ in
-            self.notes = self.FireAPI.getAllNotes()
+            self.notes = FireAPI.shared.getAllNotes()
             self.notesTableView.reloadData()
             activityIndicator.stopAnimating()
         }
@@ -152,7 +151,7 @@ extension NoteViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            FireAPI.deleteDocument(id: notes[indexPath.row].id)
+            FireAPI.shared.deleteDocument(id: notes[indexPath.row].id)
             notesTableView.reloadData()
         }
     }

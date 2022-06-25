@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-extension APIManager {
+extension FireAPI {
     
     func signIn(email: String, password: String, completion: @escaping (Bool) -> ()) {
         

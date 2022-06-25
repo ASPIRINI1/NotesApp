@@ -8,7 +8,13 @@
 import Foundation
 import Firebase
 
-class APIManager{
+class FireAPI {
+    
+    private init() {
+        
+    }
+    
+    static let shared = FireAPI()
     
     //    MARK: - Property
     
@@ -28,7 +34,7 @@ class APIManager{
     
 //    MARK: - Configure DB & get from DB
     
-     func configureFB() -> Firestore{
+     func configureFB() -> Firestore {
         var db: Firestore!
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings

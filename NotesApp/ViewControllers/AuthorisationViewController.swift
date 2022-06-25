@@ -9,7 +9,6 @@ import UIKit
 
 class AuthorisationViewController: UIViewController {
     
-    let fireAPI = APIManager()
 
     @IBOutlet weak var validationLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
@@ -46,7 +45,7 @@ class AuthorisationViewController: UIViewController {
         
         if userDataIsCurrect() {
             
-            fireAPI.registration(email: emailTextField.text!, password: passwordTextField.text!) { regSuccess in
+            FireAPI.shared.registration(email: emailTextField.text!, password: passwordTextField.text!) { regSuccess in
                 
                 if !regSuccess {
                     let alert = UIAlertController(title: NSLocalizedString("Registration Error", comment: ""), message: NSLocalizedString("Network unable or email already exist.", comment: ""), preferredStyle: .alert)
@@ -63,7 +62,7 @@ class AuthorisationViewController: UIViewController {
     
     @IBAction func signInButtAction(_ sender: Any) {
         if userDataIsCurrect(){
-            fireAPI.signIn(email: emailTextField.text!, password: passwordTextField.text!) { isSignInSuccess in
+            FireAPI.shared.signIn(email: emailTextField.text!, password: passwordTextField.text!) { isSignInSuccess in
                 if !isSignInSuccess {
                     let alert = UIAlertController(title: NSLocalizedString("SignIn Error", comment: ""), message: NSLocalizedString("Network unable or email do not exist.", comment: ""), preferredStyle: .alert)
                     

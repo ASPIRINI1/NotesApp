@@ -9,7 +9,6 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    let fireAPI = APIManager()
     var document: Document? = Document(id: "", text: "")
 
     @IBOutlet weak var textView: UITextView!
@@ -22,11 +21,11 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         if document?.id != ""{
             if textView.text != document?.text{
-                fireAPI.updateDocument(id: document!.id, text: textView.text)
+                FireAPI.shared.updateDocument(id: document!.id, text: textView.text)
             }
         } else {
             if textView.text != ""{
-                fireAPI.createNewDocument(text: textView.text)
+                FireAPI.shared.createNewDocument(text: textView.text)
             }
         }
     }

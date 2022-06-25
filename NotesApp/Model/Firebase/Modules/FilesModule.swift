@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension APIManager {
+extension FireAPI {
     
     func getDocuments(completion: @escaping ([Document]) -> ()) {
         
