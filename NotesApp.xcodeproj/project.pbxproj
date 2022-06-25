@@ -13,6 +13,7 @@
 		DE52A41527E77C1400C9B612 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE52A41727E77C1400C9B612 /* Localizable.strings */; };
 		DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35728672A70005EADF8 /* RegistrationModule.swift */; };
 		DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35928672BA3005EADF8 /* FilesModule.swift */; };
+		DE9BC35D286730EE005EADF8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35C286730ED005EADF8 /* User.swift */; };
 		DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA627DA428C001852C3 /* TabBarController.swift */; };
 		DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA927DA43A3001852C3 /* AppSettings.swift */; };
 		DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAF9AFA2797442F00831B85 /* SettingsTableVC.swift */; };
@@ -41,6 +42,7 @@
 		DE52A41927E7818F00C9B612 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE9BC35728672A70005EADF8 /* RegistrationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModule.swift; sourceTree = "<group>"; };
 		DE9BC35928672BA3005EADF8 /* FilesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesModule.swift; sourceTree = "<group>"; };
+		DE9BC35C286730ED005EADF8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DE9F8DA627DA428C001852C3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		DE9F8DA927DA43A3001852C3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		DEAF9AFA2797442F00831B85 /* SettingsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableVC.swift; sourceTree = "<group>"; };
@@ -89,10 +91,20 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		DE9BC35B286730B0005EADF8 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				DEDD856427931C510075D525 /* Document.swift */,
+				DE9BC35C286730ED005EADF8 /* User.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
 		DE9F8DA827DA438A001852C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				DE9F8DA927DA43A3001852C3 /* AppSettings.swift */,
+				DE9BC35B286730B0005EADF8 /* Structs */,
 				DEDD856327931C410075D525 /* Firebase */,
 			);
 			path = Model;
@@ -121,9 +133,9 @@
 			children = (
 				DEDD854D279317400075D525 /* AppDelegate.swift */,
 				DEDD854F279317400075D525 /* SceneDelegate.swift */,
-				DE9F8DA627DA428C001852C3 /* TabBarController.swift */,
 				DE9F8DA827DA438A001852C3 /* Model */,
 				DEDD856827931D730075D525 /* ViewControllers */,
+				DE9F8DA627DA428C001852C3 /* TabBarController.swift */,
 				DEDD8553279317400075D525 /* Main.storyboard */,
 				DEDD8556279317420075D525 /* Assets.xcassets */,
 				DEDD8558279317420075D525 /* LaunchScreen.storyboard */,
@@ -139,7 +151,6 @@
 			children = (
 				DEDD856627931C830075D525 /* APIManager.swift */,
 				DE9BC35628672A4F005EADF8 /* Modules */,
-				DEDD856427931C510075D525 /* Document.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -291,6 +302,7 @@
 				DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */,
 				DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */,
 				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
+				DE9BC35D286730EE005EADF8 /* User.swift in Sources */,
 				DEDD854E279317400075D525 /* AppDelegate.swift in Sources */,
 				DECF042927C944E90069FF0A /* AuthorisationViewController.swift in Sources */,
 				DEDD8550279317400075D525 /* SceneDelegate.swift in Sources */,

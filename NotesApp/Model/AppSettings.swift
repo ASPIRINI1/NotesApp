@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct AppSettings{
+class AppSettings {
     
+    static let shared = AppSettings()
     let userDefaults = UserDefaults.standard
     
     private enum SettingsKeys: String{
@@ -17,6 +18,7 @@ struct AppSettings{
         case isSignIn = "signedIn"
         case language = "Language"
         case userID = "userID"
+        case user = "User"
     }
     
     var userEmail: String{
@@ -70,6 +72,16 @@ struct AppSettings{
         }
         set{
             userDefaults.set(newValue, forKey: SettingsKeys.userID.rawValue)
+        }
+    }
+    
+    var user: User? {
+        get {
+            return userDefaults.object(forKey: SettingsKeys.user.rawValue) as? User
+        }
+        set {
+            userDefaults.set(newValue, forKey: SettingsKeys.user.rawValue)
+            signedIn = true
         }
     }
 }
