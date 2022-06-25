@@ -7,7 +7,7 @@
 
 import Foundation
 import Firebase
-import GoogleSignIn
+
 
 class APIManager{
     

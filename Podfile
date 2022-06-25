@@ -6,11 +6,10 @@ target 'NotesApp' do
   use_frameworks!
 
   # Pods for NotesApp
+
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
-
 pod 'Firebase/Storage'
-pod 'Firebase/Database'
-pod 'GoogleSignIn'
+
 
 end
