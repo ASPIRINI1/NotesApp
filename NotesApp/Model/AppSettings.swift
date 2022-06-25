@@ -16,13 +16,11 @@ class AppSettings {
         
     }
     
-    private enum SettingsKeys: String{
-        case userEmail = "userEmail"
+    private enum SettingsKeys: String {
         case appTheme = "AppTheme"
-        case isSignIn = "signedIn"
         case language = "Language"
-        case userID = "userID"
         case user = "User"
+        case isSignIn = "isSignIn"
     }
     
     var signedIn: Bool {

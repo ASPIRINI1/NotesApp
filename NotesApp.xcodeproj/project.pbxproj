@@ -100,6 +100,41 @@
 			path = Structs;
 			sourceTree = "<group>";
 		};
+		DE9BC35E28676F30005EADF8 /* NoteView */ = {
+			isa = PBXGroup;
+			children = (
+				DEDD8551279317400075D525 /* NoteViewController.swift */,
+				DEDD856927931F1C0075D525 /* NoteTableViewCell.swift */,
+			);
+			path = NoteView;
+			sourceTree = "<group>";
+		};
+		DE9BC35F28676F63005EADF8 /* SettingsSet */ = {
+			isa = PBXGroup;
+			children = (
+				DE9BC35E28676F30005EADF8 /* NoteView */,
+				DE156CAF2795865D00356E1A /* DetailViewController.swift */,
+			);
+			path = SettingsSet;
+			sourceTree = "<group>";
+		};
+		DE9BC36128676F74005EADF8 /* SettingsSet */ = {
+			isa = PBXGroup;
+			children = (
+				DEAF9AFA2797442F00831B85 /* SettingsTableVC.swift */,
+				DECF042827C944E90069FF0A /* AuthorisationViewController.swift */,
+				DE219F2627DB8CED00A956BA /* WEBViewController.swift */,
+			);
+			path = SettingsSet;
+			sourceTree = "<group>";
+		};
+		DE9BC36228676FC1005EADF8 /* NotesSet */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NotesSet;
+			sourceTree = "<group>";
+		};
 		DE9F8DA827DA438A001852C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,12 +193,9 @@
 		DEDD856827931D730075D525 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DEDD8551279317400075D525 /* NoteViewController.swift */,
-				DEDD856927931F1C0075D525 /* NoteTableViewCell.swift */,
-				DE156CAF2795865D00356E1A /* DetailViewController.swift */,
-				DEAF9AFA2797442F00831B85 /* SettingsTableVC.swift */,
-				DECF042827C944E90069FF0A /* AuthorisationViewController.swift */,
-				DE219F2627DB8CED00A956BA /* WEBViewController.swift */,
+				DE9BC36228676FC1005EADF8 /* NotesSet */,
+				DE9BC35F28676F63005EADF8 /* SettingsSet */,
+				DE9BC36128676F74005EADF8 /* SettingsSet */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
