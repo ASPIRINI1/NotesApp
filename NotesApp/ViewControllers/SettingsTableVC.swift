@@ -12,7 +12,7 @@ class SettingsTableVC: UITableViewController {
     //    MARK: - Property
     
     let languages = ["English","Русский"]
-    let fireAPI = APIManager.shared
+    let fireAPI = APIManager()
     var appSettings = AppSettings()
     var url = ""
 

@@ -9,7 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    let fireAPI = APIManager.shared
+    let fireAPI = APIManager()
     var document: Document? = Document(id: "", text: "")
 
     @IBOutlet weak var textView: UITextView!

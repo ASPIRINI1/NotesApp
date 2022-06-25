@@ -13,7 +13,7 @@ class NoteViewController: UIViewController {
     
     //    MARK: - Variables
     
-    private var FireAPI = APIManager.shared
+    private var FireAPI = APIManager()
     private var notes: [Document] = []
     private var selectedIndex = -1
     

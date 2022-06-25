@@ -9,7 +9,7 @@ import UIKit
 
 class AuthorisationViewController: UIViewController {
     
-    let fireAPI = APIManager.shared
+    let fireAPI = APIManager()
 
     @IBOutlet weak var validationLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
