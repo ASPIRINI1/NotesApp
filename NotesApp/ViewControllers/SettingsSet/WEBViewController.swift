@@ -8,8 +8,7 @@
 import UIKit
 import WebKit
 
-class WEBViewController: UIViewController
-{
+class WEBViewController: UIViewController {
     var urlString = ""
     
     @IBOutlet weak var WEBView: WKWebView!

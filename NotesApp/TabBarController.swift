@@ -9,7 +9,6 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
-    let userDefaults = UserDefaults()
     override func viewDidLoad() {
         super.viewDidLoad()
         
