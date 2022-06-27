@@ -14,7 +14,7 @@
 		DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35728672A70005EADF8 /* RegistrationModule.swift */; };
 		DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35928672BA3005EADF8 /* FilesModule.swift */; };
 		DE9BC35D286730EE005EADF8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35C286730ED005EADF8 /* User.swift */; };
-		DE9BC364286770CC005EADF8 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC363286770CC005EADF8 /* NotesTableViewController.swift */; };
+		DE9BC364286770CC005EADF8 /* NoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC363286770CC005EADF8 /* NoteTableViewController.swift */; };
 		DE9BC366286773B5005EADF8 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC365286773B5005EADF8 /* SearchController.swift */; };
 		DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA627DA428C001852C3 /* TabBarController.swift */; };
 		DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA927DA43A3001852C3 /* AppSettings.swift */; };
@@ -22,7 +22,6 @@
 		DECF042927C944E90069FF0A /* AuthorisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF042827C944E90069FF0A /* AuthorisationViewController.swift */; };
 		DEDD854E279317400075D525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD854D279317400075D525 /* AppDelegate.swift */; };
 		DEDD8550279317400075D525 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD854F279317400075D525 /* SceneDelegate.swift */; };
-		DEDD8552279317400075D525 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8551279317400075D525 /* NoteViewController.swift */; };
 		DEDD8555279317400075D525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8553279317400075D525 /* Main.storyboard */; };
 		DEDD8557279317420075D525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8556279317420075D525 /* Assets.xcassets */; };
 		DEDD855A279317420075D525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8558279317420075D525 /* LaunchScreen.storyboard */; };
@@ -45,7 +44,7 @@
 		DE9BC35728672A70005EADF8 /* RegistrationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModule.swift; sourceTree = "<group>"; };
 		DE9BC35928672BA3005EADF8 /* FilesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesModule.swift; sourceTree = "<group>"; };
 		DE9BC35C286730ED005EADF8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		DE9BC363286770CC005EADF8 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
+		DE9BC363286770CC005EADF8 /* NoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewController.swift; sourceTree = "<group>"; };
 		DE9BC365286773B5005EADF8 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		DE9F8DA627DA428C001852C3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		DE9F8DA927DA43A3001852C3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -54,7 +53,6 @@
 		DEDD854A279317400075D525 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEDD854D279317400075D525 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEDD854F279317400075D525 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DEDD8551279317400075D525 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		DEDD8554279317400075D525 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEDD8556279317420075D525 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEDD8559279317420075D525 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,9 +105,8 @@
 		DE9BC35E28676F30005EADF8 /* NoteView */ = {
 			isa = PBXGroup;
 			children = (
-				DEDD8551279317400075D525 /* NoteViewController.swift */,
 				DEDD856927931F1C0075D525 /* NoteTableViewCell.swift */,
-				DE9BC363286770CC005EADF8 /* NotesTableViewController.swift */,
+				DE9BC363286770CC005EADF8 /* NoteTableViewController.swift */,
 				DE9BC365286773B5005EADF8 /* SearchController.swift */,
 			);
 			path = NoteView;
@@ -327,13 +324,12 @@
 				DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */,
 				DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */,
 				DEDD856527931C510075D525 /* Document.swift in Sources */,
-				DEDD8552279317400075D525 /* NoteViewController.swift in Sources */,
 				DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */,
 				DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */,
 				DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */,
 				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
 				DE9BC35D286730EE005EADF8 /* User.swift in Sources */,
-				DE9BC364286770CC005EADF8 /* NotesTableViewController.swift in Sources */,
+				DE9BC364286770CC005EADF8 /* NoteTableViewController.swift in Sources */,
 				DE9BC366286773B5005EADF8 /* SearchController.swift in Sources */,
 				DEDD854E279317400075D525 /* AppDelegate.swift in Sources */,
 				DECF042927C944E90069FF0A /* AuthorisationViewController.swift in Sources */,

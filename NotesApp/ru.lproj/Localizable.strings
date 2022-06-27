@@ -37,3 +37,7 @@
 "SignIn Error" = "Ошибка входа";
 
 "Network unable or email do not exist." = "Сеть не доступна или email не существует.";
+
+// SearchController
+
+"Search" = "Поиск";
