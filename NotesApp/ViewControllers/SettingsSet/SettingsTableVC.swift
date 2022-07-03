@@ -41,6 +41,9 @@ class SettingsTableVC: UITableViewController {
         }
     }
     
+    
+//    MARK: - Actions
+    
     @IBAction func productWEBButtonAction(_ sender: Any) {
         url = "https://www.google.com"
     }
@@ -48,7 +51,10 @@ class SettingsTableVC: UITableViewController {
     @IBAction func devInfoButtonAction(_ sender: Any) {
          url = "https://github.com/ASPIRINI1"
     }
-//    
+    
+    
+//    MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let webView = segue.destination as! WEBViewController
         webView.urlString = url
@@ -70,8 +76,8 @@ class SettingsTableVC: UITableViewController {
         }
     }
     
-    //    MARK:  SingIn & SignOut
     
+    //    MARK: - SingIn & SignOut
     
     @IBAction func signInButtonAction(_ sender: Any) {
         
@@ -101,7 +107,7 @@ class SettingsTableVC: UITableViewController {
 
 //    MARK: - PickerView Delegate & DataSource
 
-extension SettingsTableVC:UIPickerViewDelegate, UIPickerViewDataSource{
+extension SettingsTableVC:UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
