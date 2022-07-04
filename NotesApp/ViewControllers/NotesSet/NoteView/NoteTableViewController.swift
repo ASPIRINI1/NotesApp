@@ -10,7 +10,7 @@ import UIKit
 class NoteTableViewController: UITableViewController {
     
     
-    //    MARK: - Variables
+    //    MARK: - Properties
     
     var notes: [Document] = []
     var selectedIndex = -1
@@ -26,18 +26,20 @@ class NoteTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: view.center.x, y: view.center.y, width: 10.0, height: 10.0))
+        activityIndicator.startAnimating()
+        
         searchController.searchingDelegate = self
-        
-        FireAPI.shared.getDocuments { docs in
-            self.notes = docs
-            self.tableView.reloadData()
-        }
-
-        
-        
         navigationItem.searchController = searchController
         
-//        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: view.center.x, y: view.center.y, width: 10.0, height: 10.0))
+        FireAPI.shared.getDocuments { docs in
+            guard let docs = docs else { return }
+            self.notes = docs
+            self.tableView.reloadData()
+            activityIndicator.stopAnimating()
+            activityIndicator.removeFromSuperview()
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

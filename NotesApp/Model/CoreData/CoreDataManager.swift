@@ -55,5 +55,20 @@ class CoreDataManager {
         }
     }
     
-
+    func removeAll() {
+        
+        DispatchQueue.global(qos: .utility).async {
+            if self.getAll() != nil {
+                for note in self.getAll()! {
+                    self.context.delete(note)
+                }
+                
+                do {
+                    try self.context.save()
+                } catch  {
+                    print("Error removing all notes: ", error)
+                }
+            }
+        }
+    }
 }

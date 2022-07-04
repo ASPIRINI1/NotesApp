@@ -14,17 +14,17 @@ extension FireAPI {
         
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error { print("SignIn error: ", error); completion(false); return }
-  
-            if let user = authResult?.user {
-                AppSettings.shared.user = User(uid: user.uid,
-                                        email: email,
-                                        password: password)
-                completion(true)
-                
-            } else {
-                print("User data getting error.")
+            
+            guard let user = authResult?.user else {
+                print("Error getting user data.")
                 completion(false)
+                return
             }
+  
+            AppSettings.shared.user = User(uid: user.uid,
+                                           email: email,
+                                           password: password)
+            completion(true)
         }
     }
     
@@ -38,16 +38,17 @@ extension FireAPI {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error { print("Registration error: ", error); completion(false); return }
             
-            if let user = authResult?.user {
-                AppSettings.shared.user = User(uid: user.uid,
-                                               email: email,
-                                               password: password)
-                completion(true)
-                
-            } else {
+            guard let user = authResult?.user else {
                 print("Error getting user data.")
                 completion(false)
+                return
             }
+            
+            AppSettings.shared.user = User(uid: user.uid,
+                                           email: email,
+                                           password: password)
+            completion(true)
         }
     }
+    
 }
