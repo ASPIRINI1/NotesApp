@@ -91,6 +91,7 @@
 		DE6B4BB528723C4100927B69 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				DE6B4BB82872415600927B69 /* NotesApp.xcdatamodeld */,
 				DE6B4BB628723C7A00927B69 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
@@ -176,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				DEDD854D279317400075D525 /* AppDelegate.swift */,
-				DE6B4BB82872415600927B69 /* NotesApp.xcdatamodeld */,
 				DEDD854F279317400075D525 /* SceneDelegate.swift */,
 				DE9F8DA827DA438A001852C3 /* Model */,
 				DEDD856827931D730075D525 /* ViewControllers */,

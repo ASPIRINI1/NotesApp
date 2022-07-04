@@ -32,6 +32,8 @@ class NoteTableViewController: UITableViewController {
             self.notes = docs
             self.tableView.reloadData()
         }
+
+        
         
         navigationItem.searchController = searchController
         

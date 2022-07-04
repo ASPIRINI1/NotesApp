@@ -11,5 +11,49 @@ import UIKit
 
 class CoreDataManager {
     
-//    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    static let shared = CoreDataManager()
+    
+    private init() {
+        
+    }
+    
+    func save(text: String) {
+    
+        let newNote = Note(context: self.context)
+        newNote.text = text
+        
+        do {
+            try self.context.save()
+        }
+        catch {
+            print("Error saving note: ", error)
+        }
+    }
+    
+    func getAll() -> [Note]? {
+        
+        do {
+            let items = try context.fetch(Note.fetchRequest())
+            return items
+        }
+        catch {
+            print("Error getting all notes: ", error)
+            return nil
+        }
+    }
+    
+    func delete(note: Note) {
+        
+        context.delete(note)
+        
+        do {
+            try context.save()
+        }
+        catch {
+            print("Error deleting note: ", error)
+        }
+    }
+    
+
 }
