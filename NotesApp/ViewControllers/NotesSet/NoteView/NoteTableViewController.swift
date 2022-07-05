@@ -42,6 +42,8 @@ class NoteTableViewController: UITableViewController {
 
     }
     
+// MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let detailVC = segue.destination as! DetailViewController

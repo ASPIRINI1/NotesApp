@@ -37,8 +37,11 @@ extension FireAPI {
     
     func createNewDocument(text: String) {
         
+        let id = UUID().uuidString
         guard let user = AppSettings.shared.user else { return }
-        db.collection(user.uid).addDocument(data: ["text" : text])
+        
+        CoreDataManager.shared.add(id: id, text: text)
+        db.collection(user.uid).document(id).setData(["text" : text])
    }
     
     func updateDocument(id: String, text:String) {

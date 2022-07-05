@@ -18,9 +18,10 @@ class CoreDataManager {
         
     }
     
-    func save(text: String) {
+    func add(id: String, text: String) {
     
         let newNote = Note(context: self.context)
+        newNote.id = id
         newNote.text = text
         
         do {

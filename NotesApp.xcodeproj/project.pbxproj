@@ -147,10 +147,10 @@
 		DE9F8DA827DA438A001852C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DE6B4BB528723C4100927B69 /* CoreData */,
 				DE9F8DA927DA43A3001852C3 /* AppSettings.swift */,
-				DE9BC35B286730B0005EADF8 /* Structs */,
+				DE6B4BB528723C4100927B69 /* CoreData */,
 				DEDD856327931C410075D525 /* Firebase */,
+				DE9BC35B286730B0005EADF8 /* Structs */,
 			);
 			path = Model;
 			sourceTree = "<group>";
