@@ -10,6 +10,7 @@
 		CB1676B0C1C67D306D35730B /* Pods_NotesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85BCDF812468C7C029B2F02F /* Pods_NotesApp.framework */; };
 		DE156CB02795865D00356E1A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE156CAF2795865D00356E1A /* DetailViewController.swift */; };
 		DE219F2727DB8CED00A956BA /* WEBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE219F2627DB8CED00A956BA /* WEBViewController.swift */; };
+		DE4CA9D82884BCE700924D66 /* ModulesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9D72884BCE700924D66 /* ModulesBuilder.swift */; };
 		DE52A41527E77C1400C9B612 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE52A41727E77C1400C9B612 /* Localizable.strings */; };
 		DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35728672A70005EADF8 /* RegistrationModule.swift */; };
 		DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35928672BA3005EADF8 /* FilesModule.swift */; };
@@ -26,7 +27,7 @@
 		DEDD8557279317420075D525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8556279317420075D525 /* Assets.xcassets */; };
 		DEDD855A279317420075D525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8558279317420075D525 /* LaunchScreen.storyboard */; };
 		DEDD8562279319120075D525 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8561279319120075D525 /* GoogleService-Info.plist */; };
-		DEDD856527931C510075D525 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD856427931C510075D525 /* Document.swift */; };
+		DEDD856527931C510075D525 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD856427931C510075D525 /* Note.swift */; };
 		DEDD856727931C830075D525 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD856627931C830075D525 /* APIManager.swift */; };
 		DEDD856A27931F1C0075D525 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD856927931F1C0075D525 /* NoteTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +38,7 @@
 		CC4F1A8F2DA7DF4762F4F701 /* Pods-NotesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesApp.debug.xcconfig"; path = "Target Support Files/Pods-NotesApp/Pods-NotesApp.debug.xcconfig"; sourceTree = "<group>"; };
 		DE156CAF2795865D00356E1A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DE219F2627DB8CED00A956BA /* WEBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEBViewController.swift; sourceTree = "<group>"; };
+		DE4CA9D72884BCE700924D66 /* ModulesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesBuilder.swift; sourceTree = "<group>"; };
 		DE52A41127E7788E00C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		DE52A41227E7788F00C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DE52A41627E77C1400C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -58,7 +60,7 @@
 		DEDD8559279317420075D525 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEDD855B279317420075D525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEDD8561279319120075D525 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DEDD856427931C510075D525 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		DEDD856427931C510075D525 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		DEDD856627931C830075D525 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		DEDD856927931F1C0075D525 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +86,21 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DE4CA9D52884BCA200924D66 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		DE4CA9D62884BCA700924D66 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				DEDD856327931C410075D525 /* Firebase */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 		DE9BC35628672A4F005EADF8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,7 +113,7 @@
 		DE9BC35B286730B0005EADF8 /* Structs */ = {
 			isa = PBXGroup;
 			children = (
-				DEDD856427931C510075D525 /* Document.swift */,
+				DEDD856427931C510075D525 /* Note.swift */,
 				DE9BC35C286730ED005EADF8 /* User.swift */,
 			);
 			path = Structs;
@@ -135,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				DE9F8DA927DA43A3001852C3 /* AppSettings.swift */,
-				DEDD856327931C410075D525 /* Firebase */,
 				DE9BC35B286730B0005EADF8 /* Structs */,
 			);
 			path = Model;
@@ -164,9 +180,12 @@
 			children = (
 				DEDD854D279317400075D525 /* AppDelegate.swift */,
 				DEDD854F279317400075D525 /* SceneDelegate.swift */,
+				DE4CA9D72884BCE700924D66 /* ModulesBuilder.swift */,
+				DE4CA9D62884BCA700924D66 /* NetworkService */,
 				DE9F8DA827DA438A001852C3 /* Model */,
 				DEDD856827931D730075D525 /* ViewControllers */,
 				DE9F8DA627DA428C001852C3 /* TabBarController.swift */,
+				DE4CA9D52884BCA200924D66 /* Modules */,
 				DEDD8553279317400075D525 /* Main.storyboard */,
 				DEDD8556279317420075D525 /* Assets.xcassets */,
 				DEDD8558279317420075D525 /* LaunchScreen.storyboard */,
@@ -323,12 +342,13 @@
 			files = (
 				DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */,
 				DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */,
-				DEDD856527931C510075D525 /* Document.swift in Sources */,
+				DEDD856527931C510075D525 /* Note.swift in Sources */,
 				DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */,
 				DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */,
 				DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */,
 				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
 				DE9BC35D286730EE005EADF8 /* User.swift in Sources */,
+				DE4CA9D82884BCE700924D66 /* ModulesBuilder.swift in Sources */,
 				DE9BC364286770CC005EADF8 /* NoteTableViewController.swift in Sources */,
 				DE9BC366286773B5005EADF8 /* SearchController.swift in Sources */,
 				DEDD854E279317400075D525 /* AppDelegate.swift in Sources */,

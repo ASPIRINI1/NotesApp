@@ -12,12 +12,12 @@ class NoteTableViewController: UITableViewController {
     
     //    MARK: - Properties
     
-    var notes: [Document] = []
+    var notes: [Note] = []
     var selectedIndex = -1
     
     // searchController variables
     let searchController = SearchController()
-    var filtredNotes = [Document]()
+    var filtredNotes = [Note]()
     
     var isFiltering: Bool {
         return searchController.isActive && !searchController.searchBarIsEmpty
@@ -47,7 +47,7 @@ class NoteTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let detailVC = segue.destination as! DetailViewController
-        var note: Document = Document(id: "", text: "")
+        var note: Note = Note(id: "", text: "")
         
         if isFiltering {
             note = filtredNotes[selectedIndex]
@@ -130,11 +130,11 @@ class NoteTableViewController: UITableViewController {
 
 extension NoteTableViewController: SearchNotesDelegate {
     
-    func setNotesForSearching() -> [Document] {
+    func setNotesForSearching() -> [Note] {
         return notes
     }
     
-    func getResults(notes: [Document]) {
+    func getResults(notes: [Note]) {
         filtredNotes = notes
         tableView.reloadData()
     }

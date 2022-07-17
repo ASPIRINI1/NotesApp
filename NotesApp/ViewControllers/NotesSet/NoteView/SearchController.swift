@@ -8,8 +8,8 @@
 import UIKit
 
 protocol SearchNotesDelegate: AnyObject {
-    func setNotesForSearching() -> [Document]
-    func getResults(notes:[Document])
+    func setNotesForSearching() -> [Note]
+    func getResults(notes:[Note])
 }
 
 class SearchController: UISearchController {

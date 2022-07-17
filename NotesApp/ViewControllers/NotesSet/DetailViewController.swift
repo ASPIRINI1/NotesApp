@@ -9,7 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    var document: Document? = Document(id: "", text: "")
+    var document: Note? = Note(id: "", text: "")
 
     @IBOutlet weak var textView: UITextView!
     

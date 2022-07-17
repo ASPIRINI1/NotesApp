@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Document {
+class Note {
     var id = String()
     var text = String()
     
