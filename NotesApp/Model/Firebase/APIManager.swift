@@ -10,9 +10,7 @@ import Firebase
 
 class FireAPI {
     
-    private init() {
-        Firestore.firestore().settings.cacheSizeBytes = 1048576 // 1MB 
-    }
+    private init() { }
     
     static let shared = FireAPI()
     

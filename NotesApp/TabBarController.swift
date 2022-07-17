@@ -19,5 +19,4 @@ class TabBarController: UITabBarController {
             default: self.overrideUserInterfaceStyle = .unspecified
         }
     }
-    
 }

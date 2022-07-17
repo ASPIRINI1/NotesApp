@@ -10,17 +10,15 @@ import Foundation
 class AppSettings {
     
     static let shared = AppSettings()
-    let userDefaults = UserDefaults.standard
+    private let userDefaults = UserDefaults.standard
     
-    private init() {
-        
-    }
+    private init() { }
     
     private enum SettingsKeys: String {
         case appTheme = "AppTheme"
         case language = "Language"
         case user = "User"
-        case isSignIn = "isSignIn"
+        case isSignIn = "IsSignIn"
     }
     
     var signedIn: Bool {
@@ -42,11 +40,8 @@ class AppSettings {
     }
     var language: String {
         get {
-            if let data = userDefaults.string(forKey: SettingsKeys.language.rawValue){
-                return data
-            } else {
-                return ""
-            }
+            guard let data = userDefaults.string(forKey: SettingsKeys.language.rawValue) else { return "" }
+            return data
         }
         set {
             if newValue != "" {
@@ -57,16 +52,13 @@ class AppSettings {
     
     var user: User? {
         get {
-            if let data = userDefaults.value(forKey: SettingsKeys.user.rawValue) as? Data {
-              return try? PropertyListDecoder().decode(User.self, from: data)
-            }
-            return nil
+            guard let data = userDefaults.value(forKey: SettingsKeys.user.rawValue) as? Data else { return nil }
+            return try? PropertyListDecoder().decode(User.self, from: data)
         }
         
         set {
-            if let data = try? PropertyListEncoder().encode(newValue) {
-                userDefaults.set(data, forKey: SettingsKeys.user.rawValue)
-            }
+            guard let data = try? PropertyListEncoder().encode(newValue) else { return }
+            userDefaults.set(data, forKey: SettingsKeys.user.rawValue)
             
             if newValue != nil {
                 signedIn = true

@@ -40,7 +40,6 @@ extension FireAPI {
         let id = UUID().uuidString
         guard let user = AppSettings.shared.user else { return }
         
-        CoreDataManager.shared.add(id: id, text: text)
         db.collection(user.uid).document(id).setData(["text" : text])
    }
     
