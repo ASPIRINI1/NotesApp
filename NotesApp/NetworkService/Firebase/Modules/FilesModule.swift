@@ -9,7 +9,7 @@ import Foundation
 
 extension FireAPI {
     
-    func getDocuments(completion: @escaping ([Document]?) -> ()) {
+    func getDocuments(completion: @escaping ([Note]?) -> ()) {
         
         guard let user = AppSettings.shared.user else { return }
         
@@ -20,10 +20,10 @@ extension FireAPI {
             if let error = error { print("Error getting documents: ", error);completion(nil) ;  return }
             
             guard let documents = querySnapshot?.documents else { completion(nil); return }
-            var notes = [Document]()
+            var notes = [Note]()
             
             for doc in documents {
-                notes.append(Document(id: doc.documentID,
+                notes.append(Note(id: doc.documentID,
                                         text: doc.get("text") as? String ?? ""))
             }
             
@@ -31,7 +31,6 @@ extension FireAPI {
                 completion(notes)
                 NotificationCenter.default.post(name: NSNotification.Name("NotesLoaded"), object: nil)
             }
-
         }
      }
     
@@ -63,5 +62,5 @@ extension FireAPI {
             if let error = error { print("Error removing document: ", error) }
         }
     }
-
+    
 }

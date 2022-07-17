@@ -8,7 +8,21 @@
 import Foundation
 import Firebase
 
-class FireAPI {
+protocol FireAPIProtocol {
+    var db: Firestore { get set }
+    func configureFB() -> Firestore
+    
+    func signIn(email: String, password: String, completion: @escaping (Bool) -> ())
+    func signOut()
+    func registration(email: String, password: String, completion: @escaping (Bool) -> ())
+    
+    func getDocuments(completion: @escaping ([Note]?) -> ())
+    func createNewDocument(text: String)
+    func updateDocument(id: String, text:String)
+    func deleteDocument(id: String)
+}
+
+class FireAPI: FireAPIProtocol {
     
     private init() { }
     
