@@ -11,6 +11,11 @@
 		DE156CB02795865D00356E1A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE156CAF2795865D00356E1A /* DetailViewController.swift */; };
 		DE219F2727DB8CED00A956BA /* WEBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE219F2627DB8CED00A956BA /* WEBViewController.swift */; };
 		DE4CA9D82884BCE700924D66 /* ModulesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9D72884BCE700924D66 /* ModulesBuilder.swift */; };
+		DE4CA9DD2884BDC000924D66 /* NotesTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9DC2884BDC000924D66 /* NotesTablePresenter.swift */; };
+		DE4CA9E02884C08600924D66 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9DE2884C08600924D66 /* NotesTableViewController.swift */; };
+		DE4CA9E12884C08600924D66 /* NotesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4CA9DF2884C08600924D66 /* NotesTableViewController.xib */; };
+		DE4CA9E52884C1E800924D66 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9E32884C1E800924D66 /* NotesTableViewCell.swift */; };
+		DE4CA9E62884C1E800924D66 /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4CA9E42884C1E800924D66 /* NotesTableViewCell.xib */; };
 		DE52A41527E77C1400C9B612 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE52A41727E77C1400C9B612 /* Localizable.strings */; };
 		DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35728672A70005EADF8 /* RegistrationModule.swift */; };
 		DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35928672BA3005EADF8 /* FilesModule.swift */; };
@@ -39,6 +44,11 @@
 		DE156CAF2795865D00356E1A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DE219F2627DB8CED00A956BA /* WEBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEBViewController.swift; sourceTree = "<group>"; };
 		DE4CA9D72884BCE700924D66 /* ModulesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesBuilder.swift; sourceTree = "<group>"; };
+		DE4CA9DC2884BDC000924D66 /* NotesTablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTablePresenter.swift; sourceTree = "<group>"; };
+		DE4CA9DE2884C08600924D66 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
+		DE4CA9DF2884C08600924D66 /* NotesTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewController.xib; sourceTree = "<group>"; };
+		DE4CA9E32884C1E800924D66 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		DE4CA9E42884C1E800924D66 /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		DE52A41127E7788E00C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		DE52A41227E7788F00C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DE52A41627E77C1400C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -89,6 +99,7 @@
 		DE4CA9D52884BCA200924D66 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DE4CA9D92884BDA100924D66 /* NotesTableModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -99,6 +110,42 @@
 				DEDD856327931C410075D525 /* Firebase */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		DE4CA9D92884BDA100924D66 /* NotesTableModule */ = {
+			isa = PBXGroup;
+			children = (
+				DE4CA9DA2884BDAB00924D66 /* View */,
+				DE4CA9DB2884BDB000924D66 /* Presenter */,
+			);
+			path = NotesTableModule;
+			sourceTree = "<group>";
+		};
+		DE4CA9DA2884BDAB00924D66 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE4CA9E22884C1CE00924D66 /* Cell */,
+				DE4CA9DE2884C08600924D66 /* NotesTableViewController.swift */,
+				DE4CA9DF2884C08600924D66 /* NotesTableViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE4CA9DB2884BDB000924D66 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				DE4CA9DC2884BDC000924D66 /* NotesTablePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		DE4CA9E22884C1CE00924D66 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DE4CA9E32884C1E800924D66 /* NotesTableViewCell.swift */,
+				DE4CA9E42884C1E800924D66 /* NotesTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		DE9BC35628672A4F005EADF8 /* Modules */ = {
@@ -285,7 +332,9 @@
 			files = (
 				DE52A41527E77C1400C9B612 /* Localizable.strings in Resources */,
 				DEDD855A279317420075D525 /* LaunchScreen.storyboard in Resources */,
+				DE4CA9E62884C1E800924D66 /* NotesTableViewCell.xib in Resources */,
 				DEDD8562279319120075D525 /* GoogleService-Info.plist in Resources */,
+				DE4CA9E12884C08600924D66 /* NotesTableViewController.xib in Resources */,
 				DEDD8557279317420075D525 /* Assets.xcassets in Resources */,
 				DEDD8555279317400075D525 /* Main.storyboard in Resources */,
 			);
@@ -345,8 +394,11 @@
 				DEDD856527931C510075D525 /* Note.swift in Sources */,
 				DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */,
 				DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */,
+				DE4CA9DD2884BDC000924D66 /* NotesTablePresenter.swift in Sources */,
 				DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */,
+				DE4CA9E52884C1E800924D66 /* NotesTableViewCell.swift in Sources */,
 				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
+				DE4CA9E02884C08600924D66 /* NotesTableViewController.swift in Sources */,
 				DE9BC35D286730EE005EADF8 /* User.swift in Sources */,
 				DE4CA9D82884BCE700924D66 /* ModulesBuilder.swift in Sources */,
 				DE9BC364286770CC005EADF8 /* NoteTableViewController.swift in Sources */,

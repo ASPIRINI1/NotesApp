@@ -11,6 +11,8 @@ extension FireAPI {
     
     func getDocuments(completion: @escaping ([Note]?) -> ()) {
         
+        User(uid: "lCYnZYjfqwYm8PfFLPRV56girl43", email: "note@gmail.com", password: "1234note")
+        
         guard let user = AppSettings.shared.user else { return }
         
         NotificationCenter.default.post(name: NSNotification.Name("LoadingNotes"), object: nil)
