@@ -48,7 +48,7 @@ class NotesTableViewController: UITableViewController {
             note = presenter.filtredNotes![indexPath.row].text
         } else {
             note = String(presenter.notes![indexPath.row].text.suffix(30))
-            presenter.notes?.remove(at: indexPath.row)
+//            presenter.notes?.remove(at: indexPath.row)
         }
         
         let newLinePosition = note.firstIndex { character in
@@ -74,7 +74,9 @@ class NotesTableViewController: UITableViewController {
 //    MARK: - Table view Delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard let selectedNote = presenter.notes?[indexPath.row] else { return }
+        let detailVC = ModuleBuilder.createDetailViewController(note: selectedNote)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
 }

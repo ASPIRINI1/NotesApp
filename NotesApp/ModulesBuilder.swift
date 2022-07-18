@@ -23,7 +23,11 @@ class ModuleBuilder: ModulesBuiler {
     }
     
     static func createDetailViewController(note: Note) -> UIViewController {
-        return UIViewController()
+        let view = DetailVC()
+        let networkService = FireAPI.shared
+        let presenter = DetailPresenter(view: view, networkService: networkService, note: note)
+        view.presenter = presenter
+        return view
     }
     
     

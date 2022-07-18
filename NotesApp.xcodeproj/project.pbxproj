@@ -17,6 +17,9 @@
 		DE4CA9E52884C1E800924D66 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9E32884C1E800924D66 /* NotesTableViewCell.swift */; };
 		DE4CA9E62884C1E800924D66 /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4CA9E42884C1E800924D66 /* NotesTableViewCell.xib */; };
 		DE52A41527E77C1400C9B612 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE52A41727E77C1400C9B612 /* Localizable.strings */; };
+		DE8155F42885B6AE00A9E9AA /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */; };
+		DE8155F72885B82500A9E9AA /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155F52885B82500A9E9AA /* DetailVC.swift */; };
+		DE8155F82885B82500A9E9AA /* DetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8155F62885B82500A9E9AA /* DetailVC.xib */; };
 		DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35728672A70005EADF8 /* RegistrationModule.swift */; };
 		DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35928672BA3005EADF8 /* FilesModule.swift */; };
 		DE9BC35D286730EE005EADF8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35C286730ED005EADF8 /* User.swift */; };
@@ -53,6 +56,9 @@
 		DE52A41227E7788F00C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DE52A41627E77C1400C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE52A41927E7818F00C9B612 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		DE8155F52885B82500A9E9AA /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		DE8155F62885B82500A9E9AA /* DetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailVC.xib; sourceTree = "<group>"; };
 		DE9BC35728672A70005EADF8 /* RegistrationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModule.swift; sourceTree = "<group>"; };
 		DE9BC35928672BA3005EADF8 /* FilesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesModule.swift; sourceTree = "<group>"; };
 		DE9BC35C286730ED005EADF8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -99,6 +105,7 @@
 		DE4CA9D52884BCA200924D66 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DE8155F02885B68B00A9E9AA /* DetailModule */,
 				DE4CA9D92884BDA100924D66 /* NotesTableModule */,
 			);
 			path = Modules;
@@ -146,6 +153,32 @@
 				DE4CA9E42884C1E800924D66 /* NotesTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		DE8155F02885B68B00A9E9AA /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				DE8155F12885B69500A9E9AA /* View */,
+				DE8155F22885B69B00A9E9AA /* Presenter */,
+			);
+			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		DE8155F12885B69500A9E9AA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE8155F52885B82500A9E9AA /* DetailVC.swift */,
+				DE8155F62885B82500A9E9AA /* DetailVC.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE8155F22885B69B00A9E9AA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		DE9BC35628672A4F005EADF8 /* Modules */ = {
@@ -333,6 +366,7 @@
 				DE52A41527E77C1400C9B612 /* Localizable.strings in Resources */,
 				DEDD855A279317420075D525 /* LaunchScreen.storyboard in Resources */,
 				DE4CA9E62884C1E800924D66 /* NotesTableViewCell.xib in Resources */,
+				DE8155F82885B82500A9E9AA /* DetailVC.xib in Resources */,
 				DEDD8562279319120075D525 /* GoogleService-Info.plist in Resources */,
 				DE4CA9E12884C08600924D66 /* NotesTableViewController.xib in Resources */,
 				DEDD8557279317420075D525 /* Assets.xcassets in Resources */,
@@ -394,11 +428,13 @@
 				DEDD856527931C510075D525 /* Note.swift in Sources */,
 				DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */,
 				DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */,
+				DE8155F42885B6AE00A9E9AA /* DetailPresenter.swift in Sources */,
 				DE4CA9DD2884BDC000924D66 /* NotesTablePresenter.swift in Sources */,
 				DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */,
 				DE4CA9E52884C1E800924D66 /* NotesTableViewCell.swift in Sources */,
 				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
 				DE4CA9E02884C08600924D66 /* NotesTableViewController.swift in Sources */,
+				DE8155F72885B82500A9E9AA /* DetailVC.swift in Sources */,
 				DE9BC35D286730EE005EADF8 /* User.swift in Sources */,
 				DE4CA9D82884BCE700924D66 /* ModulesBuilder.swift in Sources */,
 				DE9BC364286770CC005EADF8 /* NoteTableViewController.swift in Sources */,
