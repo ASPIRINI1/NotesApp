@@ -34,9 +34,7 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     func getNotes() {
         networkService.getDocuments { notes in
             self.notes = notes
-            guard let view = self.view else {
-                return
-            }
+            guard let view = self.view else { return }
             view.notesLoaded()
         }
     }

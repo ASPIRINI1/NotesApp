@@ -82,15 +82,25 @@ class NotesTableViewController: UITableViewController {
 extension NotesTableViewController: NotesTableViewProtocol {
     
     func loadingNotes() {
-        
+        let activityIndicator = UIActivityIndicatorView(frame: CGRect(origin: view.center, size: CGSize(width: 0, height: 0)))
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
     }
     
     func notesLoaded() {
+        
+        if let activityIndicator = view.subviews.first as? UIActivityIndicatorView {
+            activityIndicator.stopAnimating()
+            activityIndicator.removeFromSuperview()
+        }
         tableView.reloadData()
     }
     
     func errorLoadingNotes() {
+        let alert = UIAlertController(title: NSLocalizedString("Error loading notes.", comment: ""), message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
         
+        present(alert, animated: true)
     }
     
 }
