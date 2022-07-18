@@ -43,4 +43,16 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
         
     }
     
+    func test() {
+        view?.loadingNotes()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.view?.notesLoaded()
+            print("timer")
+        }
+        let t = Timer(timeInterval: 2, repeats: false) { _ in
+           
+        }
+        
+    }
+    
 }
