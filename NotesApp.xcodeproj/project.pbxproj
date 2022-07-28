@@ -20,8 +20,9 @@
 		DE8155F72885B82500A9E9AA /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155F52885B82500A9E9AA /* DetailVC.swift */; };
 		DE8155F82885B82500A9E9AA /* DetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8155F62885B82500A9E9AA /* DetailVC.xib */; };
 		DE81560B2885BDC700A9E9AA /* NotesTableModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155FA2885BC3800A9E9AA /* NotesTableModuleTest.swift */; };
-		DE81560C2885BDC700A9E9AA /* DetailModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155FC2885BC5700A9E9AA /* DetailModuleTest.swift */; };
 		DE8156492885D08E00A9E9AA /* Pods_NotesApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE8156472885D08D00A9E9AA /* Pods_NotesApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DE952D6B2891C6A300F703A7 /* Pods_NotesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE952D402891C6A200F703A7 /* Pods_NotesApp.framework */; };
+		DE952D6C2891C6A300F703A7 /* Pods_NotesApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE952D402891C6A200F703A7 /* Pods_NotesApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35728672A70005EADF8 /* RegistrationModule.swift */; };
 		DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35928672BA3005EADF8 /* FilesModule.swift */; };
 		DE9BC35D286730EE005EADF8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35C286730ED005EADF8 /* User.swift */; };
@@ -60,6 +61,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				DE8156492885D08E00A9E9AA /* Pods_NotesApp.framework in Embed Frameworks */,
+				DE952D6C2891C6A300F703A7 /* Pods_NotesApp.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,7 +112,6 @@
 		DE8155F52885B82500A9E9AA /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		DE8155F62885B82500A9E9AA /* DetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailVC.xib; sourceTree = "<group>"; };
 		DE8155FA2885BC3800A9E9AA /* NotesTableModuleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableModuleTest.swift; sourceTree = "<group>"; };
-		DE8155FC2885BC5700A9E9AA /* DetailModuleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleTest.swift; sourceTree = "<group>"; };
 		DE8156022885BCDC00A9E9AA /* NotesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE81561A2885CEAF00A9E9AA /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE81561C2885CEAF00A9E9AA /* openssl_grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = openssl_grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +159,30 @@
 		DE8156832885D53500A9E9AA /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE8156852885D53500A9E9AA /* Pods_NotesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_NotesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE8156872885D53500A9E9AA /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D282891C69600F703A7 /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D2B2891C6A200F703A7 /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D2C2891C6A200F703A7 /* openssl_grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = openssl_grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D2D2891C6A200F703A7 /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D2E2891C6A200F703A7 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D2F2891C6A200F703A7 /* FirebaseAuthInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuthInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D302891C6A200F703A7 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D312891C6A200F703A7 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D322891C6A200F703A7 /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D332891C6A200F703A7 /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D342891C6A200F703A7 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D352891C6A200F703A7 /* FirebaseStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D362891C6A200F703A7 /* FirebaseStorageInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseStorageInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D372891C6A200F703A7 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleDataTransport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D382891C6A200F703A7 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D392891C6A200F703A7 /* grpcpp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpcpp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D3A2891C6A200F703A7 /* gRPCCertificates-Cpp.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = "gRPCCertificates-Cpp.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D3B2891C6A200F703A7 /* grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D3C2891C6A200F703A7 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D3D2891C6A200F703A7 /* leveldb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = leveldb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D3E2891C6A200F703A7 /* uv.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = uv.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D3F2891C6A200F703A7 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D402891C6A200F703A7 /* Pods_NotesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_NotesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE952D412891C6A200F703A7 /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9BC35728672A70005EADF8 /* RegistrationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModule.swift; sourceTree = "<group>"; };
 		DE9BC35928672BA3005EADF8 /* FilesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesModule.swift; sourceTree = "<group>"; };
 		DE9BC35C286730ED005EADF8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -192,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE952D6B2891C6A300F703A7 /* Pods_NotesApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +316,6 @@
 			isa = PBXGroup;
 			children = (
 				DE8155FA2885BC3800A9E9AA /* NotesTableModuleTest.swift */,
-				DE8155FC2885BC5700A9E9AA /* DetailModuleTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -422,6 +447,30 @@
 		E7918E2F91A67B14DE776260 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE952D2B2891C6A200F703A7 /* absl.framework */,
+				DE952D2C2891C6A200F703A7 /* openssl_grpc.framework */,
+				DE952D2D2891C6A200F703A7 /* FirebaseAppCheckInterop.framework */,
+				DE952D2E2891C6A200F703A7 /* FirebaseAuth.framework */,
+				DE952D2F2891C6A200F703A7 /* FirebaseAuthInterop.framework */,
+				DE952D302891C6A200F703A7 /* FirebaseCore.framework */,
+				DE952D312891C6A200F703A7 /* FirebaseCoreDiagnostics.framework */,
+				DE952D322891C6A200F703A7 /* FirebaseCoreExtension.framework */,
+				DE952D332891C6A200F703A7 /* FirebaseCoreInternal.framework */,
+				DE952D342891C6A200F703A7 /* FirebaseFirestore.framework */,
+				DE952D352891C6A200F703A7 /* FirebaseStorage.framework */,
+				DE952D362891C6A200F703A7 /* FirebaseStorageInternal.framework */,
+				DE952D372891C6A200F703A7 /* GoogleDataTransport.framework */,
+				DE952D382891C6A200F703A7 /* GoogleUtilities.framework */,
+				DE952D392891C6A200F703A7 /* grpcpp.framework */,
+				DE952D3A2891C6A200F703A7 /* gRPCCertificates-Cpp.bundle */,
+				DE952D3B2891C6A200F703A7 /* grpc.framework */,
+				DE952D3C2891C6A200F703A7 /* GTMSessionFetcher.framework */,
+				DE952D3D2891C6A200F703A7 /* leveldb.framework */,
+				DE952D3E2891C6A200F703A7 /* uv.framework */,
+				DE952D3F2891C6A200F703A7 /* nanopb.framework */,
+				DE952D402891C6A200F703A7 /* Pods_NotesApp.framework */,
+				DE952D412891C6A200F703A7 /* FBLPromises.framework */,
+				DE952D282891C69600F703A7 /* absl.framework */,
 				DE04FBFE288F2F7900BEC769 /* libswiftDarwin.tbd */,
 				DE04FBFF288F2F7900BEC769 /* libsystem_darwin.tbd */,
 				DE04FBD2288F2F2B00BEC769 /* absl.framework */,
@@ -649,7 +698,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE81560B2885BDC700A9E9AA /* NotesTableModuleTest.swift in Sources */,
-				DE81560C2885BDC700A9E9AA /* DetailModuleTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

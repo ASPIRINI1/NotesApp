@@ -40,7 +40,7 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     }
     
     func deleteNote(note: Note) {
-        
+        notes?.removeAll()
     }
     
     func test() {

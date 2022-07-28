@@ -8,10 +8,7 @@
 import Foundation
 import Firebase
 
-protocol FireAPIProtocol {
-    var db: Firestore { get set }
-    func configureFB() -> Firestore
-    
+protocol FireAPIProtocol { 
     func signIn(email: String, password: String, completion: @escaping (Bool) -> ())
     func signOut()
     func registration(email: String, password: String, completion: @escaping (Bool) -> ())

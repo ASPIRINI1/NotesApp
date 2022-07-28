@@ -9,31 +9,65 @@
 import XCTest
 @testable import NotesApp
 
+//  MARK: - MOCK classes
 
 class MockNotesTableView: NotesTableViewProtocol {
-    
-    var loaded = false
-    var presenter: NotesTablePresenter!
-    var loading = false
-    var error = false
+
+    var presenter: NotesTablePresenterProtocol!
+    var notes: [Note]?
 
     func loadingNotes() {
-        loading = true
-        XCTAssertTrue(error)
+        
     }
 
     func notesLoaded() {
-        loaded = true
-        XCTAssertTrue(loaded)
+        guard let presenter = self.presenter as! NotesTablePresenter? else { return }
+        XCTAssertNotNil(presenter.notes)
+        self.notes = presenter.notes
     }
 
     func errorLoadingNotes() {
-        error = true
-        XCTAssertTrue(error)
+        
     }
 
     
 }
+
+class MockNetworkService: FireAPIProtocol {
+    
+    func signIn(email: String, password: String, completion: @escaping (Bool) -> ()) {
+        
+    }
+    
+    func signOut() {
+        
+    }
+    
+    func registration(email: String, password: String, completion: @escaping (Bool) -> ()) {
+        
+    }
+    
+    func getDocuments(completion: @escaping ([Note]?) -> ()) {
+        let notes = [Note(id: "Baz", text: "Bar")]
+        completion(notes)
+    }
+    
+    func createNewDocument(text: String) {
+        
+    }
+    
+    func updateDocument(id: String, text: String) {
+        
+    }
+    
+    func deleteDocument(id: String) {
+        
+    }
+    
+  
+}
+
+//  MARK: - Tests
 
 class NotesTableModuleTest: XCTestCase {
 
@@ -44,8 +78,8 @@ class NotesTableModuleTest: XCTestCase {
 
     override func setUpWithError() throws {
         view = MockNotesTableView()
-        networkService = FireAPI.shared
-        notes = [Note(id: "Baz", text: "Bar")]
+        networkService = MockNetworkService()
+        notes = []
         presenter = NotesTablePresenter(view: view, networkService: networkService)
     }
 
@@ -62,18 +96,18 @@ class NotesTableModuleTest: XCTestCase {
         XCTAssertNotNil(notes)
         XCTAssertNotNil(presenter)
     }
-
-    func testView() {
-    }
-
-    func testNoteModel() {
-        XCTAssertNotNil(notes?.first)
-        XCTAssertEqual(notes?.first?.id, "Baz")
-        XCTAssertEqual(notes?.first?.text, "Bar")
-    }
     
     func testPresenter() {
         
+        guard let presenter = self.presenter as! NotesTablePresenter? else { return }
+        guard let view = self.view as! MockNotesTableView? else { return }
+        
+        view.presenter = presenter
+        presenter.getNotes()
+        
+        XCTAssertNotNil(view.notes?.first)
+        XCTAssertNotNil(presenter.notes?.first)
+        XCTAssertEqual(view.notes?.first?.id, presenter.notes?.first?.id)
     }
 
 }
