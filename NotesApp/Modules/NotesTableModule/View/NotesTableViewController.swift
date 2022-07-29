@@ -86,9 +86,9 @@ class NotesTableViewController: UITableViewController {
 //    MARK: - Table view Delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedNote = presenter.notes?[indexPath.row] else { return }
-        let detailVC = ModuleBuilder.createDetailViewController(note: selectedNote)
-        navigationController?.pushViewController(detailVC, animated: true)
+        guard let selectedCell = tableView.cellForRow(at: indexPath) as? NotesTableViewCell else { return }
+        guard let noteID = selectedCell.noteID else { return }
+        presenter.noteSelected(noteID: noteID)
     }
 }
 

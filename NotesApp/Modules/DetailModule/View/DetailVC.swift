@@ -16,7 +16,7 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.setNote()
+        presenter.setNote(note: Note(id: "", text: ""))
     }
     
     override func viewWillDisappear(_ animated: Bool) {

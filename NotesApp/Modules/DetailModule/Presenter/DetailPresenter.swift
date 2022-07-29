@@ -13,7 +13,7 @@ protocol DetailViewProtocol {
 
 protocol DetailPresenterProtocol {
     init(view: DetailViewProtocol, networkService: FireAPIProtocol, note: Note)
-    func setNote()
+    func setNote(note: Note)
     func updateNote(text: String)
 }
 
@@ -29,7 +29,7 @@ class DetailPresenter: DetailPresenterProtocol {
         self.note = note
     }
     
-    func setNote() {
+    func setNote(note: Note) {
         view?.setNote(note: note)
     }
     
