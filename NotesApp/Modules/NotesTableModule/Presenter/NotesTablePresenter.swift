@@ -52,7 +52,6 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
         let t = Timer(timeInterval: 2, repeats: false) { _ in
            
         }
-        
     }
     
 }

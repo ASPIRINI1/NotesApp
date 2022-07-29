@@ -262,9 +262,9 @@
 		DE4CA9DA2884BDAB00924D66 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DE4CA9E22884C1CE00924D66 /* Cell */,
 				DE4CA9DE2884C08600924D66 /* NotesTableViewController.swift */,
 				DE4CA9DF2884C08600924D66 /* NotesTableViewController.xib */,
+				DE4CA9E22884C1CE00924D66 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";

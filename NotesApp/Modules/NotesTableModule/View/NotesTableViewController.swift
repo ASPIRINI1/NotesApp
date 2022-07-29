@@ -10,7 +10,10 @@ import UIKit
 class NotesTableViewController: UITableViewController {
     
     var presenter: NotesTablePresenter!
-    var isFiltering = false
+    var searchController = SearchController()
+    var isFiltering: Bool {
+        return searchController.isActive && !searchController.searchBarIsEmpty
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +32,21 @@ class NotesTableViewController: UITableViewController {
         }
         let addNoteButton = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: action, menu: nil)
         navigationItem.setRightBarButton(addNoteButton, animated: false)
+        
+//        SetUp searchController
+        
+        searchController.searchingDelegate = self
+        self.navigationItem.searchController = searchController
     }
     
     // MARK: - Table view DataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let notesCount = presenter.notes?.count else { return 0 }
+        if isFiltering {
+            guard let filtredCount = presenter.filtredNotes?.count else { return 0 }
+            return filtredCount
+        }
         return notesCount
     }
     
@@ -78,8 +90,9 @@ class NotesTableViewController: UITableViewController {
         let detailVC = ModuleBuilder.createDetailViewController(note: selectedNote)
         navigationController?.pushViewController(detailVC, animated: true)
     }
-    
 }
+
+//  MARK: - Extensions
 
 extension NotesTableViewController: NotesTableViewProtocol {
     
@@ -90,7 +103,6 @@ extension NotesTableViewController: NotesTableViewProtocol {
     }
     
     func notesLoaded() {
-        
         if let activityIndicator = view.subviews.first as? UIActivityIndicatorView {
             activityIndicator.stopAnimating()
             activityIndicator.removeFromSuperview()
@@ -104,5 +116,19 @@ extension NotesTableViewController: NotesTableViewProtocol {
         
         present(alert, animated: true)
     }
+}
+
+//  MARK: Searching
+
+extension NotesTableViewController: SearchNotesDelegate {
     
+    func setNotesForSearching() -> [Note] {
+        guard let notes = presenter.notes else { return [] }
+        return notes
+    }
+    
+    func getResults(notes: [Note]) {
+        presenter.filtredNotes = notes
+        tableView.reloadData()
+    }
 }
