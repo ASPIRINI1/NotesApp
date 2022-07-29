@@ -17,7 +17,6 @@ protocol NotesTablePresenterProtocol {
     init(view: NotesTableViewProtocol, networkService: FireAPIProtocol)
     func getNotes()
     func deleteNote(noteID: String)
-    func noteSelected(noteID: String)
 }
 
 class NotesTablePresenter: NotesTablePresenterProtocol {
@@ -44,22 +43,4 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
         networkService.deleteDocument(id: noteID)
         notes?.removeAll()
     }
-    
-    func test() {
-        view?.loadingNotes()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.view?.notesLoaded()
-            print("timer")
-        }
-        let t = Timer(timeInterval: 2, repeats: false) { _ in
-           
-        }
-    }
-    
-    func noteSelected(noteID: String) {
-        networkService.getNote(noteID: noteID) { note in
-            let detailPresenter = ModuleBuilder.createDetailViewController(note: note)
-        }
-    }
-    
 }

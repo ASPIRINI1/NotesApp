@@ -36,6 +36,17 @@ extension FireAPI {
         }
      }
     
+    func getNote(noteID: String, completion: @escaping (Note)->()) {
+        
+        guard let user = AppSettings.shared.user else { return }
+        db.collection(user.uid).document(noteID).getDocument { documentSnapshot, error in
+            
+            if let error = error { print("Error getting document: ", error); return }
+            guard let document = documentSnapshot else { return }
+            completion(Note(id: document.documentID, text: document.get("text") as? String ?? ""))
+        }
+    }
+    
     func createNewDocument(text: String) {
         
         let id = UUID().uuidString

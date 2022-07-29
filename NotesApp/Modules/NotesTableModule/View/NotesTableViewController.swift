@@ -30,6 +30,7 @@ class NotesTableViewController: UITableViewController {
         let action = UIAction { _ in
             
         }
+        
         let addNoteButton = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: action, menu: nil)
         navigationItem.setRightBarButton(addNoteButton, animated: false)
         
@@ -58,8 +59,10 @@ class NotesTableViewController: UITableViewController {
         
         if isFiltering {
             note = presenter.filtredNotes![indexPath.row].text
+            cell.noteID = presenter.filtredNotes![indexPath.row].id
         } else {
             note = String(presenter.notes![indexPath.row].text.suffix(30))
+            cell.noteID = presenter.notes![indexPath.row].id
 //            presenter.notes?.remove(at: indexPath.row)
         }
         
@@ -88,7 +91,8 @@ class NotesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) as? NotesTableViewCell else { return }
         guard let noteID = selectedCell.noteID else { return }
-        presenter.noteSelected(noteID: noteID)
+        let detailVC = ModuleBuilder.createDetailViewController(noteID: noteID)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

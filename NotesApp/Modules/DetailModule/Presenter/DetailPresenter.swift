@@ -12,7 +12,7 @@ protocol DetailViewProtocol {
 }
 
 protocol DetailPresenterProtocol {
-    init(view: DetailViewProtocol, networkService: FireAPIProtocol, note: Note)
+    init(view: DetailViewProtocol, networkService: FireAPIProtocol, noteID: String)
     func setNote(note: Note)
     func updateNote(text: String)
 }
@@ -23,10 +23,12 @@ class DetailPresenter: DetailPresenterProtocol {
     var networkService: FireAPIProtocol!
     var note: Note!
     
-    required init(view: DetailViewProtocol, networkService: FireAPIProtocol, note: Note) {
+    required init(view: DetailViewProtocol, networkService: FireAPIProtocol, noteID: String) {
         self.view = view
         self.networkService = networkService
-        self.note = note
+        networkService.getNote(noteID: noteID) { note in
+            self.note = note
+        }
     }
     
     func setNote(note: Note) {

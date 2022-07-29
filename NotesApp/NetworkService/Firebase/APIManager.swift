@@ -14,6 +14,7 @@ protocol FireAPIProtocol {
     func registration(email: String, password: String, completion: @escaping (Bool) -> ())
     
     func getDocuments(completion: @escaping ([Note]?) -> ())
+    func getNote(noteID: String, completion: @escaping (Note)->())
     func createNewDocument(text: String)
     func updateDocument(id: String, text:String)
     func deleteDocument(id: String)
