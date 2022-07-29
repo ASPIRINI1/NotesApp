@@ -28,7 +28,8 @@ class NotesTableViewController: UITableViewController {
         navigationItem.title = NSLocalizedString("Notes table", comment: "")
         
         let action = UIAction { _ in
-            
+            let detailVC = ModuleBuilder.createDetailViewController(noteID: nil)
+            self.navigationController?.pushViewController(detailVC, animated: true)
         }
         
         let addNoteButton = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: action, menu: nil)

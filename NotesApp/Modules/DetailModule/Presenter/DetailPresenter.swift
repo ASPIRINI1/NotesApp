@@ -8,12 +8,12 @@
 import Foundation
 
 protocol DetailViewProtocol {
-    func setNote(note: Note)
+    func setNote(text: String)
 }
 
 protocol DetailPresenterProtocol {
-    init(view: DetailViewProtocol, networkService: FireAPIProtocol, noteID: String)
-    func setNote(note: Note)
+    init(view: DetailViewProtocol, networkService: FireAPIProtocol, noteID: String?)
+    func viewLoaded()
     func updateNote(text: String)
 }
 
@@ -21,23 +21,37 @@ class DetailPresenter: DetailPresenterProtocol {
     
     var view: DetailViewProtocol?
     var networkService: FireAPIProtocol!
-    var note: Note!
+    var note: Note?
     
-    required init(view: DetailViewProtocol, networkService: FireAPIProtocol, noteID: String) {
+    required init(view: DetailViewProtocol, networkService: FireAPIProtocol, noteID: String?) {
         self.view = view
         self.networkService = networkService
+        guard let noteID = noteID else {
+            note = Note(id: "", text: "")
+            return
+        }
+
         networkService.getNote(noteID: noteID) { note in
             self.note = note
+            self.viewLoaded()
         }
     }
     
-    func setNote(note: Note) {
-        view?.setNote(note: note)
+    func viewLoaded() {
+        guard let note = note else { return }
+        view?.setNote(text: note.text)
     }
     
     func updateNote(text: String) {
-        networkService.updateDocument(id: note.id, text: text)
+        guard let note = note else {
+            return
+        }
+        if note.id == "" {
+            networkService.createNewDocument(text: text)
+            return
+        }
+        if text != note.text {
+            networkService.updateDocument(id: note.id, text: text)
+        }
     }
-    
-    
 }

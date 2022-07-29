@@ -16,22 +16,18 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.setNote(note: Note(id: "", text: ""))
+        textView.text = ""
+        presenter.viewLoaded()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        guard textView.text == presenter.note.text else { return }
         guard let text = textView.text else { return }
         presenter.updateNote(text: text)
     }
-
-
 }
 
 extension DetailVC: DetailViewProtocol {
-    func setNote(note: Note) {
-        textView.text = note.text
+    func setNote(text: String) {
+        textView.text = text
     }
-    
-    
 }
