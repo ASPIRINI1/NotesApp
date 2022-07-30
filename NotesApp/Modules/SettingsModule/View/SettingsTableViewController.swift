@@ -9,25 +9,29 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
-    var sections = [(sectionName: String, rows: [SettingsTableViewCell])]()
-    var cells = [SettingsTableViewCell]()
     var presenter: SettingsPresenter!
+    private var sections = [(sectionName: String, rows: [SettingsTableViewCell])]()
         
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        setUpTableView()
+        createTableView()
     }
     
-    func configureView() {
+    private func configureView() {
 //        Setup navigation bar
         navigationController?.title = NSLocalizedString("Settings", comment: "")
         navigationItem.title = NSLocalizedString("Settings", comment: "")
     }
     
-    func setUpTableView() {
-        
-//        Setting signInCell
+    private func createTableView() {
+        sections = [
+            (NSLocalizedString("App", comment: ""), [createSignInCell(), createLanguageCell(), createAppThemeCell()]),
+            (NSLocalizedString("About", comment: ""), [createProductCell(), createDevCell()])
+        ]
+    }
+    
+    private func createSignInCell() -> SettingsTableViewCell {
         let signInCell = SettingsTableViewCell()
         let signInLabel = UILabel()
         let signInButton = UIButton()
@@ -39,13 +43,22 @@ class SettingsTableViewController: UITableViewController {
             signInLabel.text = NSLocalizedString("Not authorized", comment: "")
             signInButton.setTitle(NSLocalizedString("SignIn", comment: ""), for: .normal)
         }
+        
+        signInButton.setTitleColor(.systemBlue, for: .normal)
+        signInButton.contentHorizontalAlignment = .right
+        
         signInCell.leftItem = signInLabel
         signInCell.rightItem = signInButton
         
+        return signInCell
+    }
+    
+    private func createLanguageCell() -> SettingsTableViewCell {
         let languageCell = SettingsTableViewCell()
         let languageLabel = UILabel()
-        let languagePickerView = UIPickerView()
+        let languagePickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 20, height: 0))
         
+        languageCell.height = 88
         languageLabel.text = NSLocalizedString("Language", comment: "")
         languagePickerView.dataSource = self
         languagePickerView.delegate = self
@@ -53,63 +66,89 @@ class SettingsTableViewController: UITableViewController {
         languageCell.leftItem = languageLabel
         languageCell.rightItem = languagePickerView
         
+        return languageCell
+    }
+    
+    private func createAppThemeCell() -> SettingsTableViewCell {
         let appThemeCell = SettingsTableViewCell()
         let appThemeLabel = UILabel()
         let appThemeSegmentedControl = UISegmentedControl(items: [NSLocalizedString("System", comment: ""),
                                                                   NSLocalizedString("Light", comment: ""),
                                                                   NSLocalizedString("Dark", comment: "")])
         appThemeLabel.text = NSLocalizedString("App theme", comment: "")
+        
         appThemeCell.leftItem = appThemeLabel
         appThemeCell.rightItem = appThemeSegmentedControl
         
+        return appThemeCell
+    }
+    
+    private func createProductCell() -> SettingsTableViewCell {
         let productWebCell = SettingsTableViewCell()
         let productLabel = UILabel()
         let productButton = UIButton()
+        
         productLabel.text = NSLocalizedString("Product WEB-site", comment: "")
         productButton.setTitle(NSLocalizedString("Open", comment: ""), for: .normal)
+        productButton.contentHorizontalAlignment = .right
+        productButton.setTitleColor(.systemBlue, for: .normal)
+        
         productButton.addAction(UIAction(handler: { _ in
             
         }), for: .touchUpInside)
+        
         productWebCell.leftItem = productLabel
         productWebCell.rightItem = productButton
         
+        return productWebCell
+    }
+    
+    private func createDevCell() -> SettingsTableViewCell {
         let developerInfoCell = SettingsTableViewCell()
         let devLabel = UILabel()
         let devButton = UIButton()
+        
         devLabel.text = NSLocalizedString("Developer WEB-site", comment: "")
         devButton.setTitle(NSLocalizedString("GitHub", comment: ""), for: .normal)
+        devButton.contentHorizontalAlignment = .right
+        devButton.setTitleColor(.systemBlue, for: .normal)
+        
         devButton.addAction(UIAction(handler: { _ in
             
         }), for: .touchUpInside)
-        developerInfoCell.leftItem = productLabel
-        developerInfoCell.rightItem = productButton
         
-        sections = [
-            (NSLocalizedString("App", comment: ""), [signInCell, languageCell, appThemeCell]),
-            (NSLocalizedString("About", comment: ""), [productWebCell, developerInfoCell])
-        ]
+        developerInfoCell.leftItem = devLabel
+        developerInfoCell.rightItem = devButton
         
-        
+        return developerInfoCell
     }
-    
+ 
+    //  MARK: - TableView Delegate/DataSource
+
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print(sections.count)
-//        return sections.count
-        return 2
+        return sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return sections[section].rows.count
-        return 2
+        return sections[section].rows.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].sectionName
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let height = sections[indexPath.section].rows[indexPath.row].height else { return 44 }
+        return height
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        return sections[indexPath.section].rows[indexPath.row]
-        return UITableViewCell()
+        return sections[indexPath.section].rows[indexPath.row]
     }
 }
+    
 
-//  MARK: - PickerView Delegate, PickerView DataSource
+//  MARK: - PickerView Delegate/DataSource
 
 extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -119,6 +158,4 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 0
     }
-    
-    
 }
