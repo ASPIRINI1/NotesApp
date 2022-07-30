@@ -242,14 +242,6 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		DE4CA9D62884BCA700924D66 /* NetworkService */ = {
-			isa = PBXGroup;
-			children = (
-				DEDD856327931C410075D525 /* Firebase */,
-			);
-			path = NetworkService;
-			sourceTree = "<group>";
-		};
 		DE4CA9D92884BDA100924D66 /* NotesTableModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,15 +329,6 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		DE9BC35B286730B0005EADF8 /* Structs */ = {
-			isa = PBXGroup;
-			children = (
-				DEDD856427931C510075D525 /* Note.swift */,
-				DE9BC35C286730ED005EADF8 /* User.swift */,
-			);
-			path = Structs;
-			sourceTree = "<group>";
-		};
 		DE9BC35E28676F30005EADF8 /* NoteView */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,10 +361,19 @@
 		DE9F8DA827DA438A001852C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DE9F8DA927DA43A3001852C3 /* AppSettings.swift */,
-				DE9BC35B286730B0005EADF8 /* Structs */,
+				DEDD856427931C510075D525 /* Note.swift */,
+				DE9BC35C286730ED005EADF8 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DEDA5CDA28953A7B005E4E65 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DE9F8DA927DA43A3001852C3 /* AppSettings.swift */,
+				DEDD856327931C410075D525 /* Firebase */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		DEDD8541279317400075D525 = {
@@ -408,10 +400,10 @@
 		DEDD854C279317400075D525 /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
+				DEDA5CDA28953A7B005E4E65 /* Services */,
 				DEDD854D279317400075D525 /* AppDelegate.swift */,
 				DEDD854F279317400075D525 /* SceneDelegate.swift */,
 				DE4CA9D72884BCE700924D66 /* ModulesBuilder.swift */,
-				DE4CA9D62884BCA700924D66 /* NetworkService */,
 				DE9F8DA827DA438A001852C3 /* Model */,
 				DEDD856827931D730075D525 /* ViewControllers */,
 				DE9F8DA627DA428C001852C3 /* TabBarController.swift */,
