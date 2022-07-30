@@ -24,7 +24,8 @@ class NotesTableViewController: UITableViewController {
     func configureView() {
         
         tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil), forCellReuseIdentifier: "NotesTableViewCell")
-        navigationController?.title = NSLocalizedString("Notes table", comment: "")
+        
+//        Setup navigation bar
         navigationItem.title = NSLocalizedString("Notes table", comment: "")
         
         let action = UIAction { _ in
@@ -36,7 +37,6 @@ class NotesTableViewController: UITableViewController {
         navigationItem.setRightBarButton(addNoteButton, animated: false)
         
 //        SetUp searchController
-        
         searchController.searchingDelegate = self
         self.navigationItem.searchController = searchController
     }

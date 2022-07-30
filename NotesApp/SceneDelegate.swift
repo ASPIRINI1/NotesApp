@@ -17,10 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-        let tabBarController = UITabBarController()
-        let navigationController = UINavigationController(rootViewController: ModuleBuilder.createNotesTable())
+        let tabBarController = TabBarController()
+        let notesTableNavigationController = UINavigationController(rootViewController: ModuleBuilder.createNotesTable())
+        let settingsNavigationController = UINavigationController(rootViewController: ModuleBuilder.createSettingsTableViewController())
         
-        tabBarController.setViewControllers([navigationController], animated: true)
+        notesTableNavigationController.title = NSLocalizedString("Notes table", comment: "")
+        settingsNavigationController.title = NSLocalizedString("Settings", comment: "")
+        
+        tabBarController.setViewControllers([notesTableNavigationController, settingsNavigationController], animated: true)
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }

@@ -32,6 +32,10 @@
 		DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA927DA43A3001852C3 /* AppSettings.swift */; };
 		DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAF9AFA2797442F00831B85 /* SettingsTableVC.swift */; };
 		DECF042927C944E90069FF0A /* AuthorisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF042827C944E90069FF0A /* AuthorisationViewController.swift */; };
+		DEDA5CE028953B98005E4E65 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA5CDE28953B98005E4E65 /* SettingsTableViewController.swift */; };
+		DEDA5CE128953B98005E4E65 /* SettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEDA5CDF28953B98005E4E65 /* SettingsTableViewController.xib */; };
+		DEDA5CE328953BB5005E4E65 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA5CE228953BB5005E4E65 /* SettingsPresenter.swift */; };
+		DEDA5CEC28955251005E4E65 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA5CEB28955251005E4E65 /* SettingsTableViewCell.swift */; };
 		DEDD854E279317400075D525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD854D279317400075D525 /* AppDelegate.swift */; };
 		DEDD8550279317400075D525 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD854F279317400075D525 /* SceneDelegate.swift */; };
 		DEDD8555279317400075D525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8553279317400075D525 /* Main.storyboard */; };
@@ -192,6 +196,10 @@
 		DE9F8DA927DA43A3001852C3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		DEAF9AFA2797442F00831B85 /* SettingsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableVC.swift; sourceTree = "<group>"; };
 		DECF042827C944E90069FF0A /* AuthorisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisationViewController.swift; sourceTree = "<group>"; };
+		DEDA5CDE28953B98005E4E65 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		DEDA5CDF28953B98005E4E65 /* SettingsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewController.xib; sourceTree = "<group>"; };
+		DEDA5CE228953BB5005E4E65 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		DEDA5CEB28955251005E4E65 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		DEDD854A279317400075D525 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEDD854D279317400075D525 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEDD854F279317400075D525 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +246,7 @@
 			children = (
 				DE4CA9D92884BDA100924D66 /* NotesTableModule */,
 				DE8155F02885B68B00A9E9AA /* DetailModule */,
+				DEDA5CDB28953B4F005E4E65 /* SettingsModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -376,6 +385,40 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		DEDA5CDB28953B4F005E4E65 /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				DEDA5CDC28953B5E005E4E65 /* View */,
+				DEDA5CDD28953B62005E4E65 /* Presenter */,
+			);
+			path = SettingsModule;
+			sourceTree = "<group>";
+		};
+		DEDA5CDC28953B5E005E4E65 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DEDA5CDE28953B98005E4E65 /* SettingsTableViewController.swift */,
+				DEDA5CDF28953B98005E4E65 /* SettingsTableViewController.xib */,
+				DEDA5CEB28955251005E4E65 /* SettingsTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DEDA5CDD28953B62005E4E65 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				DEDA5CE228953BB5005E4E65 /* SettingsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		DEDA5CE4289540C1005E4E65 /* RouteControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RouteControllers;
+			sourceTree = "<group>";
+		};
 		DEDD8541279317400075D525 = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +443,7 @@
 		DEDD854C279317400075D525 /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
+				DEDA5CE4289540C1005E4E65 /* RouteControllers */,
 				DEDA5CDA28953A7B005E4E65 /* Services */,
 				DEDD854D279317400075D525 /* AppDelegate.swift */,
 				DEDD854F279317400075D525 /* SceneDelegate.swift */,
@@ -629,6 +673,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEDA5CE128953B98005E4E65 /* SettingsTableViewController.xib in Resources */,
 				DE52A41527E77C1400C9B612 /* Localizable.strings in Resources */,
 				DEDD855A279317420075D525 /* LaunchScreen.storyboard in Resources */,
 				DE4CA9E62884C1E800924D66 /* NotesTableViewCell.xib in Resources */,
@@ -708,16 +753,19 @@
 				DE4CA9E52884C1E800924D66 /* NotesTableViewCell.swift in Sources */,
 				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
 				DE4CA9E02884C08600924D66 /* NotesTableViewController.swift in Sources */,
+				DEDA5CE328953BB5005E4E65 /* SettingsPresenter.swift in Sources */,
 				DE8155F72885B82500A9E9AA /* DetailVC.swift in Sources */,
 				DE9BC35D286730EE005EADF8 /* User.swift in Sources */,
 				DE4CA9D82884BCE700924D66 /* ModulesBuilder.swift in Sources */,
 				DE9BC364286770CC005EADF8 /* NoteTableViewController.swift in Sources */,
 				DE9BC366286773B5005EADF8 /* SearchController.swift in Sources */,
 				DEDD854E279317400075D525 /* AppDelegate.swift in Sources */,
+				DEDA5CEC28955251005E4E65 /* SettingsTableViewCell.swift in Sources */,
 				DECF042927C944E90069FF0A /* AuthorisationViewController.swift in Sources */,
 				DEDD8550279317400075D525 /* SceneDelegate.swift in Sources */,
 				DEDD856A27931F1C0075D525 /* NoteTableViewCell.swift in Sources */,
 				DE156CB02795865D00356E1A /* DetailViewController.swift in Sources */,
+				DEDA5CE028953B98005E4E65 /* SettingsTableViewController.swift in Sources */,
 				DE219F2727DB8CED00A956BA /* WEBViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
