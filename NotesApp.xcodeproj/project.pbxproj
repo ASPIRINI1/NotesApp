@@ -30,6 +30,9 @@
 		DE9BC366286773B5005EADF8 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC365286773B5005EADF8 /* SearchController.swift */; };
 		DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA627DA428C001852C3 /* TabBarController.swift */; };
 		DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA927DA43A3001852C3 /* AppSettings.swift */; };
+		DEAB78DF28970C9E00BF0A9C /* WEBPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB78DE28970C9E00BF0A9C /* WEBPresenter.swift */; };
+		DEAB78E22897151C00BF0A9C /* WEBViewControllerr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB78E02897151C00BF0A9C /* WEBViewControllerr.swift */; };
+		DEAB78E32897151C00BF0A9C /* WEBViewControllerr.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEAB78E12897151C00BF0A9C /* WEBViewControllerr.xib */; };
 		DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAF9AFA2797442F00831B85 /* SettingsTableVC.swift */; };
 		DECF042927C944E90069FF0A /* AuthorisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF042827C944E90069FF0A /* AuthorisationViewController.swift */; };
 		DEDA5CE028953B98005E4E65 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA5CDE28953B98005E4E65 /* SettingsTableViewController.swift */; };
@@ -193,6 +196,9 @@
 		DE9BC365286773B5005EADF8 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		DE9F8DA627DA428C001852C3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		DE9F8DA927DA43A3001852C3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		DEAB78DE28970C9E00BF0A9C /* WEBPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEBPresenter.swift; sourceTree = "<group>"; };
+		DEAB78E02897151C00BF0A9C /* WEBViewControllerr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEBViewControllerr.swift; sourceTree = "<group>"; };
+		DEAB78E12897151C00BF0A9C /* WEBViewControllerr.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WEBViewControllerr.xib; sourceTree = "<group>"; };
 		DEAF9AFA2797442F00831B85 /* SettingsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableVC.swift; sourceTree = "<group>"; };
 		DECF042827C944E90069FF0A /* AuthorisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisationViewController.swift; sourceTree = "<group>"; };
 		DEDA5CDE28953B98005E4E65 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 				DE4CA9D92884BDA100924D66 /* NotesTableModule */,
 				DE8155F02885B68B00A9E9AA /* DetailModule */,
 				DEDA5CDB28953B4F005E4E65 /* SettingsModule */,
+				DEAB78DB28970C5100BF0A9C /* WEBModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -372,6 +379,32 @@
 				DE9BC35C286730ED005EADF8 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DEAB78DB28970C5100BF0A9C /* WEBModule */ = {
+			isa = PBXGroup;
+			children = (
+				DEAB78DD28970C8900BF0A9C /* View */,
+				DEAB78DC28970C7800BF0A9C /* Presenter */,
+			);
+			path = WEBModule;
+			sourceTree = "<group>";
+		};
+		DEAB78DC28970C7800BF0A9C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				DEAB78DE28970C9E00BF0A9C /* WEBPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		DEAB78DD28970C8900BF0A9C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DEAB78E02897151C00BF0A9C /* WEBViewControllerr.swift */,
+				DEAB78E12897151C00BF0A9C /* WEBViewControllerr.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		DEDA5CDA28953A7B005E4E65 /* Services */ = {
@@ -678,6 +711,7 @@
 				DE4CA9E12884C08600924D66 /* NotesTableViewController.xib in Resources */,
 				DEDD8557279317420075D525 /* Assets.xcassets in Resources */,
 				DEDD8555279317400075D525 /* Main.storyboard in Resources */,
+				DEAB78E32897151C00BF0A9C /* WEBViewControllerr.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +774,7 @@
 			files = (
 				DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */,
 				DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */,
+				DEAB78E22897151C00BF0A9C /* WEBViewControllerr.swift in Sources */,
 				DEDD856527931C510075D525 /* Note.swift in Sources */,
 				DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */,
 				DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */,
@@ -747,6 +782,7 @@
 				DE4CA9DD2884BDC000924D66 /* NotesTablePresenter.swift in Sources */,
 				DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */,
 				DE4CA9E52884C1E800924D66 /* NotesTableViewCell.swift in Sources */,
+				DEAB78DF28970C9E00BF0A9C /* WEBPresenter.swift in Sources */,
 				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
 				DE4CA9E02884C08600924D66 /* NotesTableViewController.swift in Sources */,
 				DEDA5CE328953BB5005E4E65 /* SettingsPresenter.swift in Sources */,

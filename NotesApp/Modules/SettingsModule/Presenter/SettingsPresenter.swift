@@ -10,6 +10,7 @@ import UIKit
 
 protocol SettingsViewProtocol {
     func setAppLanguages(_languages:[String])
+    func setAppTheme()
 }
 
 protocol SettingsPresenterProtocol {
