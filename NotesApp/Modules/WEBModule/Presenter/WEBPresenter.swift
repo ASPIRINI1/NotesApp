@@ -23,13 +23,13 @@ protocol WEBPresenterProtocol {
 
 class WEBPresenter: WEBPresenterProtocol {
     
+    let view: WEBViewProtocol!
+    var url: String!
+    
     required init(url: String, view: WEBViewProtocol) {
         self.view = view
         self.url = url
     }
-    
-    let view: WEBViewProtocol!
-    var url: String!
     
     func back() {
         guard let view = view as? WEBViewControllerr else { return }

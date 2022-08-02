@@ -12,9 +12,11 @@ protocol ModulesBuiler {
     static func createNotesTable() -> UITableViewController
     static func createDetailViewController(noteID: String?) -> UIViewController
     static func createSettingsTableViewController() -> UITableViewController
+    static func createWEBViewController(url: String) -> UIViewController
 }
 
 class ModuleBuilder: ModulesBuiler {
+    
     static func createNotesTable() -> UITableViewController {
         let view = NotesTableViewController()
         let networkService = FireAPI.shared
@@ -35,11 +37,18 @@ class ModuleBuilder: ModulesBuiler {
         let view = SettingsTableViewController()
         let networkService = FireAPI.shared
         let WEBview = WEBViewController()
-        let presenter = SettingsPresenter()
+        let presenter = SettingsPresenter(view: view, networkService: networkService)
         view.presenter = presenter
         return view
     }
     
+    static func createWEBViewController(url: String) -> UIViewController {
+        let view = WEBViewControllerr()
+        let networkService = FireAPI.shared
+        let presenter = WEBPresenter(url: url, view: view)
+        view.presenter = presenter
+        return view
+    }
     
 }
 

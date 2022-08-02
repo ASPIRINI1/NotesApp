@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+enum MainURLs: String {
+    case developer = "https://github.com/ASPIRINI1"
+    case productInfo = "https://www.google.com"
+}
+
 protocol SettingsViewProtocol {
     func setAppLanguages(_languages:[String])
     func setAppTheme()
@@ -21,9 +26,33 @@ protocol SettingsPresenterProtocol {
     func openDevInfo()
 }
 
-class SettingsPresenter {
+class SettingsPresenter: SettingsPresenterProtocol {
     
     var view: UITableViewController?
     var networkService: FireAPIProtocol?
-    var WEBView: UIViewController?
+    
+    required init(view: UITableViewController, networkService: FireAPIProtocol) {
+        self.view = view
+        self.networkService = networkService
+    }
+    
+    func singIn() {
+        
+    }
+    
+    func setAppTheme() {
+        
+    }
+    
+    func openProductWEB() {
+        let webView = ModuleBuilder.createWEBViewController(url: MainURLs.productInfo.rawValue)
+        view?.navigationController?.pushViewController(webView, animated: true)
+    }
+    
+    func openDevInfo() {
+        let webView = ModuleBuilder.createWEBViewController(url: MainURLs.developer.rawValue)
+        view?.navigationController?.pushViewController(webView, animated: true)
+    }
+    
+    
 }
