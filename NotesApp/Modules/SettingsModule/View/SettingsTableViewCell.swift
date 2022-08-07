@@ -43,16 +43,15 @@ class SettingsTableViewCell: UITableViewCell {
             
             rightItem.translatesAutoresizingMaskIntoConstraints = false
             var constraints = [NSLayoutConstraint]()
-
+//
             constraints.append(NSLayoutConstraint(item: layoutMarginsGuide, attribute: .top, relatedBy: .equal, toItem: rightItem, attribute: .top, multiplier: 1, constant: 5))
             constraints.append(NSLayoutConstraint(item: layoutMarginsGuide, attribute: .bottom, relatedBy: .equal, toItem: rightItem, attribute: .bottom, multiplier: 1, constant: 5))
             constraints.append(NSLayoutConstraint(item: layoutMarginsGuide, attribute: .right, relatedBy: .equal, toItem: rightItem, attribute: .right, multiplier: 1, constant: 5))
+            rightItem.frame = CGRect(origin: CGPoint(x: 20, y: 20), size: CGSize(width: 100, height: 20))
 
             if let leftItem = leftItem {
                 constraints.append(NSLayoutConstraint(item: leftItem, attribute: .right, relatedBy: .equal, toItem: rightItem, attribute: .left, multiplier: 1, constant: 5))
             }
-
-//            rightItem.backgroundColor = .red
             
             addConstraints(constraints)
         }
@@ -61,7 +60,6 @@ class SettingsTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
