@@ -13,6 +13,7 @@ protocol ModulesBuiler {
     static func createDetailViewController(noteID: String?) -> UIViewController
     static func createSettingsTableViewController() -> UITableViewController
     static func createWEBViewController(url: String) -> UIViewController
+    static func createAuthorizationViewController() -> UIViewController
 }
 
 class ModuleBuilder: ModulesBuiler {
@@ -50,6 +51,13 @@ class ModuleBuilder: ModulesBuiler {
         return view
     }
     
+    static func createAuthorizationViewController() -> UIViewController {
+        let view = AuthorizationViewControllerr()
+        let networkService = FireAPI.shared
+        let presenter = AuthorizationPresenter(view: view, networkService: networkService)
+        view.presenter = presenter
+        return view
+    }
 }
 
 

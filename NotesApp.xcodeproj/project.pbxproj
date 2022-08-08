@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE02582728A193C2006497BE /* AuthorizationViewControllerr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02582528A193C2006497BE /* AuthorizationViewControllerr.swift */; };
+		DE02582828A193C2006497BE /* AuthorizationViewControllerr.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE02582628A193C2006497BE /* AuthorizationViewControllerr.xib */; };
+		DE02582A28A193DE006497BE /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02582928A193DE006497BE /* AuthorizationPresenter.swift */; };
 		DE156CB02795865D00356E1A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE156CAF2795865D00356E1A /* DetailViewController.swift */; };
 		DE219F2727DB8CED00A956BA /* WEBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE219F2627DB8CED00A956BA /* WEBViewController.swift */; };
 		DE4CA9D82884BCE700924D66 /* ModulesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9D72884BCE700924D66 /* ModulesBuilder.swift */; };
@@ -78,6 +81,9 @@
 		85BCDF812468C7C029B2F02F /* Pods_NotesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFEE54E9182AFD183FF8F65E /* Pods-NotesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesApp.release.xcconfig"; path = "Target Support Files/Pods-NotesApp/Pods-NotesApp.release.xcconfig"; sourceTree = "<group>"; };
 		CC4F1A8F2DA7DF4762F4F701 /* Pods-NotesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesApp.debug.xcconfig"; path = "Target Support Files/Pods-NotesApp/Pods-NotesApp.debug.xcconfig"; sourceTree = "<group>"; };
+		DE02582528A193C2006497BE /* AuthorizationViewControllerr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewControllerr.swift; sourceTree = "<group>"; };
+		DE02582628A193C2006497BE /* AuthorizationViewControllerr.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizationViewControllerr.xib; sourceTree = "<group>"; };
+		DE02582928A193DE006497BE /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
 		DE04FBD2288F2F2B00BEC769 /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE04FBD4288F2F2B00BEC769 /* openssl_grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = openssl_grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE04FBD6288F2F2B00BEC769 /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,13 +251,48 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DE02582128A19374006497BE /* AuthorizationModule */ = {
+			isa = PBXGroup;
+			children = (
+				DE02582428A193A1006497BE /* View */,
+				DE02582328A19398006497BE /* Presenter */,
+			);
+			path = AuthorizationModule;
+			sourceTree = "<group>";
+		};
+		DE02582228A19384006497BE /* SettingsSet */ = {
+			isa = PBXGroup;
+			children = (
+				DE02582128A19374006497BE /* AuthorizationModule */,
+				DEDA5CDB28953B4F005E4E65 /* SettingsModule */,
+				DEAB78DB28970C5100BF0A9C /* WEBModule */,
+			);
+			path = SettingsSet;
+			sourceTree = "<group>";
+		};
+		DE02582328A19398006497BE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				DE02582928A193DE006497BE /* AuthorizationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		DE02582428A193A1006497BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE02582528A193C2006497BE /* AuthorizationViewControllerr.swift */,
+				DE02582628A193C2006497BE /* AuthorizationViewControllerr.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		DE4CA9D52884BCA200924D66 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DE02582228A19384006497BE /* SettingsSet */,
 				DE4CA9D92884BDA100924D66 /* NotesTableModule */,
 				DE8155F02885B68B00A9E9AA /* DetailModule */,
-				DEDA5CDB28953B4F005E4E65 /* SettingsModule */,
-				DEAB78DB28970C5100BF0A9C /* WEBModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -707,6 +748,7 @@
 				DEDD855A279317420075D525 /* LaunchScreen.storyboard in Resources */,
 				DE4CA9E62884C1E800924D66 /* NotesTableViewCell.xib in Resources */,
 				DE8155F82885B82500A9E9AA /* DetailVC.xib in Resources */,
+				DE02582828A193C2006497BE /* AuthorizationViewControllerr.xib in Resources */,
 				DEDD8562279319120075D525 /* GoogleService-Info.plist in Resources */,
 				DE4CA9E12884C08600924D66 /* NotesTableViewController.xib in Resources */,
 				DEDD8557279317420075D525 /* Assets.xcassets in Resources */,
@@ -779,8 +821,10 @@
 				DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */,
 				DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */,
 				DE8155F42885B6AE00A9E9AA /* DetailPresenter.swift in Sources */,
+				DE02582728A193C2006497BE /* AuthorizationViewControllerr.swift in Sources */,
 				DE4CA9DD2884BDC000924D66 /* NotesTablePresenter.swift in Sources */,
 				DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */,
+				DE02582A28A193DE006497BE /* AuthorizationPresenter.swift in Sources */,
 				DE4CA9E52884C1E800924D66 /* NotesTableViewCell.swift in Sources */,
 				DEAB78DF28970C9E00BF0A9C /* WEBPresenter.swift in Sources */,
 				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
