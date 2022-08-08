@@ -19,6 +19,13 @@ class SettingsTableViewController: UITableViewController {
         createTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if AppSettings.shared.signedIn{
+//            self.signInButton.setTitle(NSLocalizedString("Sign out", comment: ""), for: .normal)
+//            self.accountLabel.text = AppSettings.shared.user?.email
+        }
+    }
+    
 //    MARK: - Creating table view
     
     private func configureView() {
@@ -29,16 +36,15 @@ class SettingsTableViewController: UITableViewController {
     
     private func createTableView() {
         sections = [
-            (NSLocalizedString("App", comment: ""), [createSignInCell(), createLanguageCell(), createAppThemeCell()]),
-            (NSLocalizedString("About", comment: ""), [createProductCell(), createDevCell()])
+            (NSLocalizedString("App", comment: ""), [signInCell, languageCell, appThemeCell]),
+            (NSLocalizedString("About", comment: ""), [productCell, devInfoCell])
         ]
         tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: identefier)
-        
     }
     
     //    MARK:  Creating cells
     
-    private func createSignInCell() -> SettingsTableViewCell {
+    var signInCell: SettingsTableViewCell {
         let signInCell = SettingsTableViewCell(style: .default, reuseIdentifier: identefier)
         let signInLabel = UILabel()
         let signInButton = UIButton()
@@ -58,7 +64,6 @@ class SettingsTableViewController: UITableViewController {
         
         signInButton.addAction(UIAction(handler: { _ in
             self.presenter.singIn()
-            print("pressed")
         }), for: .touchUpInside)
         
         signInCell.leftItem = signInLabel
@@ -67,7 +72,7 @@ class SettingsTableViewController: UITableViewController {
         return signInCell
     }
     
-    private func createLanguageCell() -> SettingsTableViewCell {
+    var languageCell: SettingsTableViewCell {
         let languageCell = SettingsTableViewCell(style: .default, reuseIdentifier: identefier)
         let languageLabel = UILabel()
         let languagePickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 20, height: 0))
@@ -84,7 +89,7 @@ class SettingsTableViewController: UITableViewController {
         return languageCell
     }
     
-    private func createAppThemeCell() -> SettingsTableViewCell {
+    var appThemeCell: SettingsTableViewCell {
         let appThemeCell = SettingsTableViewCell(style: .default, reuseIdentifier: identefier)
         let appThemeLabel = UILabel()
         
@@ -94,14 +99,17 @@ class SettingsTableViewController: UITableViewController {
                                                                   NSLocalizedString("Dark", comment: "")])
         appThemeSegmentedControl.selectedSegmentIndex = 0
         appThemeLabel.text = NSLocalizedString("App theme", comment: "")
+        appThemeSegmentedControl.addAction(UIAction(handler: { _ in
+            self.presenter.setAppTheme(selectedIndex: appThemeSegmentedControl.selectedSegmentIndex)
+        }), for: .touchUpInside)
         
         appThemeCell.leftItem = appThemeLabel
         appThemeCell.rightItem = appThemeSegmentedControl
         
         return appThemeCell
     }
-    
-    private func createProductCell() -> SettingsTableViewCell {
+     
+    var productCell: SettingsTableViewCell {
         let productWebCell = SettingsTableViewCell(style: .default, reuseIdentifier: identefier)
         let productLabel = UILabel()
         let productButton = UIButton()
@@ -122,7 +130,7 @@ class SettingsTableViewController: UITableViewController {
         return productWebCell
     }
     
-    private func createDevCell() -> SettingsTableViewCell {
+    var devInfoCell: SettingsTableViewCell {
         let developerInfoCell = SettingsTableViewCell(style: .default, reuseIdentifier: identefier)
         let devLabel = UILabel()
         let devButton = UIButton()
@@ -186,4 +194,27 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 0
     }
+}
+
+//  MARK: - SettingsViewProtocol
+
+extension SettingsTableViewController: SettingsViewProtocol {
+    
+    func setPickerViewLanguages(_ languages: [String]) {
+//        guard let languagePickerVeiew = languageCell.rightItem as? UIPickerView else { return }
+    }
+    
+    func setAppLanguage(_ language: String) {
+        
+    }
+    
+    func setAppLanguages(_languages: [String]) {
+        
+    }
+    
+    func setAppTheme(selectedIndex: Int) {
+        
+    }
+    
+    
 }

@@ -13,35 +13,56 @@ enum MainURLs: String {
     case productInfo = "https://www.google.com"
 }
 
-protocol SettingsViewProtocol {
-    func setAppLanguages(_languages:[String])
-    func setAppTheme()
+protocol SettingsViewProtocol: UITableViewController {
+    func setPickerViewLanguages(_ languages: [String])
+    func setAppLanguage(_ language: String)
+    func setAppTheme(selectedIndex: Int)
 }
 
 protocol SettingsPresenterProtocol {
-    init(view: UITableViewController, networkService: FireAPIProtocol)
+    init(view: SettingsViewProtocol, networkService: FireAPIProtocol)
+    func viewLoaded()
     func singIn()
-    func setAppTheme()
+    func setAppTheme(selectedIndex: Int)
     func openProductWEB()
     func openDevInfo()
 }
 
 class SettingsPresenter: SettingsPresenterProtocol {
     
-    var view: UITableViewController?
+    var view: SettingsViewProtocol?
     var networkService: FireAPIProtocol?
     
-    required init(view: UITableViewController, networkService: FireAPIProtocol) {
+    required init(view: SettingsViewProtocol, networkService: FireAPIProtocol) {
         self.view = view
         self.networkService = networkService
     }
     
-    func singIn() {
-        
+    func viewLoaded() {
+        view?.setAppTheme(selectedIndex: AppSettings.shared.appTheme)
+        view?.setPickerViewLanguages([""])
+        view?.setAppLanguage("")
     }
     
-    func setAppTheme() {
-        
+    func singIn() {
+        if AppSettings.shared.signedIn {
+        }
+    }
+    
+    func setAppTheme(selectedIndex: Int) {
+        switch selectedIndex {
+        case 0:
+            view?.tabBarController?.overrideUserInterfaceStyle = .unspecified
+            AppSettings.shared.appTheme = 0
+        case 1:
+            view?.tabBarController?.overrideUserInterfaceStyle = .dark
+            AppSettings.shared.appTheme = 1
+        case 2:
+            view?.tabBarController?.overrideUserInterfaceStyle = .light
+            AppSettings.shared.appTheme = 2
+        default:
+            view?.tabBarController?.overrideUserInterfaceStyle = .unspecified
+        }
     }
     
     func openProductWEB() {
