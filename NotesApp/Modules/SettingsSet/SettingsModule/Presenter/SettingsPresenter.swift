@@ -23,6 +23,7 @@ protocol SettingsPresenterProtocol {
     init(view: SettingsViewProtocol, networkService: FireAPIProtocol)
     func viewLoaded()
     func singIn()
+    func signOut()
     func setAppTheme(selectedIndex: Int)
     func openProductWEB()
     func openDevInfo()
@@ -45,7 +46,15 @@ class SettingsPresenter: SettingsPresenterProtocol {
     }
     
     func singIn() {
+        if !AppSettings.shared.signedIn {
+            let authView = ModuleBuilder.createAuthorizationViewController()
+            view?.navigationController?.pushViewController(authView, animated: true)
+        }
+    }
+    
+    func signOut() {
         if AppSettings.shared.signedIn {
+            networkService?.signOut()
         }
     }
     
