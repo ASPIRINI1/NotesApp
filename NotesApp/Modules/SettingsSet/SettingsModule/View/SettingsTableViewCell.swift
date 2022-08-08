@@ -22,6 +22,9 @@ class SettingsTableViewCell: UITableViewCell {
     var height: CGFloat?
     
     private func createCell() {
+        
+        self.selectionStyle = .none
+        
         if let leftItem = leftItem {
 
             addSubview(leftItem)
