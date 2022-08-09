@@ -25,18 +25,15 @@ class NotesTableViewController: UITableViewController {
         
         tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil), forCellReuseIdentifier: "NotesTableViewCell")
         
-//        Setup navigation bar
-        navigationItem.title = NSLocalizedString("Notes table", comment: "")
-        
-        let action = UIAction { _ in
+//        setup add note button
+        let addNoteButtonAction = UIAction { _ in
             let detailVC = ModuleBuilder.createDetailViewController(noteID: nil)
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
-        
-        let addNoteButton = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: action, menu: nil)
+        let addNoteButton = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: addNoteButtonAction, menu: nil)
         navigationItem.setRightBarButton(addNoteButton, animated: false)
         
-//        SetUp searchController
+//        setup searchController
         searchController.searchingDelegate = self
         self.navigationItem.searchController = searchController
     }

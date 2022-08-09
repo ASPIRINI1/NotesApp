@@ -22,7 +22,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let settingsNavigationController = UINavigationController(rootViewController: ModuleBuilder.createSettingsTableViewController())
         
         notesTableNavigationController.title = NSLocalizedString("Notes table", comment: "")
+        notesTableNavigationController.viewControllers.first?.navigationItem.title = NSLocalizedString("Notes table", comment: "")
+        notesTableNavigationController.tabBarItem.image = UIImage(systemName: "note.text")
+        
         settingsNavigationController.title = NSLocalizedString("Settings", comment: "")
+        settingsNavigationController.viewControllers.first?.navigationItem.title = NSLocalizedString("Settings", comment: "")
+        settingsNavigationController.tabBarItem.image = UIImage(systemName: "gear")
         
         tabBarController.setViewControllers([notesTableNavigationController, settingsNavigationController], animated: true)
         window?.rootViewController = tabBarController
