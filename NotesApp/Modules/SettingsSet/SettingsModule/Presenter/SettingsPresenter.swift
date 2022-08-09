@@ -14,9 +14,8 @@ enum MainURLs: String {
 }
 
 protocol SettingsViewProtocol: UITableViewController {
-    func setPickerViewLanguages(_ languages: [String])
-    func setAppLanguage(_ language: String)
     func setAppTheme(selectedIndex: Int)
+    func setAuthorizationStatus(isSignedIn: Bool)
 }
 
 protocol SettingsPresenterProtocol {
@@ -33,6 +32,7 @@ class SettingsPresenter: SettingsPresenterProtocol {
     
     var view: SettingsViewProtocol?
     var networkService: FireAPIProtocol?
+    var languages = ["English", "Русский"]
     
     required init(view: SettingsViewProtocol, networkService: FireAPIProtocol) {
         self.view = view
@@ -41,8 +41,9 @@ class SettingsPresenter: SettingsPresenterProtocol {
     
     func viewLoaded() {
         view?.setAppTheme(selectedIndex: AppSettings.shared.appTheme)
-        view?.setPickerViewLanguages([""])
-        view?.setAppLanguage("")
+//        view?.setPickerViewLanguages([""])
+//        view?.setAppLanguage("")
+        view?.setAuthorizationStatus(isSignedIn: AppSettings.shared.signedIn)
     }
     
     func singIn() {
