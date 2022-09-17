@@ -17,15 +17,5 @@ class User: Codable {
         self.uid = uid
         self.email = email
         self.password = password
-        
-        AppSettings.shared.user = self
-    }
-    
-    deinit {
-        print("User is deinit")
-    }
-    
-    func remove() {
-        AppSettings.shared.user = nil
     }
 }

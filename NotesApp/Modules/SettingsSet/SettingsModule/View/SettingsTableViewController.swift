@@ -17,15 +17,6 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createTableView()
-//        AppSettings.shared.user = nil
-//        AppSettings.shared.signedIn = false
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if AppSettings.shared.signedIn{
-//            self.signInButton.setTitle(NSLocalizedString("Sign out", comment: ""), for: .normal)
-//            self.accountLabel.text = AppSettings.shared.user?.email
-        }
     }
     
 //    MARK: - Creating table view
@@ -52,14 +43,18 @@ class SettingsTableViewController: UITableViewController {
             signInButton.setTitle(NSLocalizedString("Log out", comment: ""), for: .normal)
         } else {
             signInLabel.text = NSLocalizedString("Not authorized", comment: "")
-            signInButton.setTitle(NSLocalizedString("SignIn", comment: ""), for: .normal)
+            signInButton.setTitle(NSLocalizedString("Sign In", comment: ""), for: .normal)
         }
         
         signInButton.setTitleColor(.systemBlue, for: .normal)
         signInButton.contentHorizontalAlignment = .right
         
         signInButton.addAction(UIAction(handler: { _ in
-            self.presenter.singIn()
+            if AppSettings.shared.signedIn {
+                self.presenter.signOut()
+            } else {
+                self.presenter.singIn()
+            }
         }), for: .touchUpInside)
         
         signInCell.leftItem = signInLabel
@@ -73,7 +68,7 @@ class SettingsTableViewController: UITableViewController {
         let languageLabel = UILabel()
         let languagePickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 20, height: 0))
         
-        languageCell.height = 88
+        languageCell.height = 100
         languageCell.selectionStyle = .none
         languageLabel.text = NSLocalizedString("Language", comment: "")
         languagePickerView.dataSource = self
@@ -97,8 +92,9 @@ class SettingsTableViewController: UITableViewController {
         appThemeLabel.text = NSLocalizedString("App theme", comment: "")
         appThemeSegmentedControl.addAction(UIAction(handler: { _ in
             self.presenter.setAppTheme(selectedIndex: appThemeSegmentedControl.selectedSegmentIndex)
-        }), for: .touchUpInside)
+        }), for: .allEvents)
         
+        appThemeCell.height = 50
         appThemeCell.leftItem = appThemeLabel
         appThemeCell.rightItem = appThemeSegmentedControl
         
@@ -170,11 +166,11 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentefier, for: indexPath) as! SettingsTableViewCell
         let createdCell = sections[indexPath.section].rows[indexPath.row]
-        
+
         cell.rightItem = createdCell.rightItem
         cell.leftItem = createdCell.leftItem
         cell.height = createdCell.height
-        
+
         return cell
     }
 }
@@ -201,6 +197,21 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
 extension SettingsTableViewController: SettingsViewProtocol {
     
     func setAuthorizationStatus(isSignedIn: Bool) {
+        guard let signInLabel = signInCell.leftItem as? UILabel else { return }
+        guard let signInButton = signInCell.rightItem as? UIButton else { return }
+        
+        print("auth ", isSignedIn)
+        
+        if isSignedIn {
+            signInLabel.text = AppSettings.shared.user?.email
+            signInButton.setTitle(NSLocalizedString("Sing Out", comment: ""), for: .normal)
+            signInButton.setTitleColor(.red, for: .normal)
+        } else {
+            signInLabel.text = NSLocalizedString("Not authorized", comment: "")
+            signInButton.setTitle(NSLocalizedString("Sign In", comment: ""), for: .normal)
+            signInButton.setTitleColor(.systemBlue, for: .normal)
+        }
+        tableView.reloadData()
 //        self.signInButton.setTitle(NSLocalizedString("Sign out", comment: ""), for: .normal)
 //        self.accountLabel.text = AppSettings.shared.user?.email
     }

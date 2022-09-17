@@ -41,22 +41,17 @@ class SettingsPresenter: SettingsPresenterProtocol {
     
     func viewLoaded() {
         view?.setAppTheme(selectedIndex: AppSettings.shared.appTheme)
-//        view?.setPickerViewLanguages([""])
-//        view?.setAppLanguage("")
         view?.setAuthorizationStatus(isSignedIn: AppSettings.shared.signedIn)
     }
     
     func singIn() {
-        if !AppSettings.shared.signedIn {
-            let authView = ModuleBuilder.createAuthorizationViewController()
-            view?.navigationController?.pushViewController(authView, animated: true)
-        }
+        let authView = ModuleBuilder.createAuthorizationViewController()
+        view?.navigationController?.pushViewController(authView, animated: true)
     }
     
     func signOut() {
-        if AppSettings.shared.signedIn {
-            networkService?.signOut()
-        }
+        networkService?.signOut()
+        view?.setAuthorizationStatus(isSignedIn: false)
     }
     
     func setAppTheme(selectedIndex: Int) {

@@ -57,15 +57,13 @@ class AppSettings {
         }
         
         set {
-            guard let data = try? PropertyListEncoder().encode(newValue) else { return }
-            userDefaults.set(data, forKey: SettingsKeys.user.rawValue)
-            
-            if newValue != nil {
-                signedIn = true
-                
-            } else {
+            guard let data = try? PropertyListEncoder().encode(newValue) else {
+                userDefaults.set(nil, forKey: SettingsKeys.user.rawValue)
                 signedIn = false
+                return
             }
+            userDefaults.set(data, forKey: SettingsKeys.user.rawValue)
+            signedIn = true
         }
     }
 }

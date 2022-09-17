@@ -35,8 +35,6 @@ class SettingsTableViewCell: UITableViewCell {
             constraints.append(NSLayoutConstraint(item: layoutMarginsGuide, attribute: .bottom, relatedBy: .equal, toItem: leftItem, attribute: .bottom, multiplier: 1, constant: 5))
             constraints.append(NSLayoutConstraint(item: layoutMarginsGuide, attribute: .left, relatedBy: .equal, toItem: leftItem, attribute: .left, multiplier: 1, constant: 5))
 
-//            leftItem.backgroundColor = .blue
-
             addConstraints(constraints)
         }
 
@@ -46,7 +44,7 @@ class SettingsTableViewCell: UITableViewCell {
             
             rightItem.translatesAutoresizingMaskIntoConstraints = false
             var constraints = [NSLayoutConstraint]()
-//
+
             constraints.append(NSLayoutConstraint(item: layoutMarginsGuide, attribute: .top, relatedBy: .equal, toItem: rightItem, attribute: .top, multiplier: 1, constant: 5))
             constraints.append(NSLayoutConstraint(item: layoutMarginsGuide, attribute: .bottom, relatedBy: .equal, toItem: rightItem, attribute: .bottom, multiplier: 1, constant: 5))
             constraints.append(NSLayoutConstraint(item: layoutMarginsGuide, attribute: .right, relatedBy: .equal, toItem: rightItem, attribute: .right, multiplier: 1, constant: 5))
@@ -60,10 +58,4 @@ class SettingsTableViewCell: UITableViewCell {
         }
         
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
-
 }

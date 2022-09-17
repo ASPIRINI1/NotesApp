@@ -29,7 +29,12 @@ extension FireAPI {
     }
     
     func signOut() {
-        try? Auth.auth().signOut()
+        do {
+        try Auth.auth().signOut()
+        }
+        catch {
+            print("SignOut error: ", error)
+        }
         AppSettings.shared.user = nil
     }
     
