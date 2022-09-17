@@ -29,6 +29,9 @@ class FireAPI: FireAPIProtocol {
         db = Firestore.firestore()
         return db
     }()
+    lazy var user: User? = {
+            return AppSettings.shared.user
+    }()
     
     private init() { }
   
