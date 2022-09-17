@@ -37,7 +37,6 @@ class ModuleBuilder: ModulesBuiler {
     static func createSettingsTableViewController() -> UITableViewController {
         let view = SettingsTableViewController()
         let networkService = FireAPI.shared
-        let WEBview = WEBViewController()
         let presenter = SettingsPresenter(view: view, networkService: networkService)
         view.presenter = presenter
         return view
@@ -45,7 +44,6 @@ class ModuleBuilder: ModulesBuiler {
     
     static func createWEBViewController(url: String) -> UIViewController {
         let view = WEBViewControllerr()
-        let networkService = FireAPI.shared
         let presenter = WEBPresenter(url: url, view: view)
         view.presenter = presenter
         return view
