@@ -10,32 +10,27 @@ import UIKit
 class NotesTableViewController: UITableViewController {
     
     var presenter: NotesTablePresenter!
-    var searchController = SearchController()
-    var isFiltering: Bool {
-        return searchController.isActive && !searchController.searchBarIsEmpty
-    }
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureView()
-        presenter.getNotes()
-    }
-    
-    func configureView() {
-        
-        tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil), forCellReuseIdentifier: "NotesTableViewCell")
-        
-//        setup add note button
+    private lazy var searchController: SearchController = {
+        let searchController = SearchController()
+        searchController.searchingDelegate = self
+        self.navigationItem.searchController = searchController
+        return searchController
+    }()
+    private lazy var addNoteButton: UIBarButtonItem = {
         let addNoteButtonAction = UIAction { _ in
             let detailVC = ModuleBuilder.createDetailViewController(noteID: nil)
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
-        let addNoteButton = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: addNoteButtonAction, menu: nil)
+        let button = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: addNoteButtonAction, menu: nil)
         navigationItem.setRightBarButton(addNoteButton, animated: false)
+        return button
+    }()
+    private lazy var isFiltering: Bool = searchController.isActive && !searchController.searchBarIsEmpty
         
-//        setup searchController
-        searchController.searchingDelegate = self
-        self.navigationItem.searchController = searchController
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil), forCellReuseIdentifier: "NotesTableViewCell")
+        presenter.getNotes()
     }
     
     // MARK: - Table view DataSource
@@ -50,9 +45,7 @@ class NotesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell") as! NotesTableViewCell
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell") as? NotesTableViewCell else { return UITableViewCell() }
         var note: String
         
         if isFiltering {
@@ -65,10 +58,7 @@ class NotesTableViewController: UITableViewController {
         }
         
         let newLinePosition = note.firstIndex { character in
-            if character.isNewline {
-                return true
-            }
-            return false
+            return character.isNewline
         }
         
         guard let newLinePosition = newLinePosition else {
