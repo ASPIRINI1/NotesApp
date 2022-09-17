@@ -12,7 +12,6 @@ protocol FireAPIProtocol {
     func signIn(email: String, password: String, completion: @escaping (Bool) -> ())
     func signOut()
     func registration(email: String, password: String, completion: @escaping (Bool) -> ())
-    
     func getDocuments(completion: @escaping ([Note]?) -> ())
     func getNote(noteID: String, completion: @escaping (Note)->())
     func createNewDocument(text: String)
@@ -22,24 +21,15 @@ protocol FireAPIProtocol {
 
 class FireAPI: FireAPIProtocol {
     
-    private init() { }
-    
     static let shared = FireAPI()
-    
-    //    MARK: - Property
-    
-    lazy var db = configureFB()
-    
-    
-    
-//    MARK: - Configure DB & get from DB
-    
-     func configureFB() -> Firestore {
+    lazy var db: Firestore = {
         var db: Firestore!
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
         return db
-    }
+    }()
+    
+    private init() { }
   
 }
