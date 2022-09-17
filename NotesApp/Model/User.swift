@@ -7,11 +7,11 @@
 
 import Foundation
 
-class User: Codable {
+struct User: Codable {
     
-    var uid = String()
-    var email = String()
-    var password = String()
+    var uid: String
+    var email: String
+    var password: String
     
     init(uid: String, email: String, password: String) {
         self.uid = uid

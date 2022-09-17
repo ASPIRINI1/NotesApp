@@ -7,9 +7,10 @@
 
 import Foundation
 
-class Note {
-    var id = String()
-    var text = String()
+struct Note {
+    
+    var id: String
+    var text: String
     
     init(id:String, text: String) {
         self.id = id
