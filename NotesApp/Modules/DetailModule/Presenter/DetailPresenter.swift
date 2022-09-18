@@ -30,7 +30,6 @@ class DetailPresenter: DetailPresenterProtocol {
             note = Note(id: "", text: "")
             return
         }
-
         networkService.getNote(noteID: noteID) { note in
             self.note = note
             self.viewLoaded()
@@ -43,10 +42,8 @@ class DetailPresenter: DetailPresenterProtocol {
     }
     
     func updateNote(text: String) {
-        guard let note = note else {
-            return
-        }
-        if note.id == "" {
+        guard let note = note else { return }
+        if note.id.isEmpty {
             networkService.createNewDocument(text: text)
             return
         }

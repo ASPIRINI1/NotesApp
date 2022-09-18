@@ -13,7 +13,6 @@ class NotesTableViewController: UITableViewController {
     private lazy var searchController: SearchController = {
         let searchController = SearchController()
         searchController.searchingDelegate = self
-        self.navigationItem.searchController = searchController
         return searchController
     }()
     private lazy var addNoteButton: UIBarButtonItem = {
@@ -22,13 +21,14 @@ class NotesTableViewController: UITableViewController {
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
         let button = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: addNoteButtonAction, menu: nil)
-        navigationItem.setRightBarButton(addNoteButton, animated: false)
         return button
     }()
     private lazy var isFiltering: Bool = searchController.isActive && !searchController.searchBarIsEmpty
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.searchController = searchController
+        navigationItem.setRightBarButton(addNoteButton, animated: false)
         tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil), forCellReuseIdentifier: "NotesTableViewCell")
         presenter.getNotes()
     }

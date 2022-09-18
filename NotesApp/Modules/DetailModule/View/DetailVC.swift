@@ -10,13 +10,10 @@ import UIKit
 class DetailVC: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
-    
-    
     var presenter: DetailPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView.text = ""
         presenter.viewLoaded()
     }
     
