@@ -483,13 +483,6 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		DEDA5CE4289540C1005E4E65 /* RouteControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RouteControllers;
-			sourceTree = "<group>";
-		};
 		DEDD8541279317400075D525 = {
 			isa = PBXGroup;
 			children = (
@@ -514,7 +507,6 @@
 		DEDD854C279317400075D525 /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
-				DEDA5CE4289540C1005E4E65 /* RouteControllers */,
 				DEDD854D279317400075D525 /* AppDelegate.swift */,
 				DEDD854F279317400075D525 /* SceneDelegate.swift */,
 				DEDA5CDA28953A7B005E4E65 /* Services */,

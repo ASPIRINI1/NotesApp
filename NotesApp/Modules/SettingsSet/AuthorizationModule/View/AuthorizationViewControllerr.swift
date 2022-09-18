@@ -16,11 +16,7 @@ class AuthorizationViewControllerr: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var presenter: AuthorizationPresenter!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
+    
     @IBAction func registrationButtonAction(_ sender: Any) {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
@@ -35,18 +31,29 @@ class AuthorizationViewControllerr: UIViewController {
         presenter.signIn(email: email, password: password)
     }
     
-    private func userDataIsCurrect(email: String, password: String) -> Bool {
-        if email.isEmpty || !email.isValidEmail() {
-            showError(errorText: NSLocalizedString("Check your Email.", comment: ""))
+    private func userDataIsCurrect(email: String?, password: String?) -> Bool {
+        guard isCorrect(email: email) else {
+            errorLabel.isHidden = false
+            errorLabel.text = NSLocalizedString("Uncorrect Email.", comment: "nil")
             return false
         }
-        if password.isEmpty || !password.isValidPass() {
-            showError(errorText: NSLocalizedString("Check your password.", comment: ""))
+        guard isCorrect(password: password) else {
+            errorLabel.isHidden = false
+            errorLabel.text = NSLocalizedString("Uncorrect password", comment: "")
             return false
         }
         return true
     }
     
+    private func isCorrect(email: String?) -> Bool {
+        let regex = try? NSRegularExpression(pattern: "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\\.[a-zA-Z.]{2,64}", options: .caseInsensitive)
+        return regex?.firstMatch(in: email ?? "", options: [], range: NSRange(location: 0, length: email?.count ?? 0)) != nil
+    }
+    
+    private func isCorrect(password: String?) -> Bool {
+        let regex = try? NSRegularExpression(pattern: "[a-zA-Z0-9._-]{8,20}", options: .caseInsensitive)
+        return regex?.firstMatch(in: password ?? "", options: [], range: NSRange(location: 0, length: password?.count ?? 0)) != nil
+    }
 }
 
 extension AuthorizationViewControllerr: AuthorizationViewProtocol {

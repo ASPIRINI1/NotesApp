@@ -22,7 +22,7 @@
 
 "Uncorrect password" = "Не верный пароль";
 
-"Uncorrect Email. You may not use #$%^&*()/ in your Email." = "Не верно введён email. Вы не должны использовать символы #$%^&*()/ в вашей почте.";
+"Uncorrect Email." = "Не верно введён email.";
 
 "Error" = "Ошибка";
 

@@ -20,7 +20,6 @@ protocol AuthorizationPresenterProtocol {
 
 class AuthorizationPresenter: AuthorizationPresenterProtocol {
     
-    
     var view: AuthorizationViewProtocol!
     var networkService: FireAPIProtocol!
     
