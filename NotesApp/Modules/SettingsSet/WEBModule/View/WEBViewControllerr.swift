@@ -23,15 +23,12 @@ class WEBViewControllerr: UIViewController {
     @IBAction func backButtonAction(_ sender: Any) {
         presenter.back()
     }
-    
     @IBAction func forwardButtonAction(_ sender: Any) {
         presenter.forward()
     }
-    
     @IBAction func openInBrowserButtonAction(_ sender: Any) {
         presenter.openInbrowser()
     }
-    
     @IBAction func refreshButtonAction(_ sender: Any) {
         presenter.reload()
     }

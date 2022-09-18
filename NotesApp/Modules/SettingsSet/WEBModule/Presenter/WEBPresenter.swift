@@ -50,11 +50,11 @@ class WEBPresenter: WEBPresenterProtocol {
     }
     
     func openInbrowser() {
-        if !url.isEmpty {
+        guard url.isEmpty else {
             UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
-        } else {
-            view.showOpenInBrowserAlert()
+            return
         }
+        view.showOpenInBrowserAlert()
     }
     
 }

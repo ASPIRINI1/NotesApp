@@ -19,11 +19,14 @@
 		DE4CA9E52884C1E800924D66 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9E32884C1E800924D66 /* NotesTableViewCell.swift */; };
 		DE4CA9E62884C1E800924D66 /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4CA9E42884C1E800924D66 /* NotesTableViewCell.xib */; };
 		DE52A41527E77C1400C9B612 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE52A41727E77C1400C9B612 /* Localizable.strings */; };
+		DE7470DB28D740EF0088771E /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7470DA28D740EF0088771E /* ButtonTableViewCell.swift */; };
 		DE8155F42885B6AE00A9E9AA /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */; };
 		DE8155F72885B82500A9E9AA /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155F52885B82500A9E9AA /* DetailVC.swift */; };
 		DE8155F82885B82500A9E9AA /* DetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8155F62885B82500A9E9AA /* DetailVC.xib */; };
 		DE81560B2885BDC700A9E9AA /* NotesTableModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155FA2885BC3800A9E9AA /* NotesTableModuleTest.swift */; };
 		DE8156492885D08E00A9E9AA /* Pods_NotesApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE8156472885D08D00A9E9AA /* Pods_NotesApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DE87635328D7A0F700828110 /* SegmenedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87635228D7A0F700828110 /* SegmenedTableViewCell.swift */; };
+		DE87635528D7A5DF00828110 /* UITableViewCell+identefier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87635428D7A5DF00828110 /* UITableViewCell+identefier.swift */; };
 		DE952D6B2891C6A300F703A7 /* Pods_NotesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE952D402891C6A200F703A7 /* Pods_NotesApp.framework */; };
 		DE952D6C2891C6A300F703A7 /* Pods_NotesApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE952D402891C6A200F703A7 /* Pods_NotesApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35728672A70005EADF8 /* RegistrationModule.swift */; };
@@ -40,7 +43,6 @@
 		DECF042927C944E90069FF0A /* AuthorisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF042827C944E90069FF0A /* AuthorisationViewController.swift */; };
 		DEDA5CE028953B98005E4E65 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA5CDE28953B98005E4E65 /* SettingsTableViewController.swift */; };
 		DEDA5CE328953BB5005E4E65 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA5CE228953BB5005E4E65 /* SettingsPresenter.swift */; };
-		DEDA5CEC28955251005E4E65 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA5CEB28955251005E4E65 /* SettingsTableViewCell.swift */; };
 		DEDD854E279317400075D525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD854D279317400075D525 /* AppDelegate.swift */; };
 		DEDD8550279317400075D525 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD854F279317400075D525 /* SceneDelegate.swift */; };
 		DEDD8555279317400075D525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8553279317400075D525 /* Main.storyboard */; };
@@ -120,6 +122,7 @@
 		DE52A41227E7788F00C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DE52A41627E77C1400C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE52A41927E7818F00C9B612 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DE7470DA28D740EF0088771E /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		DE8155F52885B82500A9E9AA /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		DE8155F62885B82500A9E9AA /* DetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailVC.xib; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 		DE8156832885D53500A9E9AA /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE8156852885D53500A9E9AA /* Pods_NotesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_NotesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE8156872885D53500A9E9AA /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE87635228D7A0F700828110 /* SegmenedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmenedTableViewCell.swift; sourceTree = "<group>"; };
+		DE87635428D7A5DF00828110 /* UITableViewCell+identefier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+identefier.swift"; sourceTree = "<group>"; };
 		DE952D282891C69600F703A7 /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE952D2B2891C6A200F703A7 /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE952D2C2891C6A200F703A7 /* openssl_grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = openssl_grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,7 +214,6 @@
 		DECF042827C944E90069FF0A /* AuthorisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisationViewController.swift; sourceTree = "<group>"; };
 		DEDA5CDE28953B98005E4E65 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		DEDA5CE228953BB5005E4E65 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
-		DEDA5CEB28955251005E4E65 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		DEDD854A279317400075D525 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEDD854D279317400075D525 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEDD854F279317400075D525 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -470,7 +474,9 @@
 			isa = PBXGroup;
 			children = (
 				DEDA5CDE28953B98005E4E65 /* SettingsTableViewController.swift */,
-				DEDA5CEB28955251005E4E65 /* SettingsTableViewCell.swift */,
+				DE7470DA28D740EF0088771E /* ButtonTableViewCell.swift */,
+				DE87635228D7A0F700828110 /* SegmenedTableViewCell.swift */,
+				DE87635428D7A5DF00828110 /* UITableViewCell+identefier.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -810,6 +816,7 @@
 				DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */,
 				DEAB78E22897151C00BF0A9C /* WEBViewControllerr.swift in Sources */,
 				DEDD856527931C510075D525 /* Note.swift in Sources */,
+				DE87635328D7A0F700828110 /* SegmenedTableViewCell.swift in Sources */,
 				DEAF9AFB2797442F00831B85 /* SettingsTableVC.swift in Sources */,
 				DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */,
 				DE8155F42885B6AE00A9E9AA /* DetailPresenter.swift in Sources */,
@@ -817,6 +824,7 @@
 				DE4CA9DD2884BDC000924D66 /* NotesTablePresenter.swift in Sources */,
 				DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */,
 				DE02582A28A193DE006497BE /* AuthorizationPresenter.swift in Sources */,
+				DE87635528D7A5DF00828110 /* UITableViewCell+identefier.swift in Sources */,
 				DE4CA9E52884C1E800924D66 /* NotesTableViewCell.swift in Sources */,
 				DEAB78DF28970C9E00BF0A9C /* WEBPresenter.swift in Sources */,
 				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
@@ -828,9 +836,9 @@
 				DE9BC364286770CC005EADF8 /* NoteTableViewController.swift in Sources */,
 				DE9BC366286773B5005EADF8 /* SearchController.swift in Sources */,
 				DEDD854E279317400075D525 /* AppDelegate.swift in Sources */,
-				DEDA5CEC28955251005E4E65 /* SettingsTableViewCell.swift in Sources */,
 				DECF042927C944E90069FF0A /* AuthorisationViewController.swift in Sources */,
 				DEDD8550279317400075D525 /* SceneDelegate.swift in Sources */,
+				DE7470DB28D740EF0088771E /* ButtonTableViewCell.swift in Sources */,
 				DEDD856A27931F1C0075D525 /* NoteTableViewCell.swift in Sources */,
 				DE156CB02795865D00356E1A /* DetailViewController.swift in Sources */,
 				DEDA5CE028953B98005E4E65 /* SettingsTableViewController.swift in Sources */,

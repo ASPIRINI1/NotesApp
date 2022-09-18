@@ -15,7 +15,6 @@ enum MainURLs: String {
 
 protocol SettingsViewProtocol: UITableViewController {
     func setAppTheme(selectedIndex: Int)
-    func setAuthorizationStatus(isSignedIn: Bool)
 }
 
 protocol SettingsPresenterProtocol {
@@ -23,7 +22,6 @@ protocol SettingsPresenterProtocol {
     func viewLoaded()
     func singIn()
     func signOut()
-    func setAppTheme(selectedIndex: Int)
     func openProductWEB()
     func openDevInfo()
 }
@@ -32,7 +30,7 @@ class SettingsPresenter: SettingsPresenterProtocol {
     
     var view: SettingsViewProtocol?
     var networkService: FireAPIProtocol?
-    var languages = ["English", "Русский"]
+    lazy var user = AppSettings.shared.user
     
     required init(view: SettingsViewProtocol, networkService: FireAPIProtocol) {
         self.view = view
@@ -41,7 +39,6 @@ class SettingsPresenter: SettingsPresenterProtocol {
     
     func viewLoaded() {
         view?.setAppTheme(selectedIndex: AppSettings.shared.appTheme)
-        view?.setAuthorizationStatus(isSignedIn: AppSettings.shared.signedIn)
     }
     
     func singIn() {
@@ -51,23 +48,6 @@ class SettingsPresenter: SettingsPresenterProtocol {
     
     func signOut() {
         networkService?.signOut()
-        view?.setAuthorizationStatus(isSignedIn: false)
-    }
-    
-    func setAppTheme(selectedIndex: Int) {
-        switch selectedIndex {
-        case 0:
-            view?.tabBarController?.overrideUserInterfaceStyle = .unspecified
-            AppSettings.shared.appTheme = 0
-        case 1:
-            view?.tabBarController?.overrideUserInterfaceStyle = .dark
-            AppSettings.shared.appTheme = 1
-        case 2:
-            view?.tabBarController?.overrideUserInterfaceStyle = .light
-            AppSettings.shared.appTheme = 2
-        default:
-            view?.tabBarController?.overrideUserInterfaceStyle = .unspecified
-        }
     }
     
     func openProductWEB() {
@@ -79,6 +59,4 @@ class SettingsPresenter: SettingsPresenterProtocol {
         let webView = ModuleBuilder.createWEBViewController(url: MainURLs.developer.rawValue)
         view?.navigationController?.pushViewController(webView, animated: true)
     }
-    
-    
 }
