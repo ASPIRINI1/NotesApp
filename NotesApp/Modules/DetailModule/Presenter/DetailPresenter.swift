@@ -19,8 +19,8 @@ protocol DetailPresenterProtocol {
 
 class DetailPresenter: DetailPresenterProtocol {
     
-    var view: DetailViewProtocol?
-    var networkService: FireAPIProtocol!
+    var view: DetailViewProtocol
+    var networkService: FireAPIProtocol
     var note: Note?
     
     required init(view: DetailViewProtocol, networkService: FireAPIProtocol, noteID: String?) {
@@ -38,7 +38,7 @@ class DetailPresenter: DetailPresenterProtocol {
     
     func viewLoaded() {
         guard let note = note else { return }
-        view?.setNote(text: note.text)
+        view.setNote(text: note.text)
     }
     
     func updateNote(text: String) {

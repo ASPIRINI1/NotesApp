@@ -10,27 +10,17 @@ import UIKit
 class SettingsTableVC: UITableViewController {
     
     //    MARK: - Property
-    
-    let languages = ["English","Русский"]
     var url = ""
 
-    @IBOutlet weak var languagePickerView: UIPickerView!
     @IBOutlet weak var appThemeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var accountLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        languagePickerView.delegate = self
-        languagePickerView.dataSource = self
         tableView.delegate = self
         tableView.dataSource = self
-        
-        for ind in 0...languages.count-1 {
-            if AppSettings.shared.language == languages[ind]{
-                languagePickerView.selectRow(ind, inComponent: 0, animated: true)
-            }
-        }
+
         appThemeSegmentedControl.selectedSegmentIndex = AppSettings.shared.appTheme
     }
     
@@ -105,25 +95,4 @@ class SettingsTableVC: UITableViewController {
     }
 }
 
-//    MARK: - PickerView Delegate & DataSource
-
-extension SettingsTableVC:UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return languages.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return languages[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        NotificationCenter.default.post(name: NSNotification.Name("Language" + languages[row]), object: nil)
-        AppSettings.shared.language = languages[row]
-    }
-}
 

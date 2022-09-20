@@ -13,19 +13,21 @@ protocol AuthorizationViewProtocol: UIViewController {
 }
 
 protocol AuthorizationPresenterProtocol {
-    init(view: AuthorizationViewProtocol, networkService: FireAPIProtocol)
+    init(view: AuthorizationViewProtocol, networkService: FireAPIProtocol, settingsService: AppSettingsProtolol)
     func registration(email: String, password: String)
     func signIn(email: String, password: String)
 }
 
 class AuthorizationPresenter: AuthorizationPresenterProtocol {
     
-    var view: AuthorizationViewProtocol!
-    var networkService: FireAPIProtocol!
+    var view: AuthorizationViewProtocol
+    var networkService: FireAPIProtocol
+    var settingsService: AppSettingsProtolol
     
-    required init(view: AuthorizationViewProtocol, networkService: FireAPIProtocol) {
+    required init(view: AuthorizationViewProtocol, networkService: FireAPIProtocol, settingsService: AppSettingsProtolol) {
         self.view = view
         self.networkService = networkService
+        self.settingsService = settingsService
     }
     
     func registration(email: String, password: String) {

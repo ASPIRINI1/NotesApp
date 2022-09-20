@@ -18,7 +18,7 @@ protocol SettingsViewProtocol: UITableViewController {
 }
 
 protocol SettingsPresenterProtocol {
-    init(view: SettingsViewProtocol, networkService: FireAPIProtocol)
+    init(view: SettingsViewProtocol, networkService: FireAPIProtocol, settingsService: AppSettingsProtolol)
     func viewLoaded()
     func singIn()
     func signOut()
@@ -28,35 +28,38 @@ protocol SettingsPresenterProtocol {
 
 class SettingsPresenter: SettingsPresenterProtocol {
     
-    var view: SettingsViewProtocol?
-    var networkService: FireAPIProtocol?
-    lazy var user = AppSettings.shared.user
+    var view: SettingsViewProtocol
+    var networkService: FireAPIProtocol
+    var settingsService: AppSettingsProtolol
+    var user: User?
     
-    required init(view: SettingsViewProtocol, networkService: FireAPIProtocol) {
+    required init(view: SettingsViewProtocol, networkService: FireAPIProtocol, settingsService: AppSettingsProtolol) {
         self.view = view
         self.networkService = networkService
+        self.settingsService = settingsService
+        self.user = settingsService.user
     }
     
     func viewLoaded() {
-        view?.setAppTheme(selectedIndex: AppSettings.shared.appTheme)
+        view.setAppTheme(selectedIndex: settingsService.appTheme)
     }
     
     func singIn() {
         let authView = ModuleBuilder.createAuthorizationViewController()
-        view?.navigationController?.pushViewController(authView, animated: true)
+        view.navigationController?.pushViewController(authView, animated: true)
     }
     
     func signOut() {
-        networkService?.signOut()
+        networkService.signOut()
     }
     
     func openProductWEB() {
         let webView = ModuleBuilder.createWEBViewController(url: MainURLs.productInfo.rawValue)
-        view?.navigationController?.pushViewController(webView, animated: true)
+        view.navigationController?.pushViewController(webView, animated: true)
     }
     
     func openDevInfo() {
         let webView = ModuleBuilder.createWEBViewController(url: MainURLs.developer.rawValue)
-        view?.navigationController?.pushViewController(webView, animated: true)
+        view.navigationController?.pushViewController(webView, animated: true)
     }
 }

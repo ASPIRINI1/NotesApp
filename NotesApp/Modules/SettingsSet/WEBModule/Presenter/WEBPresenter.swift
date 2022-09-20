@@ -23,8 +23,8 @@ protocol WEBPresenterProtocol {
 
 class WEBPresenter: WEBPresenterProtocol {
     
-    let view: WEBViewProtocol!
-    var url: String!
+    let view: WEBViewProtocol
+    var url: String
     
     required init(url: String, view: WEBViewProtocol) {
         self.view = view

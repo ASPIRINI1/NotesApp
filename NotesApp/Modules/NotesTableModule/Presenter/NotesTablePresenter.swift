@@ -21,8 +21,8 @@ protocol NotesTablePresenterProtocol {
 
 class NotesTablePresenter: NotesTablePresenterProtocol {
     
-    var view: NotesTableViewProtocol?
-    var networkService: FireAPIProtocol!
+    var view: NotesTableViewProtocol
+    var networkService: FireAPIProtocol
     var notes: [Note]?
     var filtredNotes: [Note]?
     
@@ -34,8 +34,7 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     func getNotes() {
         networkService.getDocuments { notes in
             self.notes = notes
-            guard let view = self.view else { return }
-            view.notesLoaded()
+            self.view.notesLoaded()
         }
     }
     

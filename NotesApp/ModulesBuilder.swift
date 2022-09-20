@@ -37,7 +37,8 @@ class ModuleBuilder: ModulesBuiler {
     static func createSettingsTableViewController() -> UITableViewController {
         let view = SettingsTableViewController()
         let networkService = FireAPI.shared
-        let presenter = SettingsPresenter(view: view, networkService: networkService)
+        let settingsService = AppSettings.shared
+        let presenter = SettingsPresenter(view: view, networkService: networkService, settingsService: settingsService)
         view.presenter = presenter
         return view
     }
@@ -52,7 +53,8 @@ class ModuleBuilder: ModulesBuiler {
     static func createAuthorizationViewController() -> UIViewController {
         let view = AuthorizationViewControllerr()
         let networkService = FireAPI.shared
-        let presenter = AuthorizationPresenter(view: view, networkService: networkService)
+        let settingsService = AppSettings.shared
+        let presenter = AuthorizationPresenter(view: view, networkService: networkService, settingsService: settingsService)
         view.presenter = presenter
         return view
     }
