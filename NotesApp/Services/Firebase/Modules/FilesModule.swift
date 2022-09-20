@@ -25,12 +25,16 @@ extension FireAPI {
         }
      }
     
-    func getNote(noteID: String, completion: @escaping (Note)->()) {
+    func getNote(noteID: String, completion: @escaping (Note?)->()) {
         guard let user = user else { return }
         
         db.collection(user.uid).document(noteID).getDocument { documentSnapshot, error in
-            if let error = error { print("Error getting document: ", error); return }
-            guard let document = documentSnapshot else { return }
+            if let error = error {
+                print("Error getting document: ", error)
+                completion(nil)
+                return
+            }
+            guard let document = documentSnapshot else { completion(nil); return }
             completion(Note(id: document.documentID, text: document.get("text") as? String ?? ""))
         }
     }

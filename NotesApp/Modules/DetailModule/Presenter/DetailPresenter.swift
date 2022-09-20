@@ -26,29 +26,28 @@ class DetailPresenter: DetailPresenterProtocol {
     required init(view: DetailViewProtocol, networkService: NetworkServiceProtocol, noteID: String?) {
         self.view = view
         self.networkService = networkService
-        guard let noteID = noteID else {
-            note = Note(id: "", text: "")
-            return
-        }
+        
+        guard let noteID = noteID else { return }
         networkService.getNote(noteID: noteID) { note in
+            guard let note = note else { return }
             self.note = note
             self.viewLoaded()
         }
     }
     
     func viewLoaded() {
-        guard let note = note else { return }
-        view.setNote(text: note.text)
+        if let note = note {
+            view.setNote(text: note.text)
+        } else {
+            view.setNote(text: "")
+        }
     }
     
     func updateNote(text: String) {
-        guard let note = note else { return }
-        if note.id.isEmpty {
-            networkService.createNewDocument(text: text)
-            return
-        }
-        if text != note.text {
+        if let note = note {
             networkService.updateDocument(id: note.id, text: text)
+        } else {
+            networkService.createNewDocument(text: text)
         }
     }
 }
