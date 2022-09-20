@@ -18,7 +18,7 @@ protocol SettingsViewProtocol: UITableViewController {
 }
 
 protocol SettingsPresenterProtocol {
-    init(view: SettingsViewProtocol, networkService: FireAPIProtocol, settingsService: AppSettingsProtolol)
+    init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol)
     func viewLoaded()
     func singIn()
     func signOut()
@@ -29,11 +29,11 @@ protocol SettingsPresenterProtocol {
 class SettingsPresenter: SettingsPresenterProtocol {
     
     var view: SettingsViewProtocol
-    var networkService: FireAPIProtocol
+    var networkService: NetworkServiceProtocol
     var settingsService: AppSettingsProtolol
     var user: User?
     
-    required init(view: SettingsViewProtocol, networkService: FireAPIProtocol, settingsService: AppSettingsProtolol) {
+    required init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol) {
         self.view = view
         self.networkService = networkService
         self.settingsService = settingsService

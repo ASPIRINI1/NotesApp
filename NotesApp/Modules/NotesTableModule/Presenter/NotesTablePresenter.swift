@@ -14,7 +14,7 @@ protocol NotesTableViewProtocol {
 }
 
 protocol NotesTablePresenterProtocol {
-    init(view: NotesTableViewProtocol, networkService: FireAPIProtocol)
+    init(view: NotesTableViewProtocol, networkService: NetworkServiceProtocol)
     func getNotes()
     func deleteNote(noteID: String)
 }
@@ -22,11 +22,11 @@ protocol NotesTablePresenterProtocol {
 class NotesTablePresenter: NotesTablePresenterProtocol {
     
     var view: NotesTableViewProtocol
-    var networkService: FireAPIProtocol
+    var networkService: NetworkServiceProtocol
     var notes: [Note]?
     var filtredNotes: [Note]?
     
-    required init(view: NotesTableViewProtocol, networkService: FireAPIProtocol) {
+    required init(view: NotesTableViewProtocol, networkService: NetworkServiceProtocol) {
         self.view = view
         self.networkService = networkService
     }

@@ -33,7 +33,7 @@ class MockNotesTableView: NotesTableViewProtocol {
     
 }
 
-class MockNetworkService: FireAPIProtocol {
+class MockNetworkService: NetworkServiceProtocol {
     
     func signIn(email: String, password: String, completion: @escaping (Bool) -> ()) {
         
@@ -74,7 +74,7 @@ class NotesTableModuleTest: XCTestCase {
     var view: NotesTableViewProtocol!
     var presenter: NotesTablePresenterProtocol!
     var notes: [Note]?
-    var networkService: FireAPIProtocol!
+    var networkService: NetworkServiceProtocol!
 
     override func setUpWithError() throws {
         view = MockNotesTableView()

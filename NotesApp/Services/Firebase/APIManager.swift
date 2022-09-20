@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-protocol FireAPIProtocol { 
+protocol NetworkServiceProtocol { 
     func signIn(email: String, password: String, completion: @escaping (Bool) -> ())
     func signOut()
     func registration(email: String, password: String, completion: @escaping (Bool) -> ())
@@ -19,19 +19,15 @@ protocol FireAPIProtocol {
     func deleteDocument(id: String)
 }
 
-class FireAPI: FireAPIProtocol {
+class FireAPI: NetworkServiceProtocol {
     
     static let shared = FireAPI()
     lazy var db: Firestore = {
-        var db: Firestore!
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
-        db = Firestore.firestore()
-        return db
+        return Firestore.firestore()
     }()
-    lazy var user: User? = {
-            return AppSettings.shared.user
-    }()
+    lazy var user: User? = AppSettings.shared.user
     
     private init() { }
   
