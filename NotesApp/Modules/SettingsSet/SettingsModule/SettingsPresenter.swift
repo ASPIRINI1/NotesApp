@@ -28,7 +28,7 @@ protocol SettingsPresenterProtocol {
 
 class SettingsPresenter: SettingsPresenterProtocol {
     
-    var view: SettingsViewProtocol
+    private var view: SettingsViewProtocol
     var networkService: NetworkServiceProtocol
     var settingsService: AppSettingsProtolol
     var user: User?

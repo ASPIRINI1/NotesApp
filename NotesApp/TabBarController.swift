@@ -11,11 +11,10 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         switch AppSettings.shared.appTheme {
             case 0: self.overrideUserInterfaceStyle = .unspecified
-            case 1: self.overrideUserInterfaceStyle = .dark
-            case 2: self.overrideUserInterfaceStyle = .light
+            case 1: self.overrideUserInterfaceStyle = .light
+            case 2: self.overrideUserInterfaceStyle = .dark
             default: self.overrideUserInterfaceStyle = .unspecified
         }
     }
