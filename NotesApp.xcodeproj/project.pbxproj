@@ -16,8 +16,6 @@
 		DE4CA9E12884C08600924D66 /* NotesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4CA9DF2884C08600924D66 /* NotesTableViewController.xib */; };
 		DE4CA9E52884C1E800924D66 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9E32884C1E800924D66 /* NotesTableViewCell.swift */; };
 		DE4CA9E62884C1E800924D66 /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4CA9E42884C1E800924D66 /* NotesTableViewCell.xib */; };
-		DE51BC4128E9E7C00001B946 /* Settings.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE51BC4328E9E7C00001B946 /* Settings.strings */; };
-		DE52A41527E77C1400C9B612 /* Authorization.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE52A41727E77C1400C9B612 /* Authorization.strings */; };
 		DE7470DB28D740EF0088771E /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7470DA28D740EF0088771E /* ButtonTableViewCell.swift */; };
 		DE8155F42885B6AE00A9E9AA /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */; };
 		DE8155F72885B82500A9E9AA /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155F52885B82500A9E9AA /* DetailVC.swift */; };
@@ -119,12 +117,6 @@
 		DE4CA9DF2884C08600924D66 /* NotesTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewController.xib; sourceTree = "<group>"; };
 		DE4CA9E32884C1E800924D66 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		DE4CA9E42884C1E800924D66 /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
-		DE51BC4228E9E7C00001B946 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Settings.strings; sourceTree = "<group>"; };
-		DE51BC4428E9E7CA0001B946 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Settings.strings; sourceTree = "<group>"; };
-		DE52A41127E7788E00C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		DE52A41227E7788F00C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		DE52A41627E77C1400C9B612 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Authorization.strings; sourceTree = "<group>"; };
-		DE52A41927E7818F00C9B612 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Authorization.strings; sourceTree = "<group>"; };
 		DE7470DA28D740EF0088771E /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		DE8155F52885B82500A9E9AA /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
@@ -507,8 +499,6 @@
 				DEDD8553279317400075D525 /* Main.storyboard */,
 				DEDD8556279317420075D525 /* Assets.xcassets */,
 				DEDD8558279317420075D525 /* LaunchScreen.storyboard */,
-				DE52A41727E77C1400C9B612 /* Authorization.strings */,
-				DE51BC4328E9E7C00001B946 /* Settings.strings */,
 				DEDD855B279317420075D525 /* Info.plist */,
 				DEDD8561279319120075D525 /* GoogleService-Info.plist */,
 			);
@@ -727,7 +717,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ru,
 			);
 			mainGroup = DEDD8541279317400075D525;
 			productRefGroup = DEDD854B279317400075D525 /* Products */;
@@ -752,9 +741,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE52A41527E77C1400C9B612 /* Authorization.strings in Resources */,
 				DEDD855A279317420075D525 /* LaunchScreen.storyboard in Resources */,
-				DE51BC4128E9E7C00001B946 /* Settings.strings in Resources */,
 				DE4CA9E62884C1E800924D66 /* NotesTableViewCell.xib in Resources */,
 				DE8155F82885B82500A9E9AA /* DetailVC.xib in Resources */,
 				DEDD8562279319120075D525 /* GoogleService-Info.plist in Resources */,
@@ -870,29 +857,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DE51BC4328E9E7C00001B946 /* Settings.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE51BC4228E9E7C00001B946 /* en */,
-				DE51BC4428E9E7CA0001B946 /* ru */,
-			);
-			name = Settings.strings;
-			sourceTree = "<group>";
-		};
-		DE52A41727E77C1400C9B612 /* Authorization.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE52A41627E77C1400C9B612 /* ru */,
-				DE52A41927E7818F00C9B612 /* en */,
-			);
-			name = Authorization.strings;
-			sourceTree = "<group>";
-		};
 		DEDD8553279317400075D525 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DEDD8554279317400075D525 /* Base */,
-				DE52A41127E7788E00C9B612 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -901,7 +869,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				DEDD8559279317420075D525 /* Base */,
-				DE52A41227E7788F00C9B612 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
