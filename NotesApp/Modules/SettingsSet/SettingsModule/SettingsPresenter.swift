@@ -62,4 +62,9 @@ class SettingsPresenter: SettingsPresenterProtocol {
         let webView = ModuleBuilder.createWEBViewController(url: MainURLs.developer.rawValue)
         view.navigationController?.pushViewController(webView, animated: true)
     }
+    
+    func selectApp(theme: Int) {
+        settingsService.appTheme = theme
+        view.tabBarController?.overrideUserInterfaceStyle = .allCases[theme]
+    }
 }

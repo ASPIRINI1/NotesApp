@@ -21,10 +21,10 @@ class SegmenedTableViewCell: UITableViewCell {
         return label
     }()
     private lazy var segmentedControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: [NSLocalizedString("System", comment: ""),
-                                                 NSLocalizedString("Light", comment: ""),
-                                                 NSLocalizedString("Dark", comment: "")])
-        control.addTarget(self, action: #selector(selectSegment), for: .touchUpInside)
+        let control = UISegmentedControl(items: [UIUserInterfaceStyle.unspecified.title,
+                                         UIUserInterfaceStyle.light.title,
+                                         UIUserInterfaceStyle.dark.title])
+        control.addTarget(self, action: #selector(selectSegment), for: .valueChanged)
         control.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(control)
         setNeedsUpdateConstraints()

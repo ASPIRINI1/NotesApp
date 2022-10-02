@@ -1,10 +1,11 @@
 //
-//  UITableViewCell+identefier.swift
+//  UItableViewCell+Identefier.swift
 //  NotesApp
 //
-//  Created by Станислав Зверьков on 18.09.2022.
+//  Created by Станислав Зверьков on 24.09.2022.
 //
 
+import Foundation
 import UIKit
 
 extension UITableViewCell {

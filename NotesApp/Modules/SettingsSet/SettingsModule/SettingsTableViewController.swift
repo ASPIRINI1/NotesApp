@@ -10,14 +10,13 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
     
     var presenter: SettingsPresenter!
-    private var appThemeSegment = 0
     
     enum Sections: String, CaseIterable {
         case app = "App"
         case about = "About"
         
         static subscript(indexPath: IndexPath) -> Cells {
-            return SettingsTableViewController.Sections.allCases[indexPath.section].cells[indexPath.row]
+            return Sections.allCases[indexPath.section].cells[indexPath.row]
         }
         
         var cells: [Cells] {
@@ -52,8 +51,9 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(ButtonTableViewCell.self, forCellReuseIdentifier: ButtonTableViewCell.identefier)
-        tableView.register(SegmenedTableViewCell.self, forCellReuseIdentifier: SegmenedTableViewCell.identefier)
+        tableView.allowsSelection = false
+        tableView.register(ButtonTableViewCell.self)
+        tableView.register(SegmenedTableViewCell.self)
     }
     
     //  MARK: - TableView Delegate/DataSource
@@ -75,36 +75,30 @@ class SettingsTableViewController: UITableViewController {
         
         switch cellType {
         case .signIn:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.identefier, for: indexPath) as? ButtonTableViewCell {
-                cell.delegate = self
-                if let user = presenter.user {
-                    cell.fill(title: user.email, button: NSLocalizedString("Sign out", comment: ""))
-                } else {
-                    cell.fill(title: cellType.title, button: NSLocalizedString("Sign in", comment: ""))
-                }
-                return cell
+            let cell = tableView.dequeue(ButtonTableViewCell.self, indexPath)
+            cell.delegate = self
+            if let user = presenter.user {
+                cell.fill(title: user.email, button: NSLocalizedString("Sign out", comment: ""))
+            } else {
+                cell.fill(title: cellType.title, button: NSLocalizedString("Sign in", comment: ""))
             }
+            return cell
         case .appTheme:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: SegmenedTableViewCell.identefier, for: indexPath) as? SegmenedTableViewCell {
-                cell.delegate = self
-                cell.fill(title: cellType.title, theme: AppSettings.shared.appTheme)
-                return cell
-            }
+            let cell = tableView.dequeue(SegmenedTableViewCell.self, indexPath)
+            cell.delegate = self
+            cell.fill(title: cellType.title, theme: presenter.settingsService.appTheme)
+            return cell
         case .productInfo:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.identefier, for: indexPath) as? ButtonTableViewCell {
-                cell.delegate = self
-                cell.fill(title: cellType.title, button: "WEB site")
-                return cell
-            }
+            let cell = tableView.dequeue(ButtonTableViewCell.self, indexPath)
+            cell.delegate = self
+            cell.fill(title: cellType.title, button: "WEB site")
+            return cell
         case .devInfo:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.identefier, for: indexPath) as? ButtonTableViewCell {
-                cell.delegate = self
-                cell.fill(title: cellType.title, button: "GitHub")
-                return cell
-            }
+            let cell = tableView.dequeue(ButtonTableViewCell.self, indexPath)
+            cell.delegate = self
+            cell.fill(title: cellType.title, button: "GitHub")
+            return cell
         }
-        
-        return tableView.dequeueReusableCell(withIdentifier: UITableViewCell.identefier, for: indexPath)
     }
 }
 
@@ -112,7 +106,6 @@ class SettingsTableViewController: UITableViewController {
 
 extension SettingsTableViewController: SettingsViewProtocol {
     func setAppTheme(selectedIndex: Int) {
-       appThemeSegment = selectedIndex
     }
 }
 
@@ -122,17 +115,19 @@ extension SettingsTableViewController: ButtonTableViewCellDelegate {
     func buttonTableViewCell(_ cell: ButtonTableViewCell, didTap button: UIButton) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let cellType = Sections[indexPath]
-        print(cellType)
-        
         switch cellType {
         case .signIn:
-            break
+            if presenter.user == nil {
+                presenter.singIn()
+            } else {
+                presenter.signOut()
+            }
         case .appTheme:
             break
         case .productInfo:
-            break
+            presenter.openProductWEB()
         case .devInfo:
-            break
+            presenter.openDevInfo()
         }
     }
 }
@@ -141,6 +136,6 @@ extension SettingsTableViewController: ButtonTableViewCellDelegate {
 
 extension SettingsTableViewController: SegmenedTableViewCellDelegate {
     func segmenedTableViewCell(_ cell: SegmenedTableViewCell, didSet segment: Int) {
-        
+        presenter.selectApp(theme: segment)
     }
 }
