@@ -27,7 +27,7 @@ class ModuleBuilder: ModulesBuiler {
     }
     
     static func createDetailViewController(noteID: String?) -> UIViewController {
-        let view = DetailVC()
+        let view = DetailViewController()
         let networkService = FireAPI.shared
         let presenter = DetailPresenter(view: view, networkService: networkService, noteID: noteID)
         view.presenter = presenter
@@ -44,14 +44,14 @@ class ModuleBuilder: ModulesBuiler {
     }
     
     static func createWEBViewController(url: String) -> UIViewController {
-        let view = WEBViewControllerr()
+        let view = WEBViewController()
         let presenter = WEBPresenter(url: url, view: view)
         view.presenter = presenter
         return view
     }
     
     static func createAuthorizationViewController() -> UIViewController {
-        let view = AuthorizationViewControllerr()
+        let view = AuthorizationViewController()
         let networkService = FireAPI.shared
         let settingsService = AppSettings.shared
         let presenter = AuthorizationPresenter(view: view, networkService: networkService, settingsService: settingsService)

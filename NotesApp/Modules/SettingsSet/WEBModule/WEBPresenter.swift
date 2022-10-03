@@ -32,14 +32,14 @@ class WEBPresenter: WEBPresenterProtocol {
     }
     
     func back() {
-        guard let view = view as? WEBViewControllerr else { return }
+        guard let view = view as? WEBViewController else { return }
         if view.WEBView.canGoBack {
             view.WEBView.goBack()
         }
     }
     
     func forward() {
-        guard let view = view as? WEBViewControllerr else { return }
+        guard let view = view as? WEBViewController else { return }
         if view.WEBView.canGoForward {
             view.WEBView.goForward()
         }

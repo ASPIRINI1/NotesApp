@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class WEBViewControllerr: UIViewController {
+class WEBViewController: UIViewController {
 
     @IBOutlet weak var WEBView: WKWebView!
     
@@ -34,7 +34,7 @@ class WEBViewControllerr: UIViewController {
     }
 }
 
-extension WEBViewControllerr: WEBViewProtocol {
+extension WEBViewController: WEBViewProtocol {
     
     func show(url: String) {
         if let url = URL(string: url) {

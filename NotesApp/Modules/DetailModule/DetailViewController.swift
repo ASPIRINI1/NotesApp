@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailVC: UIViewController {
+class DetailViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     var presenter: DetailPresenter!
@@ -23,7 +23,7 @@ class DetailVC: UIViewController {
     }
 }
 
-extension DetailVC: DetailViewProtocol {
+extension DetailViewController: DetailViewProtocol {
     func setNote(text: String) {
         textView.text = text
     }

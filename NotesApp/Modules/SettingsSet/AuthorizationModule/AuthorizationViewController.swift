@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AuthorizationViewControllerr: UIViewController {
+class AuthorizationViewController: UIViewController {
     
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
@@ -56,7 +56,7 @@ class AuthorizationViewControllerr: UIViewController {
     }
 }
 
-extension AuthorizationViewControllerr: AuthorizationViewProtocol {
+extension AuthorizationViewController: AuthorizationViewProtocol {
     func showError(errorText: String) {
         errorLabel.text = errorText
         errorLabel.isHidden = false

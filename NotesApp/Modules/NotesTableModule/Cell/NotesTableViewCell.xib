@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="64" id="f5a-5u-n3x">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f5a-5u-n3x" id="Pev-40-Nvi">
+                <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYG-ql-nLK">
+                        <rect key="frame" x="20" y="34" width="350" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="kgW-KX-zCO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzf-9D-UOd">
+                        <rect key="frame" x="20" y="8" width="350" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="cX4-uZ-qlF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="VYG-ql-nLK" firstAttribute="leading" secondItem="Pev-40-Nvi" secondAttribute="leading" constant="20" id="Egd-Tw-sVu"/>
+                    <constraint firstAttribute="trailing" secondItem="Jzf-9D-UOd" secondAttribute="trailing" constant="20" id="OPL-zf-7G5"/>
+                    <constraint firstItem="Jzf-9D-UOd" firstAttribute="leading" secondItem="Pev-40-Nvi" secondAttribute="leading" constant="20" id="RU1-mn-arL"/>
+                    <constraint firstItem="VYG-ql-nLK" firstAttribute="top" secondItem="Jzf-9D-UOd" secondAttribute="bottom" constant="5" id="ThL-ry-LQs"/>
+                    <constraint firstAttribute="trailing" secondItem="VYG-ql-nLK" secondAttribute="trailing" constant="20" id="Xcw-ow-xJc"/>
+                    <constraint firstAttribute="bottom" secondItem="VYG-ql-nLK" secondAttribute="bottom" constant="8" id="mmn-kB-jtp"/>
+                    <constraint firstItem="Jzf-9D-UOd" firstAttribute="top" secondItem="Pev-40-Nvi" secondAttribute="top" constant="8" id="yvY-c8-kfS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-87.692307692307693" y="-135.781990521327"/>
+        </tableViewCell>
+    </objects>
+</document>
