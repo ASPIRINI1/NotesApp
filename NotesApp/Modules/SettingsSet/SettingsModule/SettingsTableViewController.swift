@@ -105,10 +105,7 @@ class SettingsTableViewController: UITableViewController {
 //  MARK: - SettingsViewProtocol
 
 extension SettingsTableViewController: SettingsViewProtocol {
-    func setAppTheme(selectedIndex: Int) {
-        
-        
-    }
+    
 }
 
 //MARK: - ButtonTableViewCellDelegate

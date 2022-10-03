@@ -29,11 +29,11 @@ class NotesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.navigationItem.searchController = searchController
         navigationItem.setRightBarButton(addNoteButton, animated: false)
-        tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil), forCellReuseIdentifier: "NotesTableViewCell")
+        tableView.register(NotesTableViewCell.self)
         presenter.getNotes()
     }
     
-    // MARK: - Table view DataSource
+    // MARK: - TableView DataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let notesCount = presenter.notes?.count else { return 0 }
@@ -45,7 +45,7 @@ class NotesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell") as? NotesTableViewCell else { return UITableViewCell() }
+        let cell = tableView.dequeue(NotesTableViewCell.self, indexPath)
         var note: String
         
         if isFiltering {

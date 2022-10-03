@@ -13,13 +13,10 @@ enum MainURLs: String {
     case productInfo = "https://www.google.com"
 }
 
-protocol SettingsViewProtocol: UITableViewController {
-    func setAppTheme(selectedIndex: Int)
-}
+protocol SettingsViewProtocol: UITableViewController { }
 
 protocol SettingsPresenterProtocol {
     init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol)
-    func viewLoaded()
     func singIn()
     func signOut()
     func openProductWEB()
@@ -38,10 +35,6 @@ class SettingsPresenter: SettingsPresenterProtocol {
         self.networkService = networkService
         self.settingsService = settingsService
         self.user = settingsService.user
-    }
-    
-    func viewLoaded() {
-        view.setAppTheme(selectedIndex: settingsService.appTheme)
     }
     
     func singIn() {

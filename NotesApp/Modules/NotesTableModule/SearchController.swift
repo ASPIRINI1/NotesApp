@@ -24,17 +24,18 @@ class SearchController: UISearchController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        setUp SearchController
+        setupSearchController()
+    }
+    
+    private func setupSearchController() {
         self.searchResultsUpdater = self
         self.obscuresBackgroundDuringPresentation = true
         self.searchBar.placeholder = NSLocalizedString("Search", comment: "")
         definesPresentationContext = true
     }
-    
 }
 
-//MARK: - UISearchResultsUpdating, UISearchControllerDelegate
+//  MARK: - UISearchResultsUpdating, UISearchControllerDelegate
 
 extension SearchController: UISearchResultsUpdating, UISearchControllerDelegate {
     
@@ -43,9 +44,7 @@ extension SearchController: UISearchResultsUpdating, UISearchControllerDelegate 
     }
     
     private func filterContentForSearchText(_ searchText: String) {
-        
         guard let searchingDelegate = searchingDelegate else { return }
-        
         searchingDelegate.getResults(notes: searchingDelegate.setNotesForSearching().filter({ document in
             return document.text.lowercased().contains(searchText.lowercased())
         }))
