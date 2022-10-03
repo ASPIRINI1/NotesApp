@@ -106,6 +106,8 @@ class SettingsTableViewController: UITableViewController {
 
 extension SettingsTableViewController: SettingsViewProtocol {
     func setAppTheme(selectedIndex: Int) {
+        
+        
     }
 }
 
