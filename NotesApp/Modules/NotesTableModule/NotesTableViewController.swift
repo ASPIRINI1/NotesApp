@@ -23,6 +23,12 @@ class NotesTableViewController: UITableViewController {
         let button = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: addNoteButtonAction, menu: nil)
         return button
     }()
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.center = view.center
+        view.addSubview(indicator)
+        return indicator
+    }()
     private lazy var isFiltering: Bool = searchController.isActive && !searchController.searchBarIsEmpty
         
     override func viewDidLoad() {
@@ -36,45 +42,29 @@ class NotesTableViewController: UITableViewController {
     // MARK: - TableView DataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let notesCount = presenter.notes?.count else { return 0 }
+        var count = presenter.notes?.count
         if isFiltering {
-            guard let filtredCount = presenter.filtredNotes?.count else { return 0 }
-            return filtredCount
+            count = presenter.filtredNotes?.count
         }
-        return notesCount
+        guard let count = count else { return 0 }
+        return count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(NotesTableViewCell.self, indexPath)
-        var note: String
+        var note: Note?
         
         if isFiltering {
-            note = presenter.filtredNotes![indexPath.row].text
-            cell.noteID = presenter.filtredNotes![indexPath.row].id
+            note = presenter.notes?[indexPath.row]
         } else {
-            note = String(presenter.notes![indexPath.row].text.suffix(30))
-            cell.noteID = presenter.notes![indexPath.row].id
-//            presenter.notes?.remove(at: indexPath.row)
+            note = presenter.filtredNotes?[indexPath.row]
         }
-        
-        let newLinePosition = note.firstIndex { character in
-            return character.isNewline
-        }
-        
-        guard let newLinePosition = newLinePosition else {
-            cell.headLabel.text = String(note.prefix(15))
-            cell.bodyLabel.text = nil
-            return cell
-        }
-        
-        cell.headLabel.text = String(note.prefix(upTo: newLinePosition))
-        note.remove(at: newLinePosition)
-        cell.bodyLabel.text = String(note.suffix(from: newLinePosition))
-        
+        guard let note = note else { return cell }
+        cell.fill(id: note.id, text: note.text)
         return cell
     }
     
-//    MARK: - Table view Delegate
+//    MARK: - TableView Delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) as? NotesTableViewCell else { return }
@@ -89,16 +79,11 @@ class NotesTableViewController: UITableViewController {
 extension NotesTableViewController: NotesTableViewProtocol {
     
     func loadingNotes() {
-        let activityIndicator = UIActivityIndicatorView(frame: CGRect(origin: view.center, size: CGSize(width: 0, height: 0)))
         activityIndicator.startAnimating()
-        view.addSubview(activityIndicator)
     }
     
     func notesLoaded() {
-        if let activityIndicator = view.subviews.first as? UIActivityIndicatorView {
-            activityIndicator.stopAnimating()
-            activityIndicator.removeFromSuperview()
-        }
+        activityIndicator.removeFromSuperview()
         tableView.reloadData()
     }
     
