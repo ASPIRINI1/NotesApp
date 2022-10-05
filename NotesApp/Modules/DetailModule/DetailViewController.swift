@@ -12,6 +12,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     var presenter: DetailPresenter!
     
+    override func viewDidLoad() {
+        presenter.viewLoaded()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         guard let text = textView.text else { return }
         presenter.updateNote(text: text)

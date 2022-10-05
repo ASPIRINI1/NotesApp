@@ -13,7 +13,7 @@ protocol DetailViewProtocol {
 
 protocol DetailPresenterProtocol {
     init(view: DetailViewProtocol, networkService: NetworkServiceProtocol, noteID: String?)
-    func noteLoaded()
+    func viewLoaded()
     func updateNote(text: String)
 }
 
@@ -31,11 +31,11 @@ class DetailPresenter: DetailPresenterProtocol {
         networkService.getNote(noteID: noteID) { note in
             guard let note = note else { return }
             self.note = note
-            self.noteLoaded()
+            self.viewLoaded()
         }
     }
     
-    func noteLoaded() {
+    func viewLoaded() {
         if let note = note {
             view.setNote(text: note.text)
         } else {
