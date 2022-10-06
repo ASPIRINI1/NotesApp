@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,11 +21,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="CRE-PC-PPb">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authorisation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5OL-Uc-BJk">
-                    <rect key="frame" x="8" y="20" width="398" height="36"/>
+                    <rect key="frame" x="8" y="67" width="374" height="33.666666666666657"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="5OL-Uc-BJk" secondAttribute="height" multiplier="199:18" id="yl0-R7-GBK"/>
                     </constraints>
@@ -32,11 +34,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t93-Xu-Y2Y">
-                    <rect key="frame" x="20" y="126" width="374" height="386"/>
+                    <rect key="frame" x="20" y="170.66666666666666" width="350" height="361.33333333333337"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vks-N4-CIK">
-                            <rect key="frame" x="195.66666666666663" y="286" width="148.33333333333337" height="34.333333333333314"/>
+                            <rect key="frame" x="216.33333333333334" y="281" width="103.66666666666666" height="24"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="24" id="bYv-NE-snq"/>
                                 <constraint firstAttribute="width" secondItem="Vks-N4-CIK" secondAttribute="height" multiplier="147:34" id="pnu-Ij-FmC"/>
                             </constraints>
                             <state key="normal" title="Button"/>
@@ -46,7 +49,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3P3-vT-K0v">
-                            <rect key="frame" x="162.66666666666666" y="80" width="49" height="21"/>
+                            <rect key="frame" x="150.66666666666666" y="80" width="49" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="3P3-vT-K0v" secondAttribute="height" multiplier="7:3" id="WHx-BS-dVW"/>
                             </constraints>
@@ -55,7 +58,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1fg-Wt-BGh">
-                            <rect key="frame" x="30" y="109" width="314" height="34"/>
+                            <rect key="frame" x="30" y="109.00000000000003" width="290" height="31.666666666666657"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="1fg-Wt-BGh" secondAttribute="height" multiplier="157:17" id="Jvb-my-aUf"/>
                             </constraints>
@@ -63,13 +66,13 @@
                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="continue" textContentType="email"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qx8-d2-lhB">
-                            <rect key="frame" x="150" y="173" width="74" height="21"/>
+                            <rect key="frame" x="138" y="170.66666666666666" width="74" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fee-nz-Gl3">
-                            <rect key="frame" x="30" y="202" width="314" height="34"/>
+                            <rect key="frame" x="30" y="199.66666666666666" width="290" height="31.333333333333343"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="fee-nz-Gl3" secondAttribute="height" multiplier="157:17" id="1i6-UQ-pom"/>
                             </constraints>
@@ -77,8 +80,9 @@
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" textContentType="password"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifp-qI-JKA">
-                            <rect key="frame" x="30" y="286" width="157.66666666666666" height="28.333333333333314"/>
+                            <rect key="frame" x="30" y="281" width="133" height="24"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="24" id="LAf-qs-Q6I"/>
                                 <constraint firstAttribute="width" secondItem="Ifp-qI-JKA" secondAttribute="height" multiplier="172:31" id="zbr-uB-qKS"/>
                             </constraints>
                             <state key="normal" title="Button"/>
@@ -88,7 +92,7 @@
                             </connections>
                         </button>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOe-p5-XJB">
-                            <rect key="frame" x="8" y="15" width="358" height="50"/>
+                            <rect key="frame" x="8" y="15" width="334" height="50"/>
                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                             <color key="textColor" systemColor="systemRedColor"/>
                             <nil key="highlightedColor"/>
@@ -106,7 +110,7 @@
                         <constraint firstItem="fee-nz-Gl3" firstAttribute="top" secondItem="qx8-d2-lhB" secondAttribute="bottom" constant="8" symbolic="YES" id="ONG-NS-eWd"/>
                         <constraint firstItem="3P3-vT-K0v" firstAttribute="top" secondItem="t93-Xu-Y2Y" secondAttribute="top" constant="80" id="Ymi-tT-j5A"/>
                         <constraint firstItem="qx8-d2-lhB" firstAttribute="top" secondItem="1fg-Wt-BGh" secondAttribute="bottom" constant="30" id="dIB-Pm-peG"/>
-                        <constraint firstItem="Vks-N4-CIK" firstAttribute="leading" secondItem="Ifp-qI-JKA" secondAttribute="trailing" constant="8" symbolic="YES" id="eiP-nt-7W7"/>
+                        <constraint firstItem="Vks-N4-CIK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ifp-qI-JKA" secondAttribute="trailing" constant="8" symbolic="YES" id="eiP-nt-7W7"/>
                         <constraint firstItem="Ifp-qI-JKA" firstAttribute="top" secondItem="fee-nz-Gl3" secondAttribute="bottom" constant="50" id="eqt-2d-MWc"/>
                         <constraint firstItem="Ifp-qI-JKA" firstAttribute="leading" secondItem="t93-Xu-Y2Y" secondAttribute="leading" constant="30" id="ja0-2C-cAk"/>
                         <constraint firstAttribute="width" secondItem="t93-Xu-Y2Y" secondAttribute="height" multiplier="187:193" id="kOS-ql-aIb"/>
