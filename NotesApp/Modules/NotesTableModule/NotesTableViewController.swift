@@ -17,8 +17,7 @@ class NotesTableViewController: UITableViewController {
     }()
     private lazy var addNoteButton: UIBarButtonItem = {
         let addNoteButtonAction = UIAction { _ in
-            let detailVC = ModuleBuilder.createDetailViewController(noteID: nil)
-            self.navigationController?.pushViewController(detailVC, animated: true)
+            self.presenter.openDetail(noteID: nil)
         }
         let button = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: addNoteButtonAction, menu: nil)
         return button
@@ -39,7 +38,7 @@ class NotesTableViewController: UITableViewController {
         presenter.getNotes()
     }
     
-    // MARK: - TableView DataSource
+    //  MARK: - TableView DataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = presenter.notes?.count
@@ -64,19 +63,21 @@ class NotesTableViewController: UITableViewController {
         return cell
     }
     
-//    MARK: - TableView Delegate
+    //  MARK: - TableView Delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) as? NotesTableViewCell else { return }
         guard let noteID = selectedCell.noteID else { return }
-        let detailVC = ModuleBuilder.createDetailViewController(noteID: noteID)
-        navigationController?.pushViewController(detailVC, animated: true)
+        presenter.openDetail(noteID: noteID)
     }
 }
 
 //  MARK: - Extensions
 
 extension NotesTableViewController: NotesTableViewProtocol {
+    func openDetail(detailVC: UIViewController) {
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
     
     func loadingNotes() {
         activityIndicator.startAnimating()
@@ -90,7 +91,6 @@ extension NotesTableViewController: NotesTableViewProtocol {
     func errorLoadingNotes() {
         let alert = UIAlertController(title: NSLocalizedString("Error loading notes.", comment: ""), message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
-        
         present(alert, animated: true)
     }
 }

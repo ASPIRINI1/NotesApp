@@ -6,21 +6,23 @@
 //
 
 import Foundation
+import UIKit
 
 protocol NotesTableViewProtocol {
     func loadingNotes()
     func notesLoaded()
     func errorLoadingNotes()
+    func openDetail(detailVC: UIViewController)
 }
 
 protocol NotesTablePresenterProtocol {
     init(view: NotesTableViewProtocol, networkService: NetworkServiceProtocol)
     func getNotes()
     func deleteNote(noteID: String)
+    func openDetail(noteID: String?)
 }
 
 class NotesTablePresenter: NotesTablePresenterProtocol {
-    
     var view: NotesTableViewProtocol
     var networkService: NetworkServiceProtocol
     var notes: [Note]?
@@ -32,14 +34,29 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     }
     
     func getNotes() {
-        networkService.getDocuments { notes in
-            self.notes = notes
-            self.view.notesLoaded()
+        networkService.getDocuments { [weak self] notes in
+            self?.notes = notes
+            self?.view.notesLoaded()
         }
     }
     
     func deleteNote(noteID: String) {
         networkService.deleteDocument(id: noteID)
         notes?.removeAll()
+    }
+    
+    func openDetail(noteID: String?) {
+        if let detailVC = ModuleBuilder.createDetailViewController(noteID: noteID) as? DetailViewController {
+            detailVC.presenter.delegate = self
+            view.openDetail(detailVC: detailVC)
+        }
+    }
+}
+
+//  MARK - DetailPresenterDelegate
+
+extension NotesTablePresenter: DetailPresenterDelegate {
+    func detailPresenterNoteHasChanges() {
+        getNotes()
     }
 }

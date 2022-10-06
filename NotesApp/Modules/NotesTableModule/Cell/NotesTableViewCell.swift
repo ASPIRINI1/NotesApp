@@ -15,17 +15,14 @@ class NotesTableViewCell: UITableViewCell {
     
     var noteID: String?
     
-    override class func awakeFromNib() {
-        
-    }
-    
     func fill(id: String, text: String) {
         noteID = id
         let length = 30
         let newLinePosition = text.firstIndex { $0.isNewline }
         
         guard let newLinePosition = newLinePosition else {
-           headLabel.text = String(text.prefix(length))
+            headLabel.text = String(text.prefix(length))
+            bodyLabel.text = String()
             return
         }
         headLabel.text = String(text.prefix(upTo: newLinePosition).prefix(length))

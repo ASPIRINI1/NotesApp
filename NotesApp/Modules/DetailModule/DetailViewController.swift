@@ -17,8 +17,7 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        guard let text = textView.text else { return }
-        presenter.updateNote(text: text)
+        presenter.updateNote(text: textView.text)
     }
 }
 
