@@ -35,7 +35,7 @@ class NotesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.navigationItem.searchController = searchController
         navigationItem.setRightBarButton(addNoteButton, animated: false)
-        tableView.register(NotesTableViewCell.self)
+        tableView.registerNib(NotesTableViewCell.self)
         presenter.getNotes()
     }
     
@@ -55,9 +55,9 @@ class NotesTableViewController: UITableViewController {
         var note: Note?
         
         if isFiltering {
-            note = presenter.notes?[indexPath.row]
-        } else {
             note = presenter.filtredNotes?[indexPath.row]
+        } else {
+            note = presenter.notes?[indexPath.row]
         }
         guard let note = note else { return cell }
         cell.fill(id: note.id, text: note.text)

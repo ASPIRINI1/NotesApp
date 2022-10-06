@@ -18,6 +18,9 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzf-9D-UOd">
                         <rect key="frame" x="20" y="8" width="350" height="21"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="NO"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="cX4-uZ-qlF"/>
                         </constraints>
@@ -46,8 +49,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="bodyLabel" destination="VYG-ql-nLK" id="Xlm-bv-bEL"/>
-                <outlet property="headLabel" destination="Jzf-9D-UOd" id="rUs-0N-jb5"/>
+                <outlet property="bodyLabel" destination="VYG-ql-nLK" id="l2i-l9-NjU"/>
+                <outlet property="headLabel" destination="Jzf-9D-UOd" id="jmd-9E-DJY"/>
             </connections>
             <point key="canvasLocation" x="-87.692307692307693" y="-135.781990521327"/>
         </tableViewCell>
