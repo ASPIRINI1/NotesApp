@@ -27,21 +27,13 @@ class AppSettings: AppSettingsProtolol {
     }
     
     var signedIn: Bool {
-        get {
-            return userDefaults.bool(forKey: SettingsKeys.isSignIn.rawValue)
-        }
-        set {
-            userDefaults.set(newValue, forKey: SettingsKeys.isSignIn.rawValue)
-        }
+        get { return userDefaults.bool(forKey: SettingsKeys.isSignIn.rawValue) }
+        set { userDefaults.set(newValue, forKey: SettingsKeys.isSignIn.rawValue) }
     }
     
     var appTheme: Int {
-        get {
-            return userDefaults.integer(forKey: SettingsKeys.appTheme.rawValue)
-        }
-        set {
-            userDefaults.set(newValue, forKey: SettingsKeys.appTheme.rawValue)
-        }
+        get { return userDefaults.integer(forKey: SettingsKeys.appTheme.rawValue) }
+        set { userDefaults.set(newValue, forKey: SettingsKeys.appTheme.rawValue) }
     }
     
     var user: User? {
