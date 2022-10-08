@@ -19,7 +19,6 @@ class SearchController: UISearchController {
         guard let text = self.searchBar.text else {return false}
         return text.isEmpty
     }
-    
     weak var searchingDelegate: SearchNotesDelegate?
 
     override func viewDidLoad() {

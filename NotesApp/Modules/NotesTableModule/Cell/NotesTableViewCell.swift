@@ -17,7 +17,7 @@ class NotesTableViewCell: UITableViewCell {
     
     func fill(id: String, text: String) {
         noteID = id
-        let length = 30
+        let length = 50
         let newLinePosition = text.firstIndex { $0.isNewline }
         
         guard let newLinePosition = newLinePosition else {
