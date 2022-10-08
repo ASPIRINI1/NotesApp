@@ -72,7 +72,7 @@ class NotesTableViewController: UITableViewController {
     }
 }
 
-//  MARK: - Extensions
+//  MARK: - NotesTableViewProtocol
 
 extension NotesTableViewController: NotesTableViewProtocol {
     func openDetail(detailVC: UIViewController) {

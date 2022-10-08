@@ -13,7 +13,9 @@ enum MainURLs: String {
     case productInfo = "https://www.google.com"
 }
 
-protocol SettingsViewProtocol: UITableViewController { }
+protocol SettingsViewProtocol: UITableViewController {
+    func updateSignInCell()
+}
 
 protocol SettingsPresenterProtocol {
     init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol)
@@ -35,6 +37,11 @@ class SettingsPresenter: SettingsPresenterProtocol {
         self.networkService = networkService
         self.settingsService = settingsService
         self.user = settingsService.user
+        addNotifications()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .AuthStateDidChange, object: nil)
     }
     
     func singIn() {
@@ -59,5 +66,12 @@ class SettingsPresenter: SettingsPresenterProtocol {
     func selectApp(theme: Int) {
         settingsService.appTheme = theme
         view.tabBarController?.overrideUserInterfaceStyle = .allCases[theme]
+    }
+    
+    func addNotifications() {
+        NotificationCenter.default.addObserver(forName: .AuthStateDidChange, object: nil, queue: nil) { _ in
+            self.user = self.settingsService.user
+            self.view.updateSignInCell()
+        }
     }
 }

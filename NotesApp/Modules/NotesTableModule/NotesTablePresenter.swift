@@ -31,6 +31,11 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     required init(view: NotesTableViewProtocol, networkService: NetworkServiceProtocol) {
         self.view = view
         self.networkService = networkService
+        addNotifications()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .AuthStateDidChange, object: nil)
     }
     
     func getNotes() {
@@ -51,9 +56,15 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
             view.openDetail(detailVC: detailVC)
         }
     }
+    
+    func addNotifications() {
+        NotificationCenter.default.addObserver(forName: .AuthStateDidChange, object: nil, queue: nil) { _ in
+            self.getNotes()
+        }
+    }
 }
 
-//  MARK - DetailPresenterDelegate
+//  MARK: - DetailPresenterDelegate
 
 extension NotesTablePresenter: DetailPresenterDelegate {
     func detailPresenterNoteHasChanges() {

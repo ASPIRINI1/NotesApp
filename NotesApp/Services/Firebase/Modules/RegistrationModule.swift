@@ -22,16 +22,18 @@ extension FireAPI {
                                            email: email,
                                            password: password)
             completion(true)
+            NotificationCenter.default.post(Notification(name: .AuthStateDidChange))
         }
     }
     
     func signOut() {
         do {
         try Auth.auth().signOut()
+            AppSettings.shared.user = nil
+            NotificationCenter.default.post(Notification(name: .AuthStateDidChange))
         } catch {
             print("SignOut error: ", error)
         }
-        AppSettings.shared.user = nil
     }
     
     func registration(email: String, password: String, completion: @escaping (Bool) -> ()) {
@@ -47,6 +49,7 @@ extension FireAPI {
                                            email: email,
                                            password: password)
             completion(true)
+            NotificationCenter.default.post(Notification(name: .AuthStateDidChange))
         }
     }
 }
