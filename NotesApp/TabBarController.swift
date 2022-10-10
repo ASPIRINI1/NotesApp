@@ -23,6 +23,7 @@ class TabBarController: UITabBarController {
         settingsNavigationController.viewControllers.first?.navigationItem.title = NSLocalizedString("Settings", comment: "")
         settingsNavigationController.tabBarItem.image = UIImage(systemName: "gear")
         
+        
         setViewControllers([notesTableNavigationController, settingsNavigationController], animated: true)
         
         switch AppSettings.shared.appTheme {
