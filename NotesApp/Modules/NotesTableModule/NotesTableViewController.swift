@@ -52,7 +52,6 @@ class NotesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(NotesTableViewCell.self, indexPath)
         var note: Note?
-        
         if isFiltering {
             note = presenter.filtredNotes?[indexPath.row]
         } else {
@@ -75,8 +74,8 @@ class NotesTableViewController: UITableViewController {
 //  MARK: - NotesTableViewProtocol
 
 extension NotesTableViewController: NotesTableViewProtocol {
-    func openDetail(detailVC: UIViewController) {
-        navigationController?.pushViewController(detailVC, animated: true)
+    func open(vc: UIViewController) {
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func loadingNotes() {
@@ -93,12 +92,19 @@ extension NotesTableViewController: NotesTableViewProtocol {
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
+    
+    func userNotAuthorizedError(completion: @escaping () -> ()) {
+        let alert = UIAlertController(title: NSLocalizedString("You must log in first.", comment: ""), message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            completion()
+        }))
+        present(alert, animated: true)
+    }
 }
 
 //  MARK: Searching
 
 extension NotesTableViewController: SearchNotesDelegate {
-    
     func setNotesForSearching() -> [Note] {
         guard let notes = presenter.notes else { return [] }
         return notes

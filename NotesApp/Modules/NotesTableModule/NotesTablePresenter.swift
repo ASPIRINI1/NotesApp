@@ -9,10 +9,11 @@ import Foundation
 import UIKit
 
 protocol NotesTableViewProtocol {
+    func userNotAuthorizedError(completion: @escaping ()->())
     func loadingNotes()
     func notesLoaded()
     func errorLoadingNotes()
-    func openDetail(detailVC: UIViewController)
+    func open(vc: UIViewController)
 }
 
 protocol NotesTablePresenterProtocol {
@@ -51,9 +52,16 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     }
     
     func openDetail(noteID: String?) {
+        if networkService.user == nil {
+            view.userNotAuthorizedError {
+                let authVC = ModuleBuilder.createAuthorizationViewController()
+                self.view.open(vc: authVC)
+            }
+            return
+        }
         if let detailVC = ModuleBuilder.createDetailViewController(noteID: noteID) as? DetailViewController {
             detailVC.presenter.delegate = self
-            view.openDetail(detailVC: detailVC)
+            view.open(vc: detailVC)
         }
     }
     
