@@ -8,7 +8,8 @@
 import Foundation
 import Firebase
 
-protocol NetworkServiceProtocol { 
+protocol NetworkServiceProtocol {
+    var user: User? { get }
     func signIn(email: String, password: String, completion: @escaping (Bool) -> ())
     func signOut()
     func registration(email: String, password: String, completion: @escaping (Bool) -> ())
@@ -20,15 +21,21 @@ protocol NetworkServiceProtocol {
 }
 
 class FireAPI: NetworkServiceProtocol {
-    
     static let shared = FireAPI()
     lazy var db: Firestore = {
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         return Firestore.firestore()
     }()
-    lazy var user: User? = AppSettings.shared.user
     
-    private init() { }
-  
+    var user: User? = Auth.auth().currentUser
+    
+    private init() {
+        NotificationCenter.default.addObserver(forName: .AuthStateDidChange, object: nil, queue: nil) { _ in
+            Auth.auth().addStateDidChangeListener { auth, user in
+                self.user = user
+                NotificationCenter.default.post(name: .UserDidAuth, object: nil)
+            }
+        }
+    }
 }

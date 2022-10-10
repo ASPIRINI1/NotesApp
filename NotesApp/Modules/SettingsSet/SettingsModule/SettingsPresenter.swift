@@ -30,18 +30,17 @@ class SettingsPresenter: SettingsPresenterProtocol {
     private var view: SettingsViewProtocol
     var networkService: NetworkServiceProtocol
     var settingsService: AppSettingsProtolol
-    var user: User?
+    lazy var user = networkService.user
     
     required init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol) {
         self.view = view
         self.networkService = networkService
         self.settingsService = settingsService
-        self.user = settingsService.user
         addNotifications()
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: .AuthStateDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UserDidAuth, object: nil)
     }
     
     func singIn() {
@@ -69,8 +68,8 @@ class SettingsPresenter: SettingsPresenterProtocol {
     }
     
     func addNotifications() {
-        NotificationCenter.default.addObserver(forName: .AuthStateDidChange, object: nil, queue: nil) { _ in
-            self.user = self.settingsService.user
+        NotificationCenter.default.addObserver(forName: .UserDidAuth, object: nil, queue: nil) { _ in
+            self.user = self.networkService.user
             self.view.updateSignInCell()
         }
     }

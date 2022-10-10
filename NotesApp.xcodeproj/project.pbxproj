@@ -25,7 +25,6 @@
 		DE99589B28DF4D1700361A5B /* UItableViewCell+identefier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99589A28DF4D1700361A5B /* UItableViewCell+identefier.swift */; };
 		DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35728672A70005EADF8 /* RegistrationModule.swift */; };
 		DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35928672BA3005EADF8 /* FilesModule.swift */; };
-		DE9BC35D286730EE005EADF8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35C286730ED005EADF8 /* User.swift */; };
 		DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA627DA428C001852C3 /* TabBarController.swift */; };
 		DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA927DA43A3001852C3 /* AppSettings.swift */; };
 		DEAB78DF28970C9E00BF0A9C /* WEBPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB78DE28970C9E00BF0A9C /* WEBPresenter.swift */; };
@@ -35,6 +34,7 @@
 		DEC36C3128EB4A6100516459 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC36C3028EB4A6100516459 /* DetailView.xib */; };
 		DEC36C3328EB4CBA00516459 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC36C3228EB4CBA00516459 /* SearchController.swift */; };
 		DEC36C3528EB4D2600516459 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC36C3428EB4D2600516459 /* NotesTableViewCell.swift */; };
+		DECAB65328F22F0C00D1C60C /* FireAuthNotifName+NotifName.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECAB65228F22F0C00D1C60C /* FireAuthNotifName+NotifName.swift */; };
 		DEDA5CE028953B98005E4E65 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA5CDE28953B98005E4E65 /* SettingsTableViewController.swift */; };
 		DEDA5CE328953BB5005E4E65 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA5CE228953BB5005E4E65 /* SettingsPresenter.swift */; };
 		DEDD854E279317400075D525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD854D279317400075D525 /* AppDelegate.swift */; };
@@ -187,7 +187,6 @@
 		DE99589A28DF4D1700361A5B /* UItableViewCell+identefier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UItableViewCell+identefier.swift"; sourceTree = "<group>"; };
 		DE9BC35728672A70005EADF8 /* RegistrationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModule.swift; sourceTree = "<group>"; };
 		DE9BC35928672BA3005EADF8 /* FilesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesModule.swift; sourceTree = "<group>"; };
-		DE9BC35C286730ED005EADF8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DE9F8DA627DA428C001852C3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		DE9F8DA927DA43A3001852C3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		DEAB78DE28970C9E00BF0A9C /* WEBPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEBPresenter.swift; sourceTree = "<group>"; };
@@ -197,6 +196,7 @@
 		DEC36C3028EB4A6100516459 /* DetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
 		DEC36C3228EB4CBA00516459 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		DEC36C3428EB4D2600516459 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		DECAB65228F22F0C00D1C60C /* FireAuthNotifName+NotifName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FireAuthNotifName+NotifName.swift"; sourceTree = "<group>"; };
 		DEDA5CDE28953B98005E4E65 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		DEDA5CE228953BB5005E4E65 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		DEDD854A279317400075D525 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,6 +304,7 @@
 				DE2A6B5328DA5B88001C119B /* UIUserInterfaceStyle+title.swift */,
 				DE99589828DF2A7F00361A5B /* UITableView+cellManagment.swift */,
 				DE99589A28DF4D1700361A5B /* UItableViewCell+identefier.swift */,
+				DECAB65228F22F0C00D1C60C /* FireAuthNotifName+NotifName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -321,7 +322,6 @@
 			isa = PBXGroup;
 			children = (
 				DEDD856427931C510075D525 /* Note.swift */,
-				DE9BC35C286730ED005EADF8 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -697,6 +697,7 @@
 				DEF58D0128EA35EA00A74347 /* AuthorizationViewController.swift in Sources */,
 				DEC36C3328EB4CBA00516459 /* SearchController.swift in Sources */,
 				DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */,
+				DECAB65328F22F0C00D1C60C /* FireAuthNotifName+NotifName.swift in Sources */,
 				DEAB78E22897151C00BF0A9C /* WEBViewController.swift in Sources */,
 				DEDD856527931C510075D525 /* Note.swift in Sources */,
 				DE87635328D7A0F700828110 /* SegmenedTableViewCell.swift in Sources */,
@@ -713,7 +714,6 @@
 				DEDA5CE328953BB5005E4E65 /* SettingsPresenter.swift in Sources */,
 				DE99589B28DF4D1700361A5B /* UItableViewCell+identefier.swift in Sources */,
 				DE8155F72885B82500A9E9AA /* DetailViewController.swift in Sources */,
-				DE9BC35D286730EE005EADF8 /* User.swift in Sources */,
 				DE4CA9D82884BCE700924D66 /* ModulesBuilder.swift in Sources */,
 				DEDD854E279317400075D525 /* AppDelegate.swift in Sources */,
 				DEDD8550279317400075D525 /* SceneDelegate.swift in Sources */,

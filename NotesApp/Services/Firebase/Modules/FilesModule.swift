@@ -6,16 +6,19 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 extension FireAPI {
     func getDocuments(completion: @escaping ([Note]?) -> ()) {
-        guard let user = user else { return }
-        
-        db.collection(user.uid).getDocuments { querySnapshot, error in
-            if let error = error { print("Error getting documents: ", error); completion(nil) ;  return }
+        guard let uid = user?.uid else { completion(nil) ; return }
+        db.collection(uid).getDocuments { querySnapshot, error in
+            if let error = error {
+                print("Error getting documents: ", error)
+                completion(nil)
+                return
+            }
             guard let documents = querySnapshot?.documents else { completion(nil); return }
             var notes = [Note]()
-            
             for doc in documents {
                 notes.append(Note(id: doc.documentID, text: doc.get("text") as? String ?? ""))
             }
@@ -26,9 +29,8 @@ extension FireAPI {
      }
     
     func getNote(noteID: String, completion: @escaping (Note?)->()) {
-        guard let user = user else { return }
-        
-        db.collection(user.uid).document(noteID).getDocument { documentSnapshot, error in
+        guard let uid = user?.uid else { return }
+        db.collection(uid).document(noteID).getDocument { documentSnapshot, error in
             if let error = error {
                 print("Error getting document: ", error)
                 completion(nil)
@@ -41,22 +43,22 @@ extension FireAPI {
     
     func createNewDocument(text: String) {
         let id = UUID().uuidString
-        guard let user = user else { return }
-        db.collection(user.uid).document(id).setData(["text" : text])
+        guard let uid = user?.uid else { return }
+        db.collection(uid).document(id).setData(["text" : text])
    }
     
     func updateDocument(id: String, text:String) {
-        guard let user = user else { return }
+        guard let uid = user?.uid else { return }
         guard !text.isEmpty else {
             deleteDocument(id: id)
             return
         }
-        db.collection(user.uid).document(id).updateData(["text" : text])
+        db.collection(uid).document(id).updateData(["text" : text])
     }
     
     func deleteDocument(id: String) {
-        guard let user = user else { return }
-        db.collection(user.uid).document(id).delete() { error in
+        guard let uid = user?.uid else { return }
+        db.collection(uid).document(id).delete() { error in
             if let error = error { print("Error removing document: ", error) }
         }
     }

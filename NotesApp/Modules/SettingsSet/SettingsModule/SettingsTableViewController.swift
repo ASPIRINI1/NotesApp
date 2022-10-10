@@ -77,8 +77,8 @@ class SettingsTableViewController: UITableViewController {
         case .signIn:
             let cell = tableView.dequeue(ButtonTableViewCell.self, indexPath)
             cell.delegate = self
-            if let user = presenter.user {
-                cell.fill(title: user.email, button: NSLocalizedString("Sign out", comment: ""))
+            if let userEmail = presenter.user?.email {
+                cell.fill(title: userEmail, button: NSLocalizedString("Sign out", comment: ""))
             } else {
                 cell.fill(title: cellType.title, button: NSLocalizedString("Sign in", comment: ""))
             }

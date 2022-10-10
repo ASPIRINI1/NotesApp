@@ -35,7 +35,7 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: .AuthStateDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UserDidAuth, object: nil)
     }
     
     func getNotes() {
@@ -58,7 +58,7 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     }
     
     func addNotifications() {
-        NotificationCenter.default.addObserver(forName: .AuthStateDidChange, object: nil, queue: nil) { _ in
+        NotificationCenter.default.addObserver(forName: .UserDidAuth, object: nil, queue: nil) { _ in
             self.getNotes()
         }
     }
