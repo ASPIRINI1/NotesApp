@@ -14,8 +14,13 @@ class AuthorizationViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var containerView: UIView!
     
     var presenter: AuthorizationPresenter!
+    
+    override func viewDidLoad() {
+        containerView.layer.cornerRadius = 20
+    }
     
     @IBAction func registrationButtonAction(_ sender: Any) {
         guard let email = emailTextField.text else { return }

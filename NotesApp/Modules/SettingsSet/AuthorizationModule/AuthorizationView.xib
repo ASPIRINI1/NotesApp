@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthorizationViewController" customModule="NotesApp" customModuleProvider="target">
             <connections>
+                <outlet property="containerView" destination="t93-Xu-Y2Y" id="xeX-31-0UI"/>
                 <outlet property="emailLabel" destination="3P3-vT-K0v" id="Jim-gz-3qT"/>
                 <outlet property="emailTextField" destination="1fg-Wt-BGh" id="nlF-ta-Afz"/>
                 <outlet property="errorLabel" destination="FOe-p5-XJB" id="o6j-Fn-azR"/>
