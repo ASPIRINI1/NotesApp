@@ -48,7 +48,7 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     
     func deleteNote(noteID: String) {
         networkService.deleteDocument(id: noteID)
-        notes?.removeAll()
+        getNotes()
     }
     
     func openDetail(noteID: String?) {

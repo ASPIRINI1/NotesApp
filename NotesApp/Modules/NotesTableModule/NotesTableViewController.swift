@@ -37,9 +37,11 @@ class NotesTableViewController: UITableViewController {
         tableView.registerNib(NotesTableViewCell.self)
         presenter.getNotes()
     }
-    
-    //  MARK: - TableView DataSource
+}
 
+//  MARK: - TableView DataSource
+
+extension NotesTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = presenter.notes?.count
         if isFiltering {
@@ -61,13 +63,29 @@ class NotesTableViewController: UITableViewController {
         cell.fill(id: note.id, text: note.text)
         return cell
     }
-    
-    //  MARK: - TableView Delegate
+}
 
+//  MARK: - TableView Delegate
+
+extension NotesTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) as? NotesTableViewCell else { return }
         guard let noteID = selectedCell.noteID else { return }
         presenter.openDetail(noteID: noteID)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as? NotesTableViewCell
+        guard let noteID = cell?.noteID else { return }
+        presenter.deleteNote(noteID: noteID)
     }
 }
 
