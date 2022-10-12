@@ -35,7 +35,9 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
             if success {
                 self.view.navigationController?.popToRootViewController(animated: true)
             } else {
-                self.view.showError(errorText: NSLocalizedString("Registration error.", comment: ""))
+                self.view.showError(errorText: NSLocalizedString("Registration error.",
+                                                                 tableName: LocalizeTableNames.Authorization.rawValue,
+                                                                 comment: ""))
             }
         }
     }
@@ -45,7 +47,9 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
             if success {
                 self.view.navigationController?.popToRootViewController(animated: true)
             } else {
-                self.view.showError(errorText: NSLocalizedString("SignIn error.", comment: ""))
+                self.view.showError(errorText: NSLocalizedString("SignIn error.",
+                                                                 tableName: LocalizeTableNames.Authorization.rawValue,
+                                                                 comment: ""))
             }
         }
     }

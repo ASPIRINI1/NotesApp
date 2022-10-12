@@ -1,0 +1,33 @@
+/* 
+  Settings.strings
+  NotesApp
+
+  Created by Станислав Зверьков on 12.10.2022.
+  
+*/
+
+"App" = "Приложение";
+
+"About" = "О нас";
+
+"Sign in" = "Вход";
+
+"Sign out" = "Выход";
+
+"App Theme" = "Тема";
+
+"Product Info" = "О продукте";
+
+"Developer Info" = "О разработчике";
+
+"WEB site" = "Сайт";
+
+"GitHub" = "GitHub";
+
+// UIUserInterfaceStyle+title extension
+
+"System" = "Сист.";
+
+"Light" = "Светлый";
+
+"Dark" = "Тёмный";

@@ -1,0 +1,13 @@
+/* 
+  WEB.strings
+  NotesApp
+
+  Created by Станислав Зверьков on 12.10.2022.
+  
+*/
+
+"Error" = "Ошибка";
+
+"Error loading WEB page." = "Ошибка загрузки страницы.";
+
+"Error opening browser." = "Ошибка открытия браузера.";

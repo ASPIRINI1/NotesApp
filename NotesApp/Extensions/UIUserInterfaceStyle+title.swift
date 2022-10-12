@@ -13,11 +13,11 @@ extension UIUserInterfaceStyle: CaseIterable {
     var title: String {
         switch self {
         case .unspecified:
-            return NSLocalizedString("System", comment: "")
+            return NSLocalizedString("System", tableName: LocalizeTableNames.Settings.rawValue, comment: "")
         case .light:
-            return NSLocalizedString("Light", comment: "")
+            return NSLocalizedString("Light", tableName: LocalizeTableNames.Settings.rawValue, comment: "")
         case .dark:
-            return NSLocalizedString("Dark", comment: "")
+            return NSLocalizedString("Dark", tableName: LocalizeTableNames.Settings.rawValue, comment: "")
         @unknown default:
             return ""
         }

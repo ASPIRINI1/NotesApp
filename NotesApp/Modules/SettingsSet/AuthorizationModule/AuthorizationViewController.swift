@@ -54,12 +54,16 @@ class AuthorizationViewController: UIViewController {
     private func userDataIsCurrect(email: String?, password: String?) -> Bool {
         guard isCorrect(email: email) else {
             errorLabel.isHidden = false
-            errorLabel.text = NSLocalizedString("Uncorrect Email.", comment: "nil")
+            errorLabel.text = NSLocalizedString("Uncorrect Email.",
+                                                tableName: LocalizeTableNames.Authorization.rawValue,
+                                                comment: "")
             return false
         }
         guard isCorrect(password: password) else {
             errorLabel.isHidden = false
-            errorLabel.text = NSLocalizedString("Uncorrect password", comment: "")
+            errorLabel.text = NSLocalizedString("Uncorrect password",
+                                                tableName: LocalizeTableNames.Authorization.rawValue,
+                                                comment: "")
             return false
         }
         return true

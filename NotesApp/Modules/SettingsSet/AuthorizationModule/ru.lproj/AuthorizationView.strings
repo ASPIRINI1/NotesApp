@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "E-mail"; ObjectID = "3P3-vT-K0v"; */
+"3P3-vT-K0v.text" = "E-mail";
+
+/* Class = "UILabel"; text = "Authorisation"; ObjectID = "5OL-Uc-BJk"; */
+"5OL-Uc-BJk.text" = "Авторизация";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FOe-p5-XJB"; */
+"FOe-p5-XJB.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "Registration"; ObjectID = "Ifp-qI-JKA"; */
+"Ifp-qI-JKA.configuration.title" = "Регистрация";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ifp-qI-JKA"; */
+"Ifp-qI-JKA.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Sign in"; ObjectID = "Vks-N4-CIK"; */
+"Vks-N4-CIK.configuration.title" = "Войти";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Vks-N4-CIK"; */
+"Vks-N4-CIK.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "qx8-d2-lhB"; */
+"qx8-d2-lhB.text" = "Пароль";

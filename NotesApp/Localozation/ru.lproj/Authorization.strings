@@ -1,0 +1,15 @@
+/* 
+  Authorization.strings
+  NotesApp
+
+  Created by Станислав Зверьков on 12.10.2022.
+  
+*/
+
+"Registration error." = "Ошибка регистрации.";
+
+"SignIn error." = "Ошибка авторизации.";
+
+"Uncorrect Email." = "Не верный Email.";
+
+"Uncorrect password" = "Не верный пароль";

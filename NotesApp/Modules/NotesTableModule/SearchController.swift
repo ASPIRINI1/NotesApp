@@ -29,7 +29,7 @@ class SearchController: UISearchController {
     private func setupSearchController() {
         self.searchResultsUpdater = self
         self.obscuresBackgroundDuringPresentation = true
-        self.searchBar.placeholder = NSLocalizedString("Search", comment: "")
+        self.searchBar.placeholder = NSLocalizedString("Search", tableName: LocalizeTableNames.NotesTable.rawValue, comment: "")
         definesPresentationContext = true
     }
 }

@@ -1,0 +1,13 @@
+/* 
+  NotesTable.strings
+  NotesApp
+
+  Created by Станислав Зверьков on 12.10.2022.
+  
+*/
+
+"Search" = "Поиск";
+
+"Error loading notes." = "Ошибка зарузки страницы.";
+
+"You must log in first." = "Сначала вы должны зарегестрироваться.";

@@ -41,7 +41,10 @@ extension WEBViewController: WEBViewProtocol {
             let request = URLRequest(url: url)
             WEBView.load(request)
         } else {
-            let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Error loading WEB page.", comment: ""), preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("Error", tableName: LocalizeTableNames.WEB.rawValue, comment: ""),
+                                          message: NSLocalizedString("Error loading WEB page.", tableName: LocalizeTableNames.WEB.rawValue, comment: ""),
+                                          preferredStyle: .alert)
+            
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
@@ -49,7 +52,9 @@ extension WEBViewController: WEBViewProtocol {
     }
     
     func showOpenInBrowserAlert() {
-        let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Error opening browser.", comment: ""), preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Error", tableName: LocalizeTableNames.WEB.rawValue, comment: ""),
+                                      message: NSLocalizedString("Error opening browser.", tableName: LocalizeTableNames.WEB.rawValue, comment: ""),
+                                      preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
