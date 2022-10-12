@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import NotesApp
-
+/*
 //  MARK: - MOCK classes
 
 class MockNotesTableView: NotesTableViewProtocol {
@@ -111,3 +111,4 @@ class NotesTableModuleTest: XCTestCase {
     }
 
 }
+*/

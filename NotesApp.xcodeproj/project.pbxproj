@@ -254,16 +254,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		DE02582228A19384006497BE /* SettingsSet */ = {
-			isa = PBXGroup;
-			children = (
-				DEF58CF928EA35EA00A74347 /* AuthorizationModule */,
-				DEDA5CDB28953B4F005E4E65 /* SettingsModule */,
-				DEAB78DB28970C5100BF0A9C /* WEBModule */,
-			);
-			path = SettingsSet;
-			sourceTree = "<group>";
-		};
 		DE4B004028F7231400E6C1D9 /* Localozation */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +270,9 @@
 		DE4CA9D52884BCA200924D66 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				DE02582228A19384006497BE /* SettingsSet */,
+				DEDA5CDB28953B4F005E4E65 /* SettingsModule */,
+				DEAB78DB28970C5100BF0A9C /* WEBModule */,
+				DEF58CF928EA35EA00A74347 /* AuthorizationModule */,
 				DE4CA9D92884BDA100924D66 /* NotesTableModule */,
 				DE8155F02885B68B00A9E9AA /* DetailModule */,
 			);
