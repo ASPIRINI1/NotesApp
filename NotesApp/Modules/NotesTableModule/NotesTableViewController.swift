@@ -28,7 +28,6 @@ class NotesTableViewController: UITableViewController {
         view.addSubview(indicator)
         return indicator
     }()
-    private lazy var isFiltering: Bool = searchController.isActive && !searchController.searchBarIsEmpty
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +43,7 @@ class NotesTableViewController: UITableViewController {
 extension NotesTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = presenter.notes?.count
-        if isFiltering {
+        if searchController.isFiltering {
             count = presenter.filtredNotes?.count
         }
         guard let count = count else { return 0 }
@@ -54,7 +53,7 @@ extension NotesTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(NotesTableViewCell.self, indexPath)
         var note: Note?
-        if isFiltering {
+        if searchController.isFiltering {
             note = presenter.filtredNotes?[indexPath.row]
         } else {
             note = presenter.notes?[indexPath.row]

@@ -19,6 +19,7 @@ class SearchController: UISearchController {
         guard let text = self.searchBar.text else {return false}
         return text.isEmpty
     }
+    lazy var isFiltering: Bool = isActive && !searchBarIsEmpty
     weak var searchingDelegate: SearchNotesDelegate?
 
     override func viewDidLoad() {
@@ -43,6 +44,11 @@ extension SearchController: UISearchResultsUpdating, UISearchControllerDelegate 
     }
     
     private func filterContentForSearchText(_ searchText: String) {
+        if searchText.isEmpty { // hotfix
+            isFiltering = false
+        } else {
+            isFiltering = true
+        }
         guard let searchingDelegate = searchingDelegate else { return }
         searchingDelegate.getResults(notes: searchingDelegate.setNotesForSearching().filter({ document in
             return document.text.lowercased().contains(searchText.lowercased())
