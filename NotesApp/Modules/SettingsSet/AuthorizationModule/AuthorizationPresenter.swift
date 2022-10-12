@@ -31,11 +31,11 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
     }
     
     func registration(email: String, password: String) {
-        networkService.registration(email: email, password: password) { success in
+        networkService.registration(email: email, password: password) { [weak self] success in
             if success {
-                self.view.navigationController?.popToRootViewController(animated: true)
+                self?.view.navigationController?.popToRootViewController(animated: true)
             } else {
-                self.view.showError(errorText: NSLocalizedString("Registration error.",
+                self?.view.showError(errorText: NSLocalizedString("Registration error.",
                                                                  tableName: LocalizeTableNames.Authorization.rawValue,
                                                                  comment: ""))
             }
@@ -43,11 +43,11 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
     }
     
     func signIn(email: String, password: String) {
-        networkService.signIn(email: email, password: password) { success in
+        networkService.signIn(email: email, password: password) { [weak self] success in
             if success {
-                self.view.navigationController?.popToRootViewController(animated: true)
+                self?.view.navigationController?.popToRootViewController(animated: true)
             } else {
-                self.view.showError(errorText: NSLocalizedString("SignIn error.",
+                self?.view.showError(errorText: NSLocalizedString("SignIn error.",
                                                                  tableName: LocalizeTableNames.Authorization.rawValue,
                                                                  comment: ""))
             }
