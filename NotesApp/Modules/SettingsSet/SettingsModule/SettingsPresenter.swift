@@ -39,10 +39,6 @@ class SettingsPresenter: SettingsPresenterProtocol {
         addNotifications()
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .UserDidAuth, object: nil)
-    }
-    
     func singIn() {
         let authView = ModuleBuilder.createAuthorizationViewController()
         view.navigationController?.pushViewController(authView, animated: true)

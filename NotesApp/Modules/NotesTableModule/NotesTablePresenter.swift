@@ -35,10 +35,6 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
         addNotifications()
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .UserDidAuth, object: nil)
-    }
-    
     func getNotes() {
         networkService.getDocuments { [weak self] notes in
             self?.notes = notes

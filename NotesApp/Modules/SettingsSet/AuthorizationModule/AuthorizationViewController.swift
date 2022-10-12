@@ -18,9 +18,24 @@ class AuthorizationViewController: UIViewController {
     
     var presenter: AuthorizationPresenter!
     
+    private lazy var tapGestureRecognizer = {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector (tapOnView))
+        return recognizer
+    }()
+    
     override func viewDidLoad() {
         containerView.layer.cornerRadius = 20
+        view.addGestureRecognizer(tapGestureRecognizer)
+        addNotifications()
     }
+    
+    //    MARK: - GestureRecongizer actions
+    
+    @objc func tapOnView(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+//    MARK: - Actions
     
     @IBAction func registrationButtonAction(_ sender: Any) {
         guard let email = emailTextField.text else { return }
@@ -59,11 +74,42 @@ class AuthorizationViewController: UIViewController {
         let regex = try? NSRegularExpression(pattern: "[a-zA-Z0-9._-]{8,20}", options: .caseInsensitive)
         return regex?.firstMatch(in: password ?? "", options: [], range: NSRange(location: 0, length: password?.count ?? 0)) != nil
     }
+    
+    private func addNotifications() {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { notification in
+            guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+            let diff = self.containerView.frame.maxY - keyboardSize.origin.y
+            if diff > 0  && self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= diff + 30
+            }
+        }
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { notification in
+            self.view.frame.origin.y = 0
+        }
+    }
 }
+
+//    MARK: - AuthorizationViewProtocol
 
 extension AuthorizationViewController: AuthorizationViewProtocol {
     func showError(errorText: String) {
         errorLabel.text = errorText
         errorLabel.isHidden = false
+    }
+}
+
+//    MARK: - UITextFieldDelegate
+
+extension AuthorizationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            signInButtonAction(textField)
+        default:
+            break
+        }
+        return true
     }
 }
