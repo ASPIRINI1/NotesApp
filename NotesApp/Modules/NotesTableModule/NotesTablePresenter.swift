@@ -13,7 +13,7 @@ protocol NotesTableViewProtocol: AnyObject {
     func loadingNotes()
     func notesLoaded()
     func errorLoadingNotes()
-    func open(vc: UIViewController)
+    func push(vc: UIViewController)
 }
 
 protocol NotesTablePresenterProtocol: AnyObject {
@@ -51,13 +51,13 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
         if networkService.user == nil {
             view?.userNotAuthorizedError {
                 let authVC = ModuleBuilder.createAuthorizationViewController()
-                self.view?.open(vc: authVC)
+                self.view?.push(vc: authVC)
             }
             return
         }
         if let detailVC = ModuleBuilder.createDetailViewController(noteID: noteID) as? DetailViewController {
             detailVC.presenter.delegate = self
-            view?.open(vc: detailVC)
+            view?.push(vc: detailVC)
         }
     }
     

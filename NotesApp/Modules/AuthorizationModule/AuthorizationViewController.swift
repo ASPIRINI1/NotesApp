@@ -32,7 +32,7 @@ class AuthorizationViewController: UIViewController {
     //    MARK: - GestureRecongizer actions
     
     @objc func tapOnView(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
+        presenter.tapOnView()
     }
     
 //    MARK: - Actions
@@ -40,43 +40,13 @@ class AuthorizationViewController: UIViewController {
     @IBAction func registrationButtonAction(_ sender: Any) {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-        guard userDataIsCurrect(email: email, password: password) else { return }
         presenter.registration(email: email, password: password)
     }
     
     @IBAction func signInButtonAction(_ sender: Any) {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-        guard userDataIsCurrect(email: email, password: password) else { return }
         presenter.signIn(email: email, password: password)
-    }
-    
-    private func userDataIsCurrect(email: String?, password: String?) -> Bool {
-        guard isCorrect(email: email) else {
-            errorLabel.isHidden = false
-            errorLabel.text = NSLocalizedString("Uncorrect Email.",
-                                                tableName: LocalizeTableNames.Authorization.rawValue,
-                                                comment: "")
-            return false
-        }
-        guard isCorrect(password: password) else {
-            errorLabel.isHidden = false
-            errorLabel.text = NSLocalizedString("Uncorrect password",
-                                                tableName: LocalizeTableNames.Authorization.rawValue,
-                                                comment: "")
-            return false
-        }
-        return true
-    }
-    
-    private func isCorrect(email: String?) -> Bool {
-        let regex = try? NSRegularExpression(pattern: "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\\.[a-zA-Z.]{2,64}", options: .caseInsensitive)
-        return regex?.firstMatch(in: email ?? "", options: [], range: NSRange(location: 0, length: email?.count ?? 0)) != nil
-    }
-    
-    private func isCorrect(password: String?) -> Bool {
-        let regex = try? NSRegularExpression(pattern: "[a-zA-Z0-9._-]{8,20}", options: .caseInsensitive)
-        return regex?.firstMatch(in: password ?? "", options: [], range: NSRange(location: 0, length: password?.count ?? 0)) != nil
     }
     
     private func addNotifications() {
@@ -98,7 +68,7 @@ class AuthorizationViewController: UIViewController {
 
 extension AuthorizationViewController: AuthorizationViewProtocol {
     func showError(errorText: String) {
-        errorLabel.text = errorText
+        errorLabel.text = NSLocalizedString(errorText, tableName: LocalizeTableNames.Authorization.rawValue, comment: "")
         errorLabel.isHidden = false
     }
 }
@@ -116,5 +86,9 @@ extension AuthorizationViewController: UITextFieldDelegate {
             break
         }
         return true
+    }
+    
+    func endEditing() {
+        view.endEditing(true)
     }
 }

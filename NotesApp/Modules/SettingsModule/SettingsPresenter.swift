@@ -15,12 +15,14 @@ enum MainURLs: String {
 
 protocol SettingsViewProtocol: UITableViewController {
     func updateSignInCell()
+    func pushToView(_ vc: UIViewController)
 }
 
 protocol SettingsPresenterProtocol: AnyObject {
     init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol)
-    func singIn()
-    func signOut()
+//    func singIn()
+//    func signOut()
+    func logInButtonPressed()
     func openProductWEB()
     func openDevInfo()
 }
@@ -39,13 +41,13 @@ class SettingsPresenter: SettingsPresenterProtocol {
         addNotifications()
     }
     
-    func singIn() {
-        let authView = ModuleBuilder.createAuthorizationViewController()
-        view?.navigationController?.pushViewController(authView, animated: true)
-    }
-    
-    func signOut() {
-        networkService.signOut()
+    func logInButtonPressed() {
+        if user == nil {
+            let authView = ModuleBuilder.createAuthorizationViewController()
+            view?.pushToView(authView)
+        } else {
+            networkService.signOut()
+        }
     }
     
     func openProductWEB() {
@@ -64,7 +66,8 @@ class SettingsPresenter: SettingsPresenterProtocol {
     }
     
     func addNotifications() {
-        NotificationCenter.default.addObserver(forName: .UserDidAuth, object: nil, queue: nil) { _ in
+        NotificationCenter.default.addObserver(forName: .UserDidAuth, object: nil, queue: nil) { [weak self] _ in
+            guard let self = self else { return }
             self.user = self.networkService.user
             self.view?.updateSignInCell()
         }

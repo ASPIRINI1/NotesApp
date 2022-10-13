@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseAuth
 
 extension FireAPI {
     func getDocuments(completion: @escaping ([Note]?) -> ()) {

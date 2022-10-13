@@ -18,7 +18,6 @@ class SettingsTableViewController: UITableViewController {
         static subscript(indexPath: IndexPath) -> Cells {
             return Sections.allCases[indexPath.section].cells[indexPath.row]
         }
-        
         var title: String {
             switch self {
             case .app:
@@ -27,7 +26,6 @@ class SettingsTableViewController: UITableViewController {
                 return NSLocalizedString("About", tableName: LocalizeTableNames.Settings.rawValue, comment: "")
             }
         }
-        
         var cells: [Cells] {
             switch self {
             case .app:
@@ -64,9 +62,23 @@ class SettingsTableViewController: UITableViewController {
         tableView.register(ButtonTableViewCell.self)
         tableView.register(SegmenedTableViewCell.self)
     }
-    
-    //  MARK: - TableView Delegate/DataSource
+}
 
+//  MARK: - SettingsViewProtocol
+
+extension SettingsTableViewController: SettingsViewProtocol {
+    func updateSignInCell() {
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+    }
+    
+    func pushToView(_ vc: UIViewController) {
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension SettingsTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return Sections.allCases.count
     }
@@ -114,13 +126,6 @@ class SettingsTableViewController: UITableViewController {
     }
 }
 
-//  MARK: - SettingsViewProtocol
-
-extension SettingsTableViewController: SettingsViewProtocol {
-    func updateSignInCell() {
-        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-    }
-}
 
 //MARK: - ButtonTableViewCellDelegate
 
@@ -130,11 +135,7 @@ extension SettingsTableViewController: ButtonTableViewCellDelegate {
         let cellType = Sections[indexPath]
         switch cellType {
         case .signIn:
-            if presenter.user == nil {
-                presenter.singIn()
-            } else {
-                presenter.signOut()
-            }
+            presenter.logInButtonPressed()
         case .appTheme:
             break
         case .productInfo:

@@ -91,7 +91,7 @@ extension NotesTableViewController {
 //  MARK: - NotesTableViewProtocol
 
 extension NotesTableViewController: NotesTableViewProtocol {
-    func open(vc: UIViewController) {
+    func push(vc: UIViewController) {
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -119,7 +119,7 @@ extension NotesTableViewController: NotesTableViewProtocol {
     }
 }
 
-//  MARK: Searching
+//  MARK: - Searching
 
 extension NotesTableViewController: SearchNotesDelegate {
     func setNotesForSearching() -> [Note] {
