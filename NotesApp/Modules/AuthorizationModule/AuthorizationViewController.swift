@@ -80,15 +80,16 @@ class AuthorizationViewController: UIViewController {
     }
     
     private func addNotifications() {
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { notification in
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { [weak self] notification in
+            guard let self = self else { return }
             guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
             let diff = self.containerView.frame.maxY - keyboardSize.origin.y
             if diff > 0  && self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= diff + 30
             }
         }
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { notification in
-            self.view.frame.origin.y = 0
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { [weak self] _ in
+            self?.view.frame.origin.y = 0
         }
     }
 }

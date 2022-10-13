@@ -17,7 +17,7 @@ protocol SettingsViewProtocol: UITableViewController {
     func updateSignInCell()
 }
 
-protocol SettingsPresenterProtocol {
+protocol SettingsPresenterProtocol: AnyObject {
     init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol)
     func singIn()
     func signOut()
@@ -27,7 +27,7 @@ protocol SettingsPresenterProtocol {
 
 class SettingsPresenter: SettingsPresenterProtocol {
     
-    private var view: SettingsViewProtocol
+    private weak var view: SettingsViewProtocol?
     var networkService: NetworkServiceProtocol
     var settingsService: AppSettingsProtolol
     lazy var user = networkService.user
@@ -41,7 +41,7 @@ class SettingsPresenter: SettingsPresenterProtocol {
     
     func singIn() {
         let authView = ModuleBuilder.createAuthorizationViewController()
-        view.navigationController?.pushViewController(authView, animated: true)
+        view?.navigationController?.pushViewController(authView, animated: true)
     }
     
     func signOut() {
@@ -50,23 +50,23 @@ class SettingsPresenter: SettingsPresenterProtocol {
     
     func openProductWEB() {
         let webView = ModuleBuilder.createWEBViewController(url: MainURLs.productInfo.rawValue)
-        view.navigationController?.pushViewController(webView, animated: true)
+        view?.navigationController?.pushViewController(webView, animated: true)
     }
     
     func openDevInfo() {
         let webView = ModuleBuilder.createWEBViewController(url: MainURLs.developer.rawValue)
-        view.navigationController?.pushViewController(webView, animated: true)
+        view?.navigationController?.pushViewController(webView, animated: true)
     }
     
     func selectApp(theme: Int) {
         settingsService.appTheme = theme
-        view.tabBarController?.overrideUserInterfaceStyle = .allCases[theme]
+        view?.tabBarController?.overrideUserInterfaceStyle = .allCases[theme]
     }
     
     func addNotifications() {
         NotificationCenter.default.addObserver(forName: .UserDidAuth, object: nil, queue: nil) { _ in
             self.user = self.networkService.user
-            self.view.updateSignInCell()
+            self.view?.updateSignInCell()
         }
     }
 }

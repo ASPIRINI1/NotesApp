@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol DetailViewProtocol {
+protocol DetailViewProtocol: AnyObject {
     func setNote(text: String)
 }
 
-protocol DetailPresenterProtocol {
+protocol DetailPresenterProtocol: AnyObject {
     init(view: DetailViewProtocol, networkService: NetworkServiceProtocol, noteID: String?)
     func viewLoaded()
     func updateNote(text: String)
@@ -23,7 +23,7 @@ protocol DetailPresenterDelegate: AnyObject {
 
 class DetailPresenter: DetailPresenterProtocol {
     
-    var view: DetailViewProtocol
+    weak var view: DetailViewProtocol?
     var networkService: NetworkServiceProtocol
     var note: Note?
     weak var delegate: DetailPresenterDelegate?
@@ -42,9 +42,9 @@ class DetailPresenter: DetailPresenterProtocol {
     
     func viewLoaded() {
         if let note = note {
-            view.setNote(text: note.text)
+            view?.setNote(text: note.text)
         } else {
-            view.setNote(text: String())
+            view?.setNote(text: String())
         }
     }
     

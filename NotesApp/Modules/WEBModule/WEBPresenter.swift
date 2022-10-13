@@ -8,12 +8,12 @@
 import Foundation
 import UIKit //Just for UIApplication
 
-protocol WEBViewProtocol {
+protocol WEBViewProtocol: AnyObject {
     func show(url: String)
     func showOpenInBrowserAlert()
 }
 
-protocol WEBPresenterProtocol {
+protocol WEBPresenterProtocol: AnyObject {
     init(url: String, view: WEBViewProtocol)
     func back()
     func forward()
@@ -23,7 +23,7 @@ protocol WEBPresenterProtocol {
 
 class WEBPresenter: WEBPresenterProtocol {
     
-    let view: WEBViewProtocol
+    weak var view: WEBViewProtocol?
     var url: String
     
     required init(url: String, view: WEBViewProtocol) {
@@ -46,7 +46,7 @@ class WEBPresenter: WEBPresenterProtocol {
     }
     
     func reload() {
-        view.show(url: url)
+        view?.show(url: url)
     }
     
     func openInbrowser() {
@@ -54,7 +54,7 @@ class WEBPresenter: WEBPresenterProtocol {
             UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
             return
         }
-        view.showOpenInBrowserAlert()
+        view?.showOpenInBrowserAlert()
     }
     
 }

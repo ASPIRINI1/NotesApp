@@ -20,6 +20,10 @@ class WEBViewController: UIViewController {
         presenter.reload()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     @IBAction func backButtonAction(_ sender: Any) {
         presenter.back()
     }

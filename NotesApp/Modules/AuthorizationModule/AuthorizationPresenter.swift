@@ -12,7 +12,7 @@ protocol AuthorizationViewProtocol: UIViewController {
     func showError(errorText: String)
 }
 
-protocol AuthorizationPresenterProtocol {
+protocol AuthorizationPresenterProtocol: AnyObject {
     init(view: AuthorizationViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol)
     func registration(email: String, password: String)
     func signIn(email: String, password: String)
@@ -20,7 +20,7 @@ protocol AuthorizationPresenterProtocol {
 
 class AuthorizationPresenter: AuthorizationPresenterProtocol {
     
-    var view: AuthorizationViewProtocol
+    weak var view: AuthorizationViewProtocol?
     var networkService: NetworkServiceProtocol
     var settingsService: AppSettingsProtolol
     
@@ -33,9 +33,9 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
     func registration(email: String, password: String) {
         networkService.registration(email: email, password: password) { [weak self] success in
             if success {
-                self?.view.navigationController?.popToRootViewController(animated: true)
+                self?.view?.navigationController?.popToRootViewController(animated: true)
             } else {
-                self?.view.showError(errorText: NSLocalizedString("Registration error.",
+                self?.view?.showError(errorText: NSLocalizedString("Registration error.",
                                                                  tableName: LocalizeTableNames.Authorization.rawValue,
                                                                  comment: ""))
             }
@@ -45,9 +45,9 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
     func signIn(email: String, password: String) {
         networkService.signIn(email: email, password: password) { [weak self] success in
             if success {
-                self?.view.navigationController?.popToRootViewController(animated: true)
+                self?.view?.navigationController?.popToRootViewController(animated: true)
             } else {
-                self?.view.showError(errorText: NSLocalizedString("SignIn error.",
+                self?.view?.showError(errorText: NSLocalizedString("SignIn error.",
                                                                  tableName: LocalizeTableNames.Authorization.rawValue,
                                                                  comment: ""))
             }
