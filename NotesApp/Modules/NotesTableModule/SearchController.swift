@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-protocol SearchNotesDelegate: AnyObject {
-    func setNotesForSearching() -> [Note]
-    func getResults(notes:[Note])
+protocol SearchControllerDelegate: AnyObject {
+    func searchControllerNotesForSearching() -> [Note]
+    func searchController(foundNotes:[Note])
 }
 
 class SearchController: UISearchController {
@@ -20,7 +20,7 @@ class SearchController: UISearchController {
         return text.isEmpty
     }
     lazy var isFiltering: Bool = isActive && !searchBarIsEmpty
-    weak var searchingDelegate: SearchNotesDelegate?
+    weak var searchingDelegate: SearchControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ extension SearchController: UISearchResultsUpdating, UISearchControllerDelegate 
             isFiltering = true
         }
         guard let searchingDelegate = searchingDelegate else { return }
-        searchingDelegate.getResults(notes: searchingDelegate.setNotesForSearching().filter({ document in
+        searchingDelegate.searchController(foundNotes: searchingDelegate.searchControllerNotesForSearching().filter({ document in
             return document.text.lowercased().contains(searchText.lowercased())
         }))
     }

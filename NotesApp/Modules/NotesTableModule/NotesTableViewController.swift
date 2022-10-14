@@ -121,14 +121,14 @@ extension NotesTableViewController: NotesTableViewProtocol {
 
 //  MARK: - Searching
 
-extension NotesTableViewController: SearchNotesDelegate {
-    func setNotesForSearching() -> [Note] {
+extension NotesTableViewController: SearchControllerDelegate {
+    func searchControllerNotesForSearching() -> [Note] {
         guard let notes = presenter.notes else { return [] }
         return notes
     }
     
-    func getResults(notes: [Note]) {
-        presenter.filtredNotes = notes
+    func searchController(foundNotes: [Note]) {
+        presenter.filtredNotes = foundNotes
         tableView.reloadData()
     }
 }
