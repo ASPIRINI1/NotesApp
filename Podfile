@@ -11,5 +11,10 @@ pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
 
+target 'Tests' do
+        inherit! :search_paths
+        pod 'Firebase/Core'
+    end
+
 
 end

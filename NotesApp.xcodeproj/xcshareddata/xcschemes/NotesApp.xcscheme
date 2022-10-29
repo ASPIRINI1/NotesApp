@@ -32,9 +32,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DE8156012885BCDC00A9E9AA"
+               BlueprintIdentifier = "DE622AAF290D9FB000F7EC58"
                BuildableName = "NotesAppTests.xctest"
                BlueprintName = "NotesAppTests"
+               ReferencedContainer = "container:NotesApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DE622AC1290DC02D00F7EC58"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
                ReferencedContainer = "container:NotesApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
