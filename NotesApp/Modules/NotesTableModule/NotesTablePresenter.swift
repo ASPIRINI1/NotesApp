@@ -12,7 +12,6 @@ protocol NotesTableViewProtocol: AnyObject {
     func userNotAuthorizedError(completion: @escaping ()->())
     func loadingNotes()
     func notesLoaded()
-    func errorLoadingNotes()
     func push(vc: UIViewController)
 }
 
@@ -36,6 +35,7 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     }
     
     func getNotes() {
+        view?.loadingNotes()
         networkService.getDocuments { [weak self] notes in
             self?.notes = notes
             self?.view?.notesLoaded()

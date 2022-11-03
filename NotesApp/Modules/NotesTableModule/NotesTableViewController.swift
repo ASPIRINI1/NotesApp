@@ -104,12 +104,6 @@ extension NotesTableViewController: NotesTableViewProtocol {
         tableView.reloadData()
     }
     
-    func errorLoadingNotes() {
-        let alert = UIAlertController(title: NSLocalizedString("Error loading notes.", tableName: LocalizeTableNames.NotesTable.rawValue, comment: ""), message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
-    
     func userNotAuthorizedError(completion: @escaping () -> ()) {
         let alert = UIAlertController(title: NSLocalizedString("You must log in first.", tableName: LocalizeTableNames.NotesTable.rawValue, comment: ""), message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
