@@ -11,7 +11,7 @@ import FirebaseAuth
 
 // MARK: - MockView
 
-class MockView: NotesTableViewProtocol {
+ private class MockView: NotesTableViewProtocol {
     
     var isAuthError = false
     var isLoading = false
@@ -36,56 +36,11 @@ class MockView: NotesTableViewProtocol {
     }
 }
 
-// MARK: - MockNote
-
-class MockNote: Equatable {
-    
-    var id: String
-    var text: String
-    
-    init(id:String, text: String) {
-        self.id = id
-        self.text = text
-    }
-    static func == (lhs: MockNote, rhs: MockNote) -> Bool {
-        guard lhs.text == rhs.text else { return false }
-        guard lhs.id == rhs.id else { return false }
-        return true
-    }
-}
-
-// MARK: - MockNetworkService
-
-class MockNetworkService: NetworkServiceProtocol {
-    
-    var user: User?
-    var notes: [MockNote] = [MockNote(id: "Baz", text: "Bar")]
-    var deletingNoteID: String?
-    
-    func signIn(email: String, password: String, completion: @escaping (Bool) -> ()) { }
-    func signOut() { }
-    func registration(email: String, password: String, completion: @escaping (Bool) -> ()) { }
-    func getNote(noteID: String, completion: @escaping (NotesApp.Note?) -> ()) { }
-    func createNewDocument(text: String) { }
-    func updateDocument(id: String, text: String) { }
-    
-    func getDocuments(completion: @escaping ([NotesApp.Note]?) -> ()) {
-        completion([Note(id: "1", text: "Baz"),
-                   Note(id: "2", text: "Bar"),
-                   Note(id: "3", text: "Foo")])
-    }
-    
-    func deleteDocument(id: String) {
-        self.deletingNoteID = id
-        notes.removeFirst()
-    }
-}
-
 // MARK: - NotesPresenterTest
 
 final class NotesPresenterTest: XCTestCase {
     
-    var view: MockView!
+    private var view: MockView!
     var presenter: NotesTablePresenter!
     var network: MockNetworkService!
 
@@ -125,7 +80,6 @@ final class NotesPresenterTest: XCTestCase {
 //    func testIsPresenterOpenCorrectVC() {
 //        presenter.openDetail(noteID: "")
 //        XCTAssertNotNil(view.pushVC as? DetailViewController)
-//
 //        presenter.openDetail(noteID: "")
 //        XCTAssertNotNil(view.pushVC as? AuthorizationViewController)
 //    }
@@ -136,10 +90,9 @@ final class NotesPresenterTest: XCTestCase {
     }
     
     func testPresenterDeleteNote() {
-        XCTAssertNotNil(network.notes)
+        network.notes["Baz"] = MockNote(id: "Baz", text: "Bar")
         presenter.deleteNote(noteID: "Baz")
-        XCTAssertEqual(network.deletingNoteID, "Baz")
-        XCTAssertEqual(network.notes, [])
+        XCTAssertNil(network.notes["Baz"])
     }
     
     func testPresenterGetNotification() {
