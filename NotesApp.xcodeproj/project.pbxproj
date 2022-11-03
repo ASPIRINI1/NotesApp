@@ -21,7 +21,7 @@
 		DE4CA9DD2884BDC000924D66 /* NotesTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9DC2884BDC000924D66 /* NotesTablePresenter.swift */; };
 		DE4CA9E02884C08600924D66 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9DE2884C08600924D66 /* NotesTableViewController.swift */; };
 		DE61937528EB50C90002CB8B /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE61937428EB50C90002CB8B /* NotesTableViewCell.xib */; };
-		DE622AD6290DCF9E00F7EC58 /* NotesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE622AD5290DCF9E00F7EC58 /* NotesAppTests.swift */; };
+		DE622AD6290DCF9E00F7EC58 /* NotesPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE622AD5290DCF9E00F7EC58 /* NotesPresenterTest.swift */; };
 		DE7470DB28D740EF0088771E /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7470DA28D740EF0088771E /* ButtonTableViewCell.swift */; };
 		DE8155F42885B6AE00A9E9AA /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */; };
 		DE8155F72885B82500A9E9AA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155F52885B82500A9E9AA /* DetailViewController.swift */; };
@@ -127,7 +127,7 @@
 		DE4CA9DE2884C08600924D66 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		DE61937428EB50C90002CB8B /* NotesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		DE622AD3290DCF9D00F7EC58 /* NotesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE622AD5290DCF9E00F7EC58 /* NotesAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesAppTests.swift; sourceTree = "<group>"; };
+		DE622AD5290DCF9E00F7EC58 /* NotesPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPresenterTest.swift; sourceTree = "<group>"; };
 		DE7470DA28D740EF0088771E /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		DE8155F52885B82500A9E9AA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -296,12 +296,12 @@
 			path = NotesTableModule;
 			sourceTree = "<group>";
 		};
-		DE622AD4290DCF9E00F7EC58 /* NotesAppTests */ = {
+		DE622AD4290DCF9E00F7EC58 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				DE622AD5290DCF9E00F7EC58 /* NotesAppTests.swift */,
+				DE622AD5290DCF9E00F7EC58 /* NotesPresenterTest.swift */,
 			);
-			path = NotesAppTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		DE8155F02885B68B00A9E9AA /* DetailModule */ = {
@@ -401,7 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				DEDD854C279317400075D525 /* NotesApp */,
-				DE622AD4290DCF9E00F7EC58 /* NotesAppTests */,
+				DE622AD4290DCF9E00F7EC58 /* Tests */,
 				DEDD854B279317400075D525 /* Products */,
 				5C26B664874D390B4534D8D1 /* Pods */,
 				E7918E2F91A67B14DE776260 /* Frameworks */,
@@ -719,7 +719,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE622AD6290DCF9E00F7EC58 /* NotesAppTests.swift in Sources */,
+				DE622AD6290DCF9E00F7EC58 /* NotesPresenterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
