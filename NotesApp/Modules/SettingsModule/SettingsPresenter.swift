@@ -15,7 +15,6 @@ enum MainURLs: String {
 
 protocol SettingsViewProtocol: UITableViewController {
     func updateSignInCell()
-    func pushToView(_ vc: UIViewController)
     func setApp(theme: Int)
 }
 
