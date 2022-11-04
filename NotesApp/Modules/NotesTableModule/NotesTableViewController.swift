@@ -31,7 +31,7 @@ class NotesTableViewController: UITableViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.searchController = searchController
+        navigationItem.searchController = searchController
         navigationItem.setRightBarButton(addNoteButton, animated: false)
         tableView.registerNib(NotesTableViewCell.self)
         presenter.getNotes()
@@ -90,11 +90,7 @@ extension NotesTableViewController {
 
 //  MARK: - NotesTableViewProtocol
 
-extension NotesTableViewController: NotesTableViewProtocol {
-    func push(vc: UIViewController) {
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
+extension NotesTableViewController: NotesTableViewProtocol {    
     func loadingNotes() {
         activityIndicator.startAnimating()
     }

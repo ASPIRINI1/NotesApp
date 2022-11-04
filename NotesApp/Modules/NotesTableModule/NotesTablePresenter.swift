@@ -12,11 +12,10 @@ protocol NotesTableViewProtocol: AnyObject {
     func userNotAuthorizedError(completion: @escaping ()->())
     func loadingNotes()
     func notesLoaded()
-    func push(vc: UIViewController)
 }
 
 protocol NotesTablePresenterProtocol: AnyObject {
-    init(view: NotesTableViewProtocol, networkService: NetworkServiceProtocol)
+    init(view: NotesTableViewProtocol, networkService: NetworkServiceProtocol, router: NotesTableRouterProtocol)
     func getNotes()
     func deleteNote(noteID: String)
     func openDetail(noteID: String?)
@@ -25,12 +24,14 @@ protocol NotesTablePresenterProtocol: AnyObject {
 class NotesTablePresenter: NotesTablePresenterProtocol {
     weak var view: NotesTableViewProtocol?
     var networkService: NetworkServiceProtocol
+    var router: NotesTableRouterProtocol
     var notes: [Note]?
     var filtredNotes: [Note]?
     
-    required init(view: NotesTableViewProtocol, networkService: NetworkServiceProtocol) {
+    required init(view: NotesTableViewProtocol, networkService: NetworkServiceProtocol, router: NotesTableRouterProtocol) {
         self.view = view
         self.networkService = networkService
+        self.router = router
         addNotifications()
     }
     
@@ -50,15 +51,11 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     func openDetail(noteID: String?) {
         if networkService.user == nil {
             view?.userNotAuthorizedError {
-                let authVC = ModuleBuilder.createAuthorizationViewController()
-                self.view?.push(vc: authVC)
+                self.router.pushToAuth()
             }
             return
         }
-        if let detailVC = ModuleBuilder.createDetailViewController(noteID: noteID) as? DetailViewController {
-            detailVC.presenter.delegate = self
-            view?.push(vc: detailVC)
-        }
+        router.openDetail(noteID: noteID)
     }
     
     func addNotifications() {

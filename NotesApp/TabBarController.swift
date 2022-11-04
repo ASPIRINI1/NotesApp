@@ -8,23 +8,29 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
+    
+    let modulesBuilder: ModulesBuilerProtocol = ModuleBuilder()
+    lazy var notesRouter = NotesTableRouter(modulesBuilder: modulesBuilder)
+    lazy var settingsRouter = SettingsRouter(modulesBuilder: modulesBuilder)
+    lazy var notesTableNavController = {
+        let controller = notesRouter.navigationController
+        controller.title = NSLocalizedString("Settings", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
+        controller.viewControllers.first?.navigationItem.title = NSLocalizedString("Settings", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
+        controller.tabBarItem.image = UIImage(systemName: "gear")
+        return controller
+    }()
+    lazy var settingsNavController = {
+        let controller = settingsRouter.navigationController
+        controller.title = NSLocalizedString("Notes table", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
+        controller.viewControllers.first?.navigationItem.title = NSLocalizedString("Notes table", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
+        controller.tabBarItem.image = UIImage(systemName: "note.text")
+        return controller
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let notesTableNavController = UINavigationController(rootViewController: ModuleBuilder.createNotesTable())
-        let settingsNavController = UINavigationController(rootViewController: ModuleBuilder.createSettingsTableViewController())
-        
-        notesTableNavController.title = NSLocalizedString("Notes table", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
-        notesTableNavController.viewControllers.first?.navigationItem.title = NSLocalizedString("Notes table", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
-        notesTableNavController.tabBarItem.image = UIImage(systemName: "note.text")
-        
-        settingsNavController.title = NSLocalizedString("Settings", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
-        settingsNavController.viewControllers.first?.navigationItem.title = NSLocalizedString("Settings", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
-        settingsNavController.tabBarItem.image = UIImage(systemName: "gear")
-        
         setViewControllers([notesTableNavController, settingsNavController], animated: true)
-        
         switch AppSettings.shared.appTheme {
             case 0: self.overrideUserInterfaceStyle = .unspecified
             case 1: self.overrideUserInterfaceStyle = .light

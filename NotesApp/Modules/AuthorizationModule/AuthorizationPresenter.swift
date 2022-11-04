@@ -14,7 +14,7 @@ protocol AuthorizationViewProtocol: UIViewController {
 }
 
 protocol AuthorizationPresenterProtocol: AnyObject {
-    init(view: AuthorizationViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol)
+    init(view: AuthorizationViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol, router: RouterMainProtocol)
     func registration(email: String, password: String)
     func signIn(email: String, password: String)
     func tapOnView()
@@ -25,18 +25,20 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
     weak var view: AuthorizationViewProtocol?
     var networkService: NetworkServiceProtocol
     var settingsService: AppSettingsProtolol
+    var router: RouterMainProtocol
     
-    required init(view: AuthorizationViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol) {
+    required init(view: AuthorizationViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol, router: RouterMainProtocol) {
         self.view = view
         self.networkService = networkService
         self.settingsService = settingsService
+        self.router = router
     }
     
     func registration(email: String, password: String) {
         guard userDataIsCurrect(email: email, password: password) else { return }
         networkService.registration(email: email, password: password) { [weak self] success in
             if success {
-                self?.view?.navigationController?.popToRootViewController(animated: true)
+                self?.router.popBack()
             } else {
                 self?.view?.showError(errorText: "Registration error.")
             }
@@ -47,7 +49,7 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
         guard userDataIsCurrect(email: email, password: password) else { return }
         networkService.signIn(email: email, password: password) { [weak self] success in
             if success {
-                self?.view?.navigationController?.popToRootViewController(animated: true)
+                self?.router.popBack()
             } else {
                 self?.view?.showError(errorText: "SignIn error.")
             }

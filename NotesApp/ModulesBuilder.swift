@@ -8,25 +8,25 @@
 import Foundation
 import UIKit
 
-protocol ModulesBuiler {
-    static func createNotesTable() -> UITableViewController
-    static func createDetailViewController(noteID: String?) -> UIViewController
-    static func createSettingsTableViewController() -> UITableViewController
-    static func createWEBViewController(url: String) -> UIViewController
-    static func createAuthorizationViewController() -> UIViewController
+protocol ModulesBuilerProtocol {
+    func createNotesTable(router: NotesTableRouterProtocol) -> UITableViewController
+    func createDetailViewController(noteID: String?) -> UIViewController
+    func createSettingsTableViewController(router: SettingsRouterProtocol) -> UITableViewController
+    func createWEBViewController(router: SettingsRouterProtocol, url: String) -> UIViewController
+    func createAuthorizationViewController(router: RouterMainProtocol) -> UIViewController
 }
 
-class ModuleBuilder: ModulesBuiler {
+class ModuleBuilder: ModulesBuilerProtocol {
     
-    static func createNotesTable() -> UITableViewController {
+    func createNotesTable(router: NotesTableRouterProtocol) -> UITableViewController {
         let view = NotesTableViewController()
         let networkService = FireAPI.shared
-        let presenter = NotesTablePresenter(view: view, networkService: networkService)
+        let presenter = NotesTablePresenter(view: view, networkService: networkService, router: router)
         view.presenter = presenter
         return view
     }
     
-    static func createDetailViewController(noteID: String?) -> UIViewController {
+    func createDetailViewController(noteID: String?) -> UIViewController {
         let view = DetailViewController()
         let networkService = FireAPI.shared
         let presenter = DetailPresenter(view: view, networkService: networkService, noteID: noteID)
@@ -34,30 +34,28 @@ class ModuleBuilder: ModulesBuiler {
         return view
     }
     
-    static func createSettingsTableViewController() -> UITableViewController {
+    func createSettingsTableViewController(router: SettingsRouterProtocol) -> UITableViewController {
         let view = SettingsTableViewController()
         let networkService = FireAPI.shared
         let settingsService = AppSettings.shared
-        let presenter = SettingsPresenter(view: view, networkService: networkService, settingsService: settingsService)
+        let presenter = SettingsPresenter(view: view, networkService: networkService, settingsService: settingsService, router: router)
         view.presenter = presenter
         return view
     }
     
-    static func createWEBViewController(url: String) -> UIViewController {
+    func createWEBViewController(router: SettingsRouterProtocol, url: String) -> UIViewController {
         let view = WEBViewController()
         let presenter = WEBPresenter(url: url, view: view)
         view.presenter = presenter
         return view
     }
     
-    static func createAuthorizationViewController() -> UIViewController {
+    func createAuthorizationViewController(router: RouterMainProtocol) -> UIViewController {
         let view = AuthorizationViewController()
         let networkService = FireAPI.shared
         let settingsService = AppSettings.shared
-        let presenter = AuthorizationPresenter(view: view, networkService: networkService, settingsService: settingsService)
+        let presenter = AuthorizationPresenter(view: view, networkService: networkService, settingsService: settingsService, router: router)
         view.presenter = presenter
         return view
     }
 }
-
-

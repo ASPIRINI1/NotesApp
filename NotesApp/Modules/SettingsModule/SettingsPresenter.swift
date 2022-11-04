@@ -20,7 +20,7 @@ protocol SettingsViewProtocol: UITableViewController {
 }
 
 protocol SettingsPresenterProtocol: AnyObject {
-    init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol)
+    init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol, router: SettingsRouterProtocol)
     func logInButtonPressed()
     func openProductWEB()
     func openDevInfo()
@@ -31,32 +31,31 @@ class SettingsPresenter: SettingsPresenterProtocol {
     private weak var view: SettingsViewProtocol?
     var networkService: NetworkServiceProtocol
     var settingsService: AppSettingsProtolol
+    var router: SettingsRouterProtocol
     lazy var user = networkService.user
     
-    required init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol) {
+    required init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol, router: SettingsRouterProtocol) {
         self.view = view
         self.networkService = networkService
         self.settingsService = settingsService
+        self.router = router
         addNotifications()
     }
     
     func logInButtonPressed() {
         if user == nil {
-            let authView = ModuleBuilder.createAuthorizationViewController()
-            view?.pushToView(authView)
+            router.pushToAuth()
         } else {
             networkService.signOut()
         }
     }
     
     func openProductWEB() {
-        let webView = ModuleBuilder.createWEBViewController(url: MainURLs.productInfo.rawValue)
-        view?.pushToView(webView)
+        router.pushToWEB(url: MainURLs.productInfo.rawValue)
     }
     
     func openDevInfo() {
-        let webView = ModuleBuilder.createWEBViewController(url: MainURLs.developer.rawValue)
-        view?.pushToView(webView)
+        router.pushToWEB(url: MainURLs.developer.rawValue)
     }
     
     func selectApp(theme: Int) {

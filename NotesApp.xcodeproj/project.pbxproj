@@ -11,6 +11,7 @@
 		DE1F0E4328F764590078917B /* AuthorizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1F0E4528F764590078917B /* AuthorizationView.xib */; };
 		DE1F0E4A28F764FD0078917B /* WEBView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1F0E4C28F764FD0078917B /* WEBView.xib */; };
 		DE2A6B5428DA5B88001C119B /* UIUserInterfaceStyle+title.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A6B5328DA5B88001C119B /* UIUserInterfaceStyle+title.swift */; };
+		DE3F9D1929152DCE00652E7E /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3F9D1829152DCE00652E7E /* Routers.swift */; };
 		DE4B004428F7277A00E6C1D9 /* NotesTable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE4B004628F7277A00E6C1D9 /* NotesTable.strings */; };
 		DE4B004E28F7289E00E6C1D9 /* WEB.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE4B005028F7289E00E6C1D9 /* WEB.strings */; };
 		DE4B005128F728A100E6C1D9 /* Settings.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE4B005328F728A100E6C1D9 /* Settings.strings */; };
@@ -121,6 +122,7 @@
 		DE2A6B5328DA5B88001C119B /* UIUserInterfaceStyle+title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIUserInterfaceStyle+title.swift"; sourceTree = "<group>"; };
 		DE2F6B26291522C50014C9A8 /* CommonMockClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMockClasses.swift; sourceTree = "<group>"; };
 		DE2F6B27291522C50014C9A8 /* NotesPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesPresenterTest.swift; sourceTree = "<group>"; };
+		DE3F9D1829152DCE00652E7E /* Routers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
 		DE4B005728F728B600E6C1D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Authorization.strings; sourceTree = "<group>"; };
 		DE4B005828F728B600E6C1D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Settings.strings; sourceTree = "<group>"; };
 		DE4B005928F728B700E6C1D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/WEB.strings; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				DEDA5CDA28953A7B005E4E65 /* Services */,
 				DE9F8DA827DA438A001852C3 /* Model */,
 				DE9F8DA627DA428C001852C3 /* TabBarController.swift */,
+				DE3F9D1829152DCE00652E7E /* Routers.swift */,
 				DE4CA9D72884BCE700924D66 /* ModulesBuilder.swift */,
 				DE4CA9D52884BCA200924D66 /* Modules */,
 				DE99589728DF2A5400361A5B /* Extensions */,
@@ -760,6 +763,7 @@
 				DEC36C3528EB4D2600516459 /* NotesTableViewCell.swift in Sources */,
 				DEDA5CE328953BB5005E4E65 /* SettingsPresenter.swift in Sources */,
 				DE99589B28DF4D1700361A5B /* UItableViewCell+identefier.swift in Sources */,
+				DE3F9D1929152DCE00652E7E /* Routers.swift in Sources */,
 				DE8155F72885B82500A9E9AA /* DetailViewController.swift in Sources */,
 				DE4CA9D82884BCE700924D66 /* ModulesBuilder.swift in Sources */,
 				DEDD854E279317400075D525 /* AppDelegate.swift in Sources */,
