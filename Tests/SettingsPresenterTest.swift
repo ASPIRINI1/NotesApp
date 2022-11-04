@@ -10,17 +10,12 @@ import XCTest
 import FirebaseAuth
 
 private class MockView: UITableViewController ,SettingsViewProtocol {
-
+    
     var isUpdate = false
-    var pushVC: UIViewController?
     var selectedTheme: Int = 0
     
     func updateSignInCell() {
         isUpdate = true
-    }
-    
-    func pushToView(_ vc: UIViewController) {
-        pushVC = vc
     }
     
     func setApp(theme: Int) {
@@ -39,7 +34,7 @@ final class SettingsPresenterTest: XCTestCase {
         view = MockView()
         network = MockNetworkService()
         settings = MockSettingsService()
-        presenter = SettingsPresenter(view: view, networkService: network, settingsService: settings)
+        presenter = SettingsPresenter(view: view, networkService: network, settingsService: settings, router: SettingsRouter(modulesBuilder: ModuleBuilder()))
     }
 
     override func tearDownWithError() throws {
@@ -59,13 +54,6 @@ final class SettingsPresenterTest: XCTestCase {
     func testIsPresenterCallViewFuncs() {
 //        presenter.logInButtonPressed()
 //        XCTAssertTrue(view.isUpdate)
-        
-        presenter.openProductWEB()
-        XCTAssertNotNil(view.pushVC)
-        
-        view.pushVC = nil
-        presenter.openDevInfo()
-        XCTAssertNotNil(view.pushVC)
     }
     
     func testPresenterGetNotification() {

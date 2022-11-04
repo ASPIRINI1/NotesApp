@@ -16,7 +16,6 @@ import FirebaseAuth
     var isAuthError = false
     var isLoading = false
     var isLoaded = false
-    var pushVC: UIViewController?
     
     func userNotAuthorizedError(completion: @escaping () -> ()) {
         isAuthError = true
@@ -29,10 +28,6 @@ import FirebaseAuth
     
     func notesLoaded() {
         isLoaded = true
-    }
-    
-    func push(vc: UIViewController) {
-        pushVC = vc
     }
 }
 
@@ -47,7 +42,7 @@ final class NotesPresenterTest: XCTestCase {
     override func setUpWithError() throws {
         view = MockView()
         network = MockNetworkService()
-        presenter = NotesTablePresenter(view: view, networkService: network)
+        presenter = NotesTablePresenter(view: view, networkService: network, router: NotesTableRouter(modulesBuilder: ModuleBuilder()))
     }
     
     override func tearDownWithError() throws {
@@ -73,7 +68,6 @@ final class NotesPresenterTest: XCTestCase {
         XCTAssertTrue(view.isLoaded)
         
         presenter.openDetail(noteID: nil)
-        XCTAssertNotNil(view.pushVC)
         XCTAssertTrue(view.isAuthError)
     }
     
