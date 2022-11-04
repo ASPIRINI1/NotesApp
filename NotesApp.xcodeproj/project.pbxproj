@@ -25,6 +25,7 @@
 		DE7A9065291525B600C62C03 /* CommonMockClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F6B26291522C50014C9A8 /* CommonMockClasses.swift */; };
 		DE7A9066291525B900C62C03 /* NotesPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F6B27291522C50014C9A8 /* NotesPresenterTest.swift */; };
 		DE7A9068291526A700C62C03 /* DetailPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7A9067291526A700C62C03 /* DetailPresenterTest.swift */; };
+		DE7A906A2915271100C62C03 /* SettingsPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7A90692915271100C62C03 /* SettingsPresenterTest.swift */; };
 		DE8155F42885B6AE00A9E9AA /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */; };
 		DE8155F72885B82500A9E9AA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8155F52885B82500A9E9AA /* DetailViewController.swift */; };
 		DE8156492885D08E00A9E9AA /* Pods_NotesApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE8156472885D08D00A9E9AA /* Pods_NotesApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -133,6 +134,7 @@
 		DE622AD3290DCF9D00F7EC58 /* NotesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE7470DA28D740EF0088771E /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		DE7A9067291526A700C62C03 /* DetailPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPresenterTest.swift; sourceTree = "<group>"; };
+		DE7A90692915271100C62C03 /* SettingsPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenterTest.swift; sourceTree = "<group>"; };
 		DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		DE8155F52885B82500A9E9AA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DE81561A2885CEAF00A9E9AA /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +308,7 @@
 				DE2F6B26291522C50014C9A8 /* CommonMockClasses.swift */,
 				DE2F6B27291522C50014C9A8 /* NotesPresenterTest.swift */,
 				DE7A9067291526A700C62C03 /* DetailPresenterTest.swift */,
+				DE7A90692915271100C62C03 /* SettingsPresenterTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				DE7A9066291525B900C62C03 /* NotesPresenterTest.swift in Sources */,
 				DE7A9065291525B600C62C03 /* CommonMockClasses.swift in Sources */,
 				DE7A9068291526A700C62C03 /* DetailPresenterTest.swift in Sources */,
+				DE7A906A2915271100C62C03 /* SettingsPresenterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

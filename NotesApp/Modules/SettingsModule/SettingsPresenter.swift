@@ -16,12 +16,11 @@ enum MainURLs: String {
 protocol SettingsViewProtocol: UITableViewController {
     func updateSignInCell()
     func pushToView(_ vc: UIViewController)
+    func setApp(theme: Int)
 }
 
 protocol SettingsPresenterProtocol: AnyObject {
     init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol)
-//    func singIn()
-//    func signOut()
     func logInButtonPressed()
     func openProductWEB()
     func openDevInfo()
@@ -52,17 +51,17 @@ class SettingsPresenter: SettingsPresenterProtocol {
     
     func openProductWEB() {
         let webView = ModuleBuilder.createWEBViewController(url: MainURLs.productInfo.rawValue)
-        view?.navigationController?.pushViewController(webView, animated: true)
+        view?.pushToView(webView)
     }
     
     func openDevInfo() {
         let webView = ModuleBuilder.createWEBViewController(url: MainURLs.developer.rawValue)
-        view?.navigationController?.pushViewController(webView, animated: true)
+        view?.pushToView(webView)
     }
     
     func selectApp(theme: Int) {
         settingsService.appTheme = theme
-        view?.tabBarController?.overrideUserInterfaceStyle = .allCases[theme]
+        view?.setApp(theme: theme)
     }
     
     func addNotifications() {
