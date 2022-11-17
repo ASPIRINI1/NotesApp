@@ -14,16 +14,16 @@ class TabBarController: UITabBarController {
     lazy var settingsRouter = SettingsRouter(modulesBuilder: modulesBuilder)
     lazy var notesTableNavController = {
         let controller = notesRouter.navigationController
-        controller.title = NSLocalizedString("Settings", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
-        controller.viewControllers.first?.navigationItem.title = NSLocalizedString("Settings", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
-        controller.tabBarItem.image = UIImage(systemName: "gear")
+        controller.title = NSLocalizedString("Notes table", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
+        controller.viewControllers.first?.navigationItem.title = NSLocalizedString("Notes table", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
+        controller.tabBarItem.image = UIImage(systemName: "note.text")
         return controller
     }()
     lazy var settingsNavController = {
         let controller = settingsRouter.navigationController
-        controller.title = NSLocalizedString("Notes table", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
-        controller.viewControllers.first?.navigationItem.title = NSLocalizedString("Notes table", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
-        controller.tabBarItem.image = UIImage(systemName: "note.text")
+        controller.title = NSLocalizedString("Settings", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
+        controller.viewControllers.first?.navigationItem.title = NSLocalizedString("Settings", tableName: LocalizeTableNames.TabBar.rawValue, comment: "")
+        controller.tabBarItem.image = UIImage(systemName: "gear")
         return controller
     }()
     

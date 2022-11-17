@@ -25,7 +25,7 @@ protocol SettingsRouterProtocol: RouterMainProtocol {
 
 class NotesTableRouter: NotesTableRouterProtocol {
     
-    lazy var navigationController = UINavigationController()
+    var navigationController = UINavigationController()
     var modulesBuilder: ModulesBuilerProtocol
     
     init(modulesBuilder: ModulesBuilerProtocol) {
@@ -48,7 +48,7 @@ class NotesTableRouter: NotesTableRouterProtocol {
 
 class SettingsRouter: SettingsRouterProtocol {
     
-    lazy var navigationController = UINavigationController()
+    var navigationController = UINavigationController()
     var modulesBuilder: ModulesBuilerProtocol
     
     init(modulesBuilder: ModulesBuilerProtocol) {
