@@ -11,7 +11,7 @@ protocol AppSettingsProtolol {
     var appTheme: Int { get set }
 }
 
-class AppSettings: AppSettingsProtolol {
+final class AppSettings: AppSettingsProtolol {
     
     static let shared = AppSettings()
     private let userDefaults = UserDefaults.standard

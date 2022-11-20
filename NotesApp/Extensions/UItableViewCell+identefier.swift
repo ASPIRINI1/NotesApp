@@ -11,7 +11,7 @@ import UIKit
 extension UITableViewCell {
     static var identefier: String {
         get {
-            return String.init(describing: self)
+            return String(describing: self)
         }
     }
 }
