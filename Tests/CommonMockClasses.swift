@@ -12,7 +12,6 @@ import FirebaseAuth
 // MARK: - MockNote
 
 class MockNote: Equatable {
-    
     var id: String
     var text: String
     
@@ -30,33 +29,68 @@ class MockNote: Equatable {
 
 // MARK: - MockNetworkService
 
-class MockNetworkService: NetworkServiceProtocol {
-    
-    var user: User?
+//class MockNetworkService: NetworkServiceProtocol {
+//
+//    var user: User?
+//    var notes: [String:MockNote] = [:]
+//
+//    func signIn(email: String, password: String, completion: @escaping (Bool) -> ()) { }
+//    func signOut() { }
+//    func registration(email: String, password: String, completion: @escaping (Bool) -> ()) { }
+//    func getNote(noteID: String, completion: @escaping (NotesApp.Note?) -> ()) { }
+//
+//    func createNewDocument(text: String) {
+//        notes["2"] = MockNote(id: "2", text: text)
+//    }
+//
+//    func updateDocument(id: String, text: String) {
+//        notes[id]?.text = text
+//    }
+//
+//    func getDocuments(completion: @escaping ([NotesApp.Note]?) -> ()) {
+//        completion([Note(id: "1", text: "Baz"),
+//                   Note(id: "2", text: "Bar"),
+//                   Note(id: "3", text: "Foo")])
+//    }
+//
+//    func deleteDocument(id: String) {
+//        notes.removeValue(forKey: id)
+//    }
+//}
+
+class MockNetworkFilesManager: NetworkServiceFilesProtocol {
+    var uid: String?
     var notes: [String:MockNote] = [:]
     
-    func signIn(email: String, password: String, completion: @escaping (Bool) -> ()) { }
-    func signOut() { }
-    func registration(email: String, password: String, completion: @escaping (Bool) -> ()) { }
-    func getNote(noteID: String, completion: @escaping (NotesApp.Note?) -> ()) { }
-    
-    func createNewDocument(text: String) {
-        notes["2"] = MockNote(id: "2", text: text)
-    }
-    
-    func updateDocument(id: String, text: String) {
-        notes[id]?.text = text
-    }
-    
-    func getDocuments(completion: @escaping ([NotesApp.Note]?) -> ()) {
+    func getNotes(completion: @escaping ([NotesApp.Note]?) -> ()) {
         completion([Note(id: "1", text: "Baz"),
                    Note(id: "2", text: "Bar"),
                    Note(id: "3", text: "Foo")])
     }
     
-    func deleteDocument(id: String) {
-        notes.removeValue(forKey: id)
+    func get(_ noteWithId: String, completion: @escaping (NotesApp.Note?) -> ()) { }
+    
+    func create(noteWithText: String) {
+        notes["2"] = MockNote(id: "2", text: noteWithText)
     }
+    
+    func update(_ noteWithId: String, text: String) {
+        notes[noteWithId]?.text = text
+    }
+    
+    func remove(_ noteWithId: String) {
+        notes.removeValue(forKey: noteWithId)
+    }
+}
+
+class MockNetworkAuthorizationManager: NetworkServiceAuthorizationProtocol {
+    var user: User?
+    
+    func signIn(email: String, password: String, completion: @escaping (Bool) -> ()) { }
+    
+    func signOut() { }
+    
+    func register(email: String, password: String, completion: @escaping (Bool) -> ()) { }
 }
 
 class MockSettingsService: AppSettingsProtolol {

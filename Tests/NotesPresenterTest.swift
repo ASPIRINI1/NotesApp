@@ -37,11 +37,11 @@ final class NotesPresenterTest: XCTestCase {
     
     private var view: MockView!
     var presenter: NotesTablePresenter!
-    var network: MockNetworkService!
+    var network: MockNetworkFilesManager!
 
     override func setUpWithError() throws {
         view = MockView()
-        network = MockNetworkService()
+        network = MockNetworkFilesManager()
         presenter = NotesTablePresenter(view: view, networkService: network, router: NotesTableRouter(modulesBuilder: ModuleBuilder()))
     }
     

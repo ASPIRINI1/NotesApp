@@ -21,11 +21,11 @@ final class DetailPresenterTest: XCTestCase {
     
     private var view: MockView!
     var presenter: DetailPresenter!
-    var network: MockNetworkService!
+    var network: MockNetworkFilesManager!
 
     override func setUpWithError() throws {
         view = MockView()
-        network = MockNetworkService()
+        network = MockNetworkFilesManager()
         presenter = DetailPresenter(view: view, networkService: network, noteID: "Baz")
     }
 

@@ -27,12 +27,12 @@ final class SettingsPresenterTest: XCTestCase {
     
     private var view: MockView!
     var presenter: SettingsPresenter!
-    var network: MockNetworkService!
+    var network: MockNetworkAuthorizationManager!
     var settings: MockSettingsService!
 
     override func setUpWithError() throws {
         view = MockView()
-        network = MockNetworkService()
+        network = MockNetworkAuthorizationManager()
         settings = MockSettingsService()
         presenter = SettingsPresenter(view: view, networkService: network, settingsService: settings, router: SettingsRouter(modulesBuilder: ModuleBuilder()))
     }
