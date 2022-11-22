@@ -12,7 +12,7 @@ protocol DetailViewProtocol: AnyObject {
 }
 
 protocol DetailPresenterProtocol: AnyObject {
-    init(view: DetailViewProtocol, networkService: NetworkServiceProtocol, noteID: String?)
+    init(view: DetailViewProtocol, networkService: NetworkServiceFilesProtocol, noteID: String?)
     func viewLoaded()
     func updateNote(text: String)
 }
@@ -24,16 +24,16 @@ protocol DetailPresenterDelegate: AnyObject {
 class DetailPresenter: DetailPresenterProtocol {
     
     weak var view: DetailViewProtocol?
-    var networkService: NetworkServiceProtocol
+    var networkService: NetworkServiceFilesProtocol
     var note: Note?
     weak var delegate: DetailPresenterDelegate?
     
-    required init(view: DetailViewProtocol, networkService: NetworkServiceProtocol, noteID: String?) {
+    required init(view: DetailViewProtocol, networkService: NetworkServiceFilesProtocol, noteID: String?) {
         self.view = view
         self.networkService = networkService
         
         guard let noteID = noteID else { return }
-        networkService.getNote(noteID: noteID) { note in
+        networkService.get(noteID) { note in
             guard let note = note else { return }
             self.note = note
             self.viewLoaded()
@@ -51,10 +51,10 @@ class DetailPresenter: DetailPresenterProtocol {
     func updateNote(text: String) {
         if let note = note {
             guard note.text != text else { return }
-            networkService.updateDocument(id: note.id, text: text)
+            networkService.update(note.id, text: text)
         } else {
             guard !text.isEmpty else { return }
-            networkService.createNewDocument(text: text)
+            networkService.create(noteWithText: text)
         }
         delegate?.detailPresenterNoteHasChanges()
     }

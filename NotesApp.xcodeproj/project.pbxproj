@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DE0B8C7428EB49DD0001A68A /* NotesTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE0B8C7328EB49DD0001A68A /* NotesTableView.xib */; };
+		DE1C6DA6292D2F1B00A30570 /* NetworkFilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1C6DA5292D2F1B00A30570 /* NetworkFilesManager.swift */; };
+		DE1C6DA8292D2F2A00A30570 /* NetworkAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1C6DA7292D2F2A00A30570 /* NetworkAuthorizationManager.swift */; };
+		DE1C6DAA292D2FB700A30570 /* NetworkProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1C6DA9292D2FB700A30570 /* NetworkProtocols.swift */; };
 		DE1F0E4328F764590078917B /* AuthorizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1F0E4528F764590078917B /* AuthorizationView.xib */; };
 		DE1F0E4A28F764FD0078917B /* WEBView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1F0E4C28F764FD0078917B /* WEBView.xib */; };
 		DE2A6B5428DA5B88001C119B /* UIUserInterfaceStyle+title.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A6B5328DA5B88001C119B /* UIUserInterfaceStyle+title.swift */; };
@@ -35,8 +38,6 @@
 		DE952D6C2891C6A300F703A7 /* Pods_NotesApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE952D402891C6A200F703A7 /* Pods_NotesApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE99589928DF2A7F00361A5B /* UITableView+cellManagment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99589828DF2A7F00361A5B /* UITableView+cellManagment.swift */; };
 		DE99589B28DF4D1700361A5B /* UItableViewCell+identefier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99589A28DF4D1700361A5B /* UItableViewCell+identefier.swift */; };
-		DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35728672A70005EADF8 /* RegistrationModule.swift */; };
-		DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BC35928672BA3005EADF8 /* FilesModule.swift */; };
 		DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA627DA428C001852C3 /* TabBarController.swift */; };
 		DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F8DA927DA43A3001852C3 /* AppSettings.swift */; };
 		DEAB78DF28970C9E00BF0A9C /* WEBPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB78DE28970C9E00BF0A9C /* WEBPresenter.swift */; };
@@ -53,7 +54,6 @@
 		DEDD855A279317420075D525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8558279317420075D525 /* LaunchScreen.storyboard */; };
 		DEDD8562279319120075D525 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8561279319120075D525 /* GoogleService-Info.plist */; };
 		DEDD856527931C510075D525 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD856427931C510075D525 /* Note.swift */; };
-		DEDD856727931C830075D525 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD856627931C830075D525 /* APIManager.swift */; };
 		DEF58CFF28EA35EA00A74347 /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF58CFB28EA35EA00A74347 /* AuthorizationPresenter.swift */; };
 		DEF58D0128EA35EA00A74347 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF58CFE28EA35EA00A74347 /* AuthorizationViewController.swift */; };
 /* End PBXBuildFile section */
@@ -115,6 +115,9 @@
 		DE04FBFE288F2F7900BEC769 /* libswiftDarwin.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftDarwin.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/lib/swift/libswiftDarwin.tbd; sourceTree = DEVELOPER_DIR; };
 		DE04FBFF288F2F7900BEC769 /* libsystem_darwin.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsystem_darwin.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/lib/system/libsystem_darwin.tbd; sourceTree = DEVELOPER_DIR; };
 		DE0B8C7328EB49DD0001A68A /* NotesTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesTableView.xib; sourceTree = "<group>"; };
+		DE1C6DA5292D2F1B00A30570 /* NetworkFilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFilesManager.swift; sourceTree = "<group>"; };
+		DE1C6DA7292D2F2A00A30570 /* NetworkAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthorizationManager.swift; sourceTree = "<group>"; };
+		DE1C6DA9292D2FB700A30570 /* NetworkProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocols.swift; sourceTree = "<group>"; };
 		DE1F0E4428F764590078917B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AuthorizationView.xib; sourceTree = "<group>"; };
 		DE1F0E4928F764740078917B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AuthorizationView.strings; sourceTree = "<group>"; };
 		DE1F0E4B28F764FD0078917B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/WEBView.xib; sourceTree = "<group>"; };
@@ -212,8 +215,6 @@
 		DE952D412891C6A200F703A7 /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE99589828DF2A7F00361A5B /* UITableView+cellManagment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+cellManagment.swift"; sourceTree = "<group>"; };
 		DE99589A28DF4D1700361A5B /* UItableViewCell+identefier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UItableViewCell+identefier.swift"; sourceTree = "<group>"; };
-		DE9BC35728672A70005EADF8 /* RegistrationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModule.swift; sourceTree = "<group>"; };
-		DE9BC35928672BA3005EADF8 /* FilesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesModule.swift; sourceTree = "<group>"; };
 		DE9F8DA627DA428C001852C3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		DE9F8DA927DA43A3001852C3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		DEAB78DE28970C9E00BF0A9C /* WEBPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEBPresenter.swift; sourceTree = "<group>"; };
@@ -232,7 +233,6 @@
 		DEDD855B279317420075D525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEDD8561279319120075D525 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEDD856427931C510075D525 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		DEDD856627931C830075D525 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		DEF58CFB28EA35EA00A74347 /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
 		DEF58CFE28EA35EA00A74347 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -344,15 +344,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		DE9BC35628672A4F005EADF8 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				DE9BC35728672A70005EADF8 /* RegistrationModule.swift */,
-				DE9BC35928672BA3005EADF8 /* FilesModule.swift */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
 		DE9F8DA827DA438A001852C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,8 +444,9 @@
 		DEDD856327931C410075D525 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				DEDD856627931C830075D525 /* APIManager.swift */,
-				DE9BC35628672A4F005EADF8 /* Modules */,
+				DE1C6DA9292D2FB700A30570 /* NetworkProtocols.swift */,
+				DE1C6DA7292D2F2A00A30570 /* NetworkAuthorizationManager.swift */,
+				DE1C6DA5292D2F1B00A30570 /* NetworkFilesManager.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -743,22 +735,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEF58CFF28EA35EA00A74347 /* AuthorizationPresenter.swift in Sources */,
-				DE9BC35828672A70005EADF8 /* RegistrationModule.swift in Sources */,
 				DEF58D0128EA35EA00A74347 /* AuthorizationViewController.swift in Sources */,
 				DEC36C3328EB4CBA00516459 /* SearchController.swift in Sources */,
-				DE9BC35A28672BA3005EADF8 /* FilesModule.swift in Sources */,
 				DECAB65328F22F0C00D1C60C /* FireAuthNotifName+NotifName.swift in Sources */,
 				DEAB78E22897151C00BF0A9C /* WEBViewController.swift in Sources */,
 				DEDD856527931C510075D525 /* Note.swift in Sources */,
 				DE87635328D7A0F700828110 /* SegmenedTableViewCell.swift in Sources */,
 				DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */,
 				DE2A6B5428DA5B88001C119B /* UIUserInterfaceStyle+title.swift in Sources */,
+				DE1C6DA8292D2F2A00A30570 /* NetworkAuthorizationManager.swift in Sources */,
 				DE8155F42885B6AE00A9E9AA /* DetailPresenter.swift in Sources */,
 				DE4CA9DD2884BDC000924D66 /* NotesTablePresenter.swift in Sources */,
 				DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */,
+				DE1C6DA6292D2F1B00A30570 /* NetworkFilesManager.swift in Sources */,
 				DE99589928DF2A7F00361A5B /* UITableView+cellManagment.swift in Sources */,
 				DEAB78DF28970C9E00BF0A9C /* WEBPresenter.swift in Sources */,
-				DEDD856727931C830075D525 /* APIManager.swift in Sources */,
 				DE4CA9E02884C08600924D66 /* NotesTableViewController.swift in Sources */,
 				DEC36C3528EB4D2600516459 /* NotesTableViewCell.swift in Sources */,
 				DEDA5CE328953BB5005E4E65 /* SettingsPresenter.swift in Sources */,
@@ -767,6 +758,7 @@
 				DE8155F72885B82500A9E9AA /* DetailViewController.swift in Sources */,
 				DE4CA9D82884BCE700924D66 /* ModulesBuilder.swift in Sources */,
 				DEDD854E279317400075D525 /* AppDelegate.swift in Sources */,
+				DE1C6DAA292D2FB700A30570 /* NetworkProtocols.swift in Sources */,
 				DEDD8550279317400075D525 /* SceneDelegate.swift in Sources */,
 				DE7470DB28D740EF0088771E /* ButtonTableViewCell.swift in Sources */,
 				DEDA5CE028953B98005E4E65 /* SettingsTableViewController.swift in Sources */,

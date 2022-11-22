@@ -14,7 +14,7 @@ protocol AuthorizationViewProtocol: UIViewController {
 }
 
 protocol AuthorizationPresenterProtocol: AnyObject {
-    init(view: AuthorizationViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol, router: RouterMainProtocol)
+    init(view: AuthorizationViewProtocol, networkService: NetworkServiceAuthorizationProtocol, settingsService: AppSettingsProtolol, router: RouterMainProtocol)
     func registration(email: String, password: String)
     func signIn(email: String, password: String)
     func tapOnView()
@@ -23,11 +23,11 @@ protocol AuthorizationPresenterProtocol: AnyObject {
 class AuthorizationPresenter: AuthorizationPresenterProtocol {
     
     weak var view: AuthorizationViewProtocol?
-    var networkService: NetworkServiceProtocol
+    var networkService: NetworkServiceAuthorizationProtocol
     var settingsService: AppSettingsProtolol
     var router: RouterMainProtocol
     
-    required init(view: AuthorizationViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol, router: RouterMainProtocol) {
+    required init(view: AuthorizationViewProtocol, networkService: NetworkServiceAuthorizationProtocol, settingsService: AppSettingsProtolol, router: RouterMainProtocol) {
         self.view = view
         self.networkService = networkService
         self.settingsService = settingsService
@@ -36,7 +36,7 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
     
     func registration(email: String, password: String) {
         guard userDataIsCurrect(email: email, password: password) else { return }
-        networkService.registration(email: email, password: password) { [weak self] success in
+        networkService.register(email: email, password: password) { [weak self] success in
             if success {
                 self?.router.popBack()
             } else {

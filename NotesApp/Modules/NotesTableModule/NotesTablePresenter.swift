@@ -15,7 +15,7 @@ protocol NotesTableViewProtocol: AnyObject {
 }
 
 protocol NotesTablePresenterProtocol: AnyObject {
-    init(view: NotesTableViewProtocol, networkService: NetworkServiceProtocol, router: NotesTableRouterProtocol)
+    init(view: NotesTableViewProtocol, networkService: NetworkServiceFilesProtocol, router: NotesTableRouterProtocol)
     func getNotes()
     func deleteNote(noteID: String)
     func openDetail(noteID: String?)
@@ -23,12 +23,12 @@ protocol NotesTablePresenterProtocol: AnyObject {
 
 class NotesTablePresenter: NotesTablePresenterProtocol {
     weak var view: NotesTableViewProtocol?
-    var networkService: NetworkServiceProtocol
+    var networkService: NetworkServiceFilesProtocol
     var router: NotesTableRouterProtocol
     var notes: [Note]?
     var filtredNotes: [Note]?
     
-    required init(view: NotesTableViewProtocol, networkService: NetworkServiceProtocol, router: NotesTableRouterProtocol) {
+    required init(view: NotesTableViewProtocol, networkService: NetworkServiceFilesProtocol, router: NotesTableRouterProtocol) {
         self.view = view
         self.networkService = networkService
         self.router = router
@@ -37,19 +37,19 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     
     func getNotes() {
         view?.loadingNotes()
-        networkService.getDocuments { [weak self] notes in
+        networkService.getNotes { [weak self] notes in
             self?.notes = notes
             self?.view?.notesLoaded()
         }
     }
     
     func deleteNote(noteID: String) {
-        networkService.deleteDocument(id: noteID)
+        networkService.remove(noteID)
         getNotes()
     }
     
     func openDetail(noteID: String?) {
-        if networkService.user == nil {
+        if networkService.uid == nil {
             view?.userNotAuthorizedError {
                 self.router.pushToAuth()
             }

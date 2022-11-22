@@ -19,7 +19,7 @@ protocol SettingsViewProtocol: UITableViewController {
 }
 
 protocol SettingsPresenterProtocol: AnyObject {
-    init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol, router: SettingsRouterProtocol)
+    init(view: SettingsViewProtocol, networkService: NetworkServiceAuthorizationProtocol, settingsService: AppSettingsProtolol, router: SettingsRouterProtocol)
     func logInButtonPressed()
     func openProductWEB()
     func openDevInfo()
@@ -28,12 +28,12 @@ protocol SettingsPresenterProtocol: AnyObject {
 class SettingsPresenter: SettingsPresenterProtocol {
     
     private weak var view: SettingsViewProtocol?
-    var networkService: NetworkServiceProtocol
+    var networkService: NetworkServiceAuthorizationProtocol
     var settingsService: AppSettingsProtolol
     var router: SettingsRouterProtocol
     lazy var user = networkService.user
     
-    required init(view: SettingsViewProtocol, networkService: NetworkServiceProtocol, settingsService: AppSettingsProtolol, router: SettingsRouterProtocol) {
+    required init(view: SettingsViewProtocol, networkService: NetworkServiceAuthorizationProtocol, settingsService: AppSettingsProtolol, router: SettingsRouterProtocol) {
         self.view = view
         self.networkService = networkService
         self.settingsService = settingsService

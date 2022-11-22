@@ -20,7 +20,7 @@ class ModuleBuilder: ModulesBuilerProtocol {
     
     func createNotesTable(router: NotesTableRouterProtocol) -> UITableViewController {
         let view = NotesTableViewController()
-        let networkService = FireAPI.shared
+        let networkService = NetworkFilesManager.shared
         let presenter = NotesTablePresenter(view: view, networkService: networkService, router: router)
         view.presenter = presenter
         return view
@@ -28,7 +28,7 @@ class ModuleBuilder: ModulesBuilerProtocol {
     
     func createDetailViewController(noteID: String?) -> UIViewController {
         let view = DetailViewController()
-        let networkService = FireAPI.shared
+        let networkService = NetworkFilesManager.shared
         let presenter = DetailPresenter(view: view, networkService: networkService, noteID: noteID)
         view.presenter = presenter
         return view
@@ -36,7 +36,7 @@ class ModuleBuilder: ModulesBuilerProtocol {
     
     func createSettingsTableViewController(router: SettingsRouterProtocol) -> UITableViewController {
         let view = SettingsTableViewController()
-        let networkService = FireAPI.shared
+        let networkService = NetworkAuthorizationManager.shared
         let settingsService = AppSettings.shared
         let presenter = SettingsPresenter(view: view, networkService: networkService, settingsService: settingsService, router: router)
         view.presenter = presenter
@@ -52,7 +52,7 @@ class ModuleBuilder: ModulesBuilerProtocol {
     
     func createAuthorizationViewController(router: RouterMainProtocol) -> UIViewController {
         let view = AuthorizationViewController()
-        let networkService = FireAPI.shared
+        let networkService = NetworkAuthorizationManager.shared
         let settingsService = AppSettings.shared
         let presenter = AuthorizationPresenter(view: view, networkService: networkService, settingsService: settingsService, router: router)
         view.presenter = presenter
