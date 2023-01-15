@@ -14,7 +14,7 @@
 		DE1F0E4328F764590078917B /* AuthorizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1F0E4528F764590078917B /* AuthorizationView.xib */; };
 		DE1F0E4A28F764FD0078917B /* WEBView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1F0E4C28F764FD0078917B /* WEBView.xib */; };
 		DE2A6B5428DA5B88001C119B /* UIUserInterfaceStyle+title.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A6B5328DA5B88001C119B /* UIUserInterfaceStyle+title.swift */; };
-		DE3F9D1929152DCE00652E7E /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3F9D1829152DCE00652E7E /* Routers.swift */; };
+		DE3F9D1929152DCE00652E7E /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3F9D1829152DCE00652E7E /* RouterProtocol.swift */; };
 		DE4B004428F7277A00E6C1D9 /* NotesTable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE4B004628F7277A00E6C1D9 /* NotesTable.strings */; };
 		DE4B004E28F7289E00E6C1D9 /* WEB.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE4B005028F7289E00E6C1D9 /* WEB.strings */; };
 		DE4B005128F728A100E6C1D9 /* Settings.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE4B005328F728A100E6C1D9 /* Settings.strings */; };
@@ -26,6 +26,8 @@
 		DE4CA9E02884C08600924D66 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CA9DE2884C08600924D66 /* NotesTableViewController.swift */; };
 		DE61937528EB50C90002CB8B /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE61937428EB50C90002CB8B /* NotesTableViewCell.xib */; };
 		DE7470DB28D740EF0088771E /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7470DA28D740EF0088771E /* ButtonTableViewCell.swift */; };
+		DE79C9D92974894500493FF6 /* NotesTableRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9D82974894500493FF6 /* NotesTableRouter.swift */; };
+		DE79C9DB2974895000493FF6 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9DA2974895000493FF6 /* SettingsRouter.swift */; };
 		DE7A9065291525B600C62C03 /* CommonMockClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F6B26291522C50014C9A8 /* CommonMockClasses.swift */; };
 		DE7A9066291525B900C62C03 /* NotesPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F6B27291522C50014C9A8 /* NotesPresenterTest.swift */; };
 		DE7A9068291526A700C62C03 /* DetailPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7A9067291526A700C62C03 /* DetailPresenterTest.swift */; };
@@ -125,7 +127,7 @@
 		DE2A6B5328DA5B88001C119B /* UIUserInterfaceStyle+title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIUserInterfaceStyle+title.swift"; sourceTree = "<group>"; };
 		DE2F6B26291522C50014C9A8 /* CommonMockClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMockClasses.swift; sourceTree = "<group>"; };
 		DE2F6B27291522C50014C9A8 /* NotesPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesPresenterTest.swift; sourceTree = "<group>"; };
-		DE3F9D1829152DCE00652E7E /* Routers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
+		DE3F9D1829152DCE00652E7E /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		DE4B005728F728B600E6C1D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Authorization.strings; sourceTree = "<group>"; };
 		DE4B005828F728B600E6C1D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Settings.strings; sourceTree = "<group>"; };
 		DE4B005928F728B700E6C1D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/WEB.strings; sourceTree = "<group>"; };
@@ -138,6 +140,8 @@
 		DE61937428EB50C90002CB8B /* NotesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		DE622AD3290DCF9D00F7EC58 /* NotesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE7470DA28D740EF0088771E /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		DE79C9D82974894500493FF6 /* NotesTableRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableRouter.swift; sourceTree = "<group>"; };
+		DE79C9DA2974895000493FF6 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		DE7A9067291526A700C62C03 /* DetailPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPresenterTest.swift; sourceTree = "<group>"; };
 		DE7A90692915271100C62C03 /* SettingsPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenterTest.swift; sourceTree = "<group>"; };
 		DE8155F32885B6AE00A9E9AA /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
@@ -315,6 +319,16 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		DE79C9D72974893700493FF6 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				DE3F9D1829152DCE00652E7E /* RouterProtocol.swift */,
+				DE79C9D82974894500493FF6 /* NotesTableRouter.swift */,
+				DE79C9DA2974895000493FF6 /* SettingsRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
 		DE8155F02885B68B00A9E9AA /* DetailModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,8 +442,8 @@
 				DEDA5CDA28953A7B005E4E65 /* Services */,
 				DE9F8DA827DA438A001852C3 /* Model */,
 				DE9F8DA627DA428C001852C3 /* TabBarController.swift */,
-				DE3F9D1829152DCE00652E7E /* Routers.swift */,
 				DE4CA9D72884BCE700924D66 /* ModulesBuilder.swift */,
+				DE79C9D72974893700493FF6 /* Routers */,
 				DE4CA9D52884BCA200924D66 /* Modules */,
 				DE99589728DF2A5400361A5B /* Extensions */,
 				DE4B004028F7231400E6C1D9 /* Localozation */,
@@ -737,6 +751,7 @@
 				DEF58CFF28EA35EA00A74347 /* AuthorizationPresenter.swift in Sources */,
 				DEF58D0128EA35EA00A74347 /* AuthorizationViewController.swift in Sources */,
 				DEC36C3328EB4CBA00516459 /* SearchController.swift in Sources */,
+				DE79C9D92974894500493FF6 /* NotesTableRouter.swift in Sources */,
 				DECAB65328F22F0C00D1C60C /* FireAuthNotifName+NotifName.swift in Sources */,
 				DEAB78E22897151C00BF0A9C /* WEBViewController.swift in Sources */,
 				DEDD856527931C510075D525 /* Note.swift in Sources */,
@@ -744,6 +759,7 @@
 				DE9F8DAA27DA43A3001852C3 /* AppSettings.swift in Sources */,
 				DE2A6B5428DA5B88001C119B /* UIUserInterfaceStyle+title.swift in Sources */,
 				DE1C6DA8292D2F2A00A30570 /* NetworkAuthorizationManager.swift in Sources */,
+				DE79C9DB2974895000493FF6 /* SettingsRouter.swift in Sources */,
 				DE8155F42885B6AE00A9E9AA /* DetailPresenter.swift in Sources */,
 				DE4CA9DD2884BDC000924D66 /* NotesTablePresenter.swift in Sources */,
 				DE9F8DA727DA428C001852C3 /* TabBarController.swift in Sources */,
@@ -754,7 +770,7 @@
 				DEC36C3528EB4D2600516459 /* NotesTableViewCell.swift in Sources */,
 				DEDA5CE328953BB5005E4E65 /* SettingsPresenter.swift in Sources */,
 				DE99589B28DF4D1700361A5B /* UItableViewCell+identefier.swift in Sources */,
-				DE3F9D1929152DCE00652E7E /* Routers.swift in Sources */,
+				DE3F9D1929152DCE00652E7E /* RouterProtocol.swift in Sources */,
 				DE8155F72885B82500A9E9AA /* DetailViewController.swift in Sources */,
 				DE4CA9D82884BCE700924D66 /* ModulesBuilder.swift in Sources */,
 				DEDD854E279317400075D525 /* AppDelegate.swift in Sources */,

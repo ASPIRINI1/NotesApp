@@ -38,7 +38,7 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
         guard userDataIsCurrect(email: email, password: password) else { return }
         networkService.register(email: email, password: password) { [weak self] success in
             if success {
-                self?.router.popBack()
+                self?.router.popBack(true)
             } else {
                 self?.view?.showError(errorText: "Registration error.")
             }
@@ -49,7 +49,7 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
         guard userDataIsCurrect(email: email, password: password) else { return }
         networkService.signIn(email: email, password: password) { [weak self] success in
             if success {
-                self?.router.popBack()
+                self?.router.popBack(true)
             } else {
                 self?.view?.showError(errorText: "SignIn error.")
             }

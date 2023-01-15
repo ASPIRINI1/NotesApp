@@ -51,11 +51,11 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
     func openDetail(noteID: String?) {
         if networkService.uid == nil {
             view?.userNotAuthorizedError {
-                self.router.pushToAuth()
+                self.router.pushToAuth(true)
             }
             return
         }
-        router.openDetail(noteID: noteID)
+        router.pushToDetail(noteID: noteID, true)
     }
     
     func addNotifications() {

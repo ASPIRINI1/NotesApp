@@ -9,16 +9,16 @@ import Foundation
 import UIKit
 
 protocol ModulesBuilerProtocol {
-    func createNotesTable(router: NotesTableRouterProtocol) -> UITableViewController
-    func createDetailViewController(noteID: String?) -> UIViewController
-    func createSettingsTableViewController(router: SettingsRouterProtocol) -> UITableViewController
-    func createWEBViewController(router: SettingsRouterProtocol, url: String) -> UIViewController
-    func createAuthorizationViewController(router: RouterMainProtocol) -> UIViewController
+    func createNotesTable(_ router: NotesTableRouterProtocol) -> UITableViewController
+    func createDetail(noteID: String?) -> UIViewController
+    func createSettings(_ router: SettingsRouterProtocol) -> UITableViewController
+    func createWEB(_ router: SettingsRouterProtocol, url: String) -> UIViewController
+    func createAuthorization(_ router: RouterMainProtocol) -> UIViewController
 }
 
 class ModuleBuilder: ModulesBuilerProtocol {
     
-    func createNotesTable(router: NotesTableRouterProtocol) -> UITableViewController {
+    func createNotesTable(_ router: NotesTableRouterProtocol) -> UITableViewController {
         let view = NotesTableViewController()
         let networkService = NetworkFilesManager.shared
         let presenter = NotesTablePresenter(view: view, networkService: networkService, router: router)
@@ -26,7 +26,7 @@ class ModuleBuilder: ModulesBuilerProtocol {
         return view
     }
     
-    func createDetailViewController(noteID: String?) -> UIViewController {
+    func createDetail(noteID: String?) -> UIViewController {
         let view = DetailViewController()
         let networkService = NetworkFilesManager.shared
         let presenter = DetailPresenter(view: view, networkService: networkService, noteID: noteID)
@@ -34,7 +34,7 @@ class ModuleBuilder: ModulesBuilerProtocol {
         return view
     }
     
-    func createSettingsTableViewController(router: SettingsRouterProtocol) -> UITableViewController {
+    func createSettings(_ router: SettingsRouterProtocol) -> UITableViewController {
         let view = SettingsTableViewController()
         let networkService = NetworkAuthorizationManager.shared
         let settingsService = AppSettings.shared
@@ -43,14 +43,14 @@ class ModuleBuilder: ModulesBuilerProtocol {
         return view
     }
     
-    func createWEBViewController(router: SettingsRouterProtocol, url: String) -> UIViewController {
+    func createWEB(_ router: SettingsRouterProtocol, url: String) -> UIViewController {
         let view = WEBViewController()
         let presenter = WEBPresenter(url: url, view: view)
         view.presenter = presenter
         return view
     }
     
-    func createAuthorizationViewController(router: RouterMainProtocol) -> UIViewController {
+    func createAuthorization(_ router: RouterMainProtocol) -> UIViewController {
         let view = AuthorizationViewController()
         let networkService = NetworkAuthorizationManager.shared
         let settingsService = AppSettings.shared
