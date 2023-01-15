@@ -10,7 +10,7 @@ import UIKit
 
 protocol ModulesBuilerProtocol {
     func createNotesTable(_ router: NotesTableRouterProtocol) -> UITableViewController
-    func createDetail(noteID: String?) -> UIViewController
+    func createDetail(noteID: String?, delegate: DetailPresenterDelegate?) -> UIViewController
     func createSettings(_ router: SettingsRouterProtocol) -> UITableViewController
     func createWEB(_ router: SettingsRouterProtocol, url: String) -> UIViewController
     func createAuthorization(_ router: RouterMainProtocol) -> UIViewController
@@ -26,10 +26,11 @@ class ModuleBuilder: ModulesBuilerProtocol {
         return view
     }
     
-    func createDetail(noteID: String?) -> UIViewController {
+    func createDetail(noteID: String?, delegate: DetailPresenterDelegate?) -> UIViewController {
         let view = DetailViewController()
         let networkService = NetworkFilesManager.shared
         let presenter = DetailPresenter(view: view, networkService: networkService, noteID: noteID)
+        presenter.delegate = delegate
         view.presenter = presenter
         return view
     }

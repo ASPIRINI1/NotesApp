@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NotesTableRouterProtocol: RouterMainProtocol {
-    func pushToDetail(noteID: String?, _ animated: Bool)
+    func pushToDetail(noteID: String?,  delegate: DetailPresenterDelegate?, _ animated: Bool)
     func pushToAuth(_ animated: Bool)
 }
 
@@ -22,8 +22,8 @@ class NotesTableRouter: NotesTableRouterProtocol {
         navigationController = UINavigationController(rootViewController: modulesBuilder.createNotesTable(self))
     }
     
-    func pushToDetail(noteID: String?, _ animated: Bool) {
-        navigationController.pushViewController(modulesBuilder.createDetail(noteID: noteID), animated: animated)
+    func pushToDetail(noteID: String?, delegate: DetailPresenterDelegate?, _ animated: Bool) {
+        navigationController.pushViewController(modulesBuilder.createDetail(noteID: noteID, delegate: delegate), animated: animated)
     }
     
     func pushToAuth(_ animated: Bool) {

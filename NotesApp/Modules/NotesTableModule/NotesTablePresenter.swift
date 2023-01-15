@@ -55,7 +55,7 @@ class NotesTablePresenter: NotesTablePresenterProtocol {
             }
             return
         }
-        router.pushToDetail(noteID: noteID, true)
+        router.pushToDetail(noteID: noteID, delegate: self, true)
     }
     
     func addNotifications() {
